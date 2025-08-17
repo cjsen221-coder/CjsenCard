@@ -1,0 +1,167 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Card;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+// use Dompdf\Dompdf;
+// use Dompdf\Options;
+
+class CardController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $cards = Card::orderBy('created_at', 'desc')->paginate(6);
+        return view('cards.index', compact('cards'));
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('cards.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'nullable|string|in:Homme,Femme,Autre|max:10',
+            'birthdate' => 'nullable|date',
+            'nationality' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'region' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+
+            'role' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|string|max:50',
+            'whatsapp' => 'nullable|string|max:50',
+
+            'avatar' => 'nullable|image|max:2048',
+        ]);
+
+        $data['serial_number'] = 'CJSEN-' . strtoupper(Str::random(8));
+
+        $data['slug'] = Str::slug($data['name']);
+        $originalSlug = $data['slug'];
+        $count = 1;
+        while (Card::where('slug', $data['slug'])->exists()) {
+            $data['slug'] = $originalSlug . '-' . $count++;
+        }
+
+        if ($request->hasFile('avatar')) {
+            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        }
+
+        Card::create($data);
+
+        return redirect()->route('cards.index')->with('success', 'Carte membre créée avec succès.');
+    }
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function edit(Card $card)
+    {
+        return view('cards.edit', compact('card'));
+    }
+
+    public function update(Request $request, Card $card)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'gender' => 'nullable|string|in:Homme,Femme,Autre|max:10',
+            'birthdate' => 'nullable|date',
+            'nationality' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'region' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+
+            'role' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'phone' => 'nullable|string|max:50',
+            'whatsapp' => 'nullable|string|max:50',
+
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $slug = Str::slug($validated['name']);
+        $originalSlug = $slug;
+        $count = 1;
+        while (Card::where('slug', $slug)->where('id', '!=', $card->id)->exists()) {
+            $slug = $originalSlug . '-' . $count++;
+        }
+        $validated['slug'] = $slug;
+
+        if ($request->hasFile('avatar')) {
+            // Supprimer l'ancien avatar si existe
+            if ($card->avatar && Storage::disk('public')->exists($card->avatar)) {
+                Storage::disk('public')->delete($card->avatar);
+            }
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $validated['avatar'] = $path;
+        }
+
+        $card->update($validated);
+
+        return redirect()->route('cards.index')->with('success', 'Carte mise à jour avec succès !');
+    }
+
+    public function destroy(Card $card)
+    {
+        if ($card->avatar && Storage::disk('public')->exists($card->avatar)) {
+            Storage::disk('public')->delete($card->avatar);
+        }
+        $card->delete();
+
+        return redirect()->route('cards.index')->with('success', 'Carte supprimée avec succès !');
+    }
+
+
+    public function show(Card $card)
+    {
+        $qr = base64_encode(
+            QrCode::format('svg')
+                ->size(300)
+                ->generate(route('cards.show', $card))
+        );
+
+        // $qr = base64_encode(QrCode::format('png')->size(150)->generate(route('cards.show', $card)));
+
+        return view('cards.show', compact('card', 'qr'));
+    }
+    public function showQr(Card $card)
+    {
+        // $qr = base64_encode(
+        //     QrCode::format('png')
+        //         ->size(300)
+        //         ->generate(route('cards.show', $card))
+        // );
+        $qr = base64_encode(
+            QrCode::format('svg')
+                ->size(300)
+                ->generate(route('cards.show', $card))
+        );
+
+        $fileName = 'Carte-Membre-' . str_replace(' ', '-', $card->name);
+
+        return view('cards.qr', compact('card', 'qr', 'fileName'));
+    }
+}
