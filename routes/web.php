@@ -3,11 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\SiteController;
 
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 // Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
 Route::get('/cards/{card:slug}', [CardController::class, 'show'])->name('cards.show');
@@ -32,5 +32,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+
+
+// Les routes du site
+Route::get('/accueil', [SiteController::class, 'accueil'])->name('site.accueil');
+Route::get('/services', [SiteController::class, 'services'])->name('site.services');
+Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
+Route::get('/contact', [SiteController::class, 'contact'])->name('site.contact');
+
+
 
 require __DIR__.'/auth.php';
