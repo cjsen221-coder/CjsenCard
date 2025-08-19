@@ -18,12 +18,25 @@ class CardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cards = Card::orderBy('created_at', 'desc')->paginate(6);
+        $query = Card::query();
+
+        $type = $request->get('type', 'name'); // type sélectionné, par défaut "name"
+        $search = $request->get('search');
+
+        if ($search) {
+            // Vérifie que le type est autorisé pour éviter l'injection SQL
+            $allowed = ['name', 'gender', 'address', 'region', 'email', 'phone'];
+            if (in_array($type, $allowed)) {
+                $query->where($type, 'like', "%{$search}%");
+            }
+        }
+
+        $cards = $query->orderBy('created_at', 'desc')->paginate(6);
+
         return view('cards.index', compact('cards'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -130,7 +143,7 @@ class CardController extends Controller
             // Enregistrer le chemin relatif en base
             $validated['avatar'] = 'avatars/' . $filename;
         }
-        
+
         $card->update($validated);
 
         return redirect()->route('cards.index')->with('success', 'Carte mise à jour avec succès !');

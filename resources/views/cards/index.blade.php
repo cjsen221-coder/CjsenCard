@@ -8,6 +8,28 @@
                     La Liste des Cartes
                 </h2>
 
+                <!-- Barre de recherche centrée -->
+                <div class="flex justify-center md:justify-center gap-2">
+                    <form id="searchForm" action="{{ route('cards.index') }}" method="GET" class="flex">
+                        <!-- Sélecteur de type -->
+                        <select name="type"
+                            class="px-3 py-2 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="name" {{ request('type') == 'name' ? 'selected' : '' }}>Nom</option>
+                            <option value="gender" {{ request('type') == 'gender' ? 'selected' : '' }}>Sexe</option>
+                            <option value="address" {{ request('type') == 'address' ? 'selected' : '' }}>Adresse</option>
+                            <option value="region" {{ request('type') == 'region' ? 'selected' : '' }}>Région</option>
+                            <option value="email" {{ request('type') == 'email' ? 'selected' : '' }}>Email</option>
+                            <option value="phone" {{ request('type') == 'phone' ? 'selected' : '' }}>Téléphone</option>
+                        </select>
+
+                        <!-- Champ de saisie -->
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Rechercher..."
+                            class="px-4 py-2 border-t border-b border-r rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </form>
+                </div>
+
+
+
 
                 @if(session('success'))
                     <div class="mb-2 p-2 bg-green-100 text-green-800 rounded">
@@ -24,7 +46,8 @@
 
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($cards as $card)
+
+            @forelse($cards as $card)
                 <div class="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-all duration-300">
 
                     {{-- Lien vers la page détail --}}
@@ -71,8 +94,13 @@
                     </div>
 
                 </div>
-            @endforeach
-        </div>
+            @empty
+                </div>
+                <div class="neon-container">
+                    <h1 class="neon-text">⚠️ Aucune carte trouvée.</h1>
+                </div>
+
+            @endforelse
 
 
         <div class="mt-6">
