@@ -65,8 +65,13 @@ class CardController extends Controller
             $data['slug'] = $originalSlug . '-' . $count++;
         }
 
+        // if ($request->hasFile('avatar')) {
+        //     $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+        // }
         if ($request->hasFile('avatar')) {
-            $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
+            $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
+            $request->file('avatar')->move(public_path('avatars'), $filename);
+            $data['avatar'] = 'avatars/' . $filename;
         }
 
         Card::create($data);
@@ -112,13 +117,20 @@ class CardController extends Controller
 
         if ($request->hasFile('avatar')) {
             // Supprimer l'ancien avatar si existe
-            if ($card->avatar && Storage::disk('public')->exists($card->avatar)) {
-                Storage::disk('public')->delete($card->avatar);
+            if ($card->avatar && file_exists(public_path($card->avatar))) {
+                unlink(public_path($card->avatar));
             }
-            $path = $request->file('avatar')->store('avatars', 'public');
-            $validated['avatar'] = $path;
-        }
 
+            // Créer un nom unique pour éviter les conflits
+            $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
+
+            // Déplacer l'image dans public/avatars
+            $request->file('avatar')->move(public_path('avatars'), $filename);
+
+            // Enregistrer le chemin relatif en base
+            $validated['avatar'] = 'avatars/' . $filename;
+        }
+        
         $card->update($validated);
 
         return redirect()->route('cards.index')->with('success', 'Carte mise à jour avec succès !');

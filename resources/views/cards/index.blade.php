@@ -29,7 +29,7 @@
 
                     {{-- Lien vers la page détail --}}
                     <a href="{{ route('cards.show', $card) }}" class="flex items-center gap-4 mb-4">
-                        <img src="{{ $card->avatar ? asset('storage/' . $card->avatar) : asset('images/default-avatar.jpg') }}"
+                        <img src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
                             alt="Avatar de {{ $card->name }}"
                             class="w-16 h-16 rounded-full object-cover border-2 border-blue-600">
                         <div>

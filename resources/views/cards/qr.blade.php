@@ -198,8 +198,8 @@
 
                 <div class="right">
                     <img class="avatar"
-                        src="{{ $card->avatar ? asset('storage/' . $card->avatar) : asset('images/default-avatar.jpg') }}"
-                        alt="Avatar">
+                        src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
+                        alt="Avatar de {{ $card->name }}" alt="Avatar">
                 </div>
             </div>
         </div>
