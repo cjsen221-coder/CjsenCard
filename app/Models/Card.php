@@ -25,7 +25,8 @@ class Card extends Model
         'role',
         'avatar',
         'slug',
-        'serial_number', // si tu l'as ajouté à la table
+        'serial_number', 
+        'honorMember',
     ];
 
     protected static function boot()

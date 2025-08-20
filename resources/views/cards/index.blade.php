@@ -57,7 +57,11 @@
                             class="w-16 h-16 rounded-full object-cover border-2 border-blue-600">
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">{{ $card->name }}</h3>
-                            <p class="text-sm text-gray-500">{{ $card->role }}</p>
+                            @if($card->honorMember == "Membre d'honneur")
+                                <span class="text-yellow-500 font-semibold text-sm">Membre d'honneur</span>
+                            @else
+                                <p class="text-sm text-gray-500">{{ $card->role }}</p>
+                            @endif
                         </div>
                     </a>
 
@@ -78,7 +82,8 @@
                     <div class="flex justify-between items-center border-t pt-2">
                         <div>
                             <a href="{{ route('cards.qr', $card) }}" class="text-blue-600 font-semibold hover:underline">
-                                📄 PDF</a>
+                                📄 PDF
+                            </a>
                         </div>
                         <div class="flex gap-3">
                             <a href="{{ route('cards.edit', $card) }}"

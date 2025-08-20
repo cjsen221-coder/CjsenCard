@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 // use Dompdf\Dompdf;
 // use Dompdf\Options;
 
@@ -50,6 +51,14 @@ class CardController extends Controller
      * Store a newly created resource in storage.
      */
 
+    /**
+     * Display the specified resource.
+     */
+    public function edit(Card $card)
+    {
+        return view('cards.edit', compact('card'));
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -67,9 +76,13 @@ class CardController extends Controller
             'whatsapp' => 'nullable|string|max:50',
 
             'avatar' => 'nullable|image|max:2048',
+            'honorMember' => 'required|string|max:255',
         ]);
 
+        // dd($data);   
+
         $data['serial_number'] = 'CJSEN-' . strtoupper(Str::random(8));
+        // $data['honorMember'] = $request->has('honorMember') ? 1 : 0;
 
         $data['slug'] = Str::slug($data['name']);
         $originalSlug = $data['slug'];
@@ -78,9 +91,6 @@ class CardController extends Controller
             $data['slug'] = $originalSlug . '-' . $count++;
         }
 
-        // if ($request->hasFile('avatar')) {
-        //     $data['avatar'] = $request->file('avatar')->store('avatars', 'public');
-        // }
         if ($request->hasFile('avatar')) {
             $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
             $request->file('avatar')->move(public_path('avatars'), $filename);
@@ -90,15 +100,6 @@ class CardController extends Controller
         Card::create($data);
 
         return redirect()->route('cards.index')->with('success', 'Carte membre créée avec succès.');
-    }
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function edit(Card $card)
-    {
-        return view('cards.edit', compact('card'));
     }
 
     public function update(Request $request, Card $card)
@@ -118,7 +119,10 @@ class CardController extends Controller
             'whatsapp' => 'nullable|string|max:50',
 
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'honorMember' => 'required|string|max:255',
         ]);
+
+        // $validated['honorMember'] = $request->has('honorMember') ? 1 : 0;
 
         $slug = Str::slug($validated['name']);
         $originalSlug = $slug;
@@ -129,18 +133,11 @@ class CardController extends Controller
         $validated['slug'] = $slug;
 
         if ($request->hasFile('avatar')) {
-            // Supprimer l'ancien avatar si existe
             if ($card->avatar && file_exists(public_path($card->avatar))) {
                 unlink(public_path($card->avatar));
             }
-
-            // Créer un nom unique pour éviter les conflits
             $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
-
-            // Déplacer l'image dans public/avatars
             $request->file('avatar')->move(public_path('avatars'), $filename);
-
-            // Enregistrer le chemin relatif en base
             $validated['avatar'] = 'avatars/' . $filename;
         }
 
@@ -148,6 +145,7 @@ class CardController extends Controller
 
         return redirect()->route('cards.index')->with('success', 'Carte mise à jour avec succès !');
     }
+
 
     public function destroy(Card $card)
     {
@@ -174,11 +172,10 @@ class CardController extends Controller
     }
     public function showQr(Card $card)
     {
-        // $qr = base64_encode(
-        //     QrCode::format('png')
-        //         ->size(300)
-        //         ->generate(route('cards.show', $card))
-        // );
+        // Vérifie si le membre est d'honneur
+        $isHonor = $card->honorMember === 'Membre d\'honneur';
+
+        // Génération du QR code
         $qr = base64_encode(
             QrCode::format('svg')
                 ->size(300)
@@ -187,6 +184,11 @@ class CardController extends Controller
 
         $fileName = 'Carte-Membre-' . str_replace(' ', '-', $card->name);
 
-        return view('cards.qr', compact('card', 'qr', 'fileName'));
+        // Choix de la vue selon le type de membre
+        if ($isHonor) {
+            return view('cards.honneur', compact('card', 'qr', 'fileName'));
+        } else {
+            return view('cards.qr', compact('card', 'qr', 'fileName'));
+        }
     }
 }

@@ -26,7 +26,12 @@
                 class="w-24 h-24 rounded-full border-4 border-yellow-400 object-cover" />
             <div>
                 <h2 class="text-2xl font-bold">{{ $card->name }}</h2>
-                <p class="text-gray-600">{{ ucfirst($card->role) }}</p>
+
+                @if($card->honorMember == "Membre d'honneur")
+                    <span class="text-yellow-500 font-semibold text-sm">Membre d'honneur</span>
+                @else
+                    <p class="text-gray-600">{{ ucfirst($card->role) }}</p>
+                @endif
             </div>
         </div>
 

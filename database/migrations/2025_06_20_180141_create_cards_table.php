@@ -14,14 +14,17 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
 
+            // Serial number unique
+            $table->string('serial_number')->unique()->nullable();
+
             // Informations d'identité
-            $table->string('name');                     // Nom complet
-            $table->string('gender')->nullable();       // Sexe : homme, femme, autre
-            $table->date('birthdate')->nullable();      // Date de naissance
-            $table->string('nationality')->nullable();  // Nationalité
-            $table->string('address')->nullable();      // Adresse complète
-            $table->string('region')->nullable();       // Région d'origine
-            $table->string('city')->nullable();         // Ville actuelle
+            $table->string('name');                     
+            $table->string('gender')->nullable();      
+            $table->date('birthdate')->nullable();     
+            $table->string('nationality')->nullable();  
+            $table->string('address')->nullable();      
+            $table->string('region')->nullable();       
+            $table->string('city')->nullable();         
 
             // Coordonnées
             $table->string('email')->nullable();
@@ -29,9 +32,12 @@ return new class extends Migration
             $table->string('whatsapp')->nullable();
 
             // Informations liées à la carte
-            $table->string('role');                     // Statut dans l'organisation (ex: membre, trésorier...)
-            $table->string('avatar')->nullable();       // Photo de profil
-            $table->string('slug')->unique();           // Pour URL publique
+            $table->string('role');                  
+            $table->string('avatar')->nullable();       
+            $table->string('slug')->unique(); 
+
+            // Membre d'honneur
+            $table->string('honorMember');
 
             $table->timestamps();
         });

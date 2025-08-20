@@ -65,13 +65,22 @@
     {{-- AVATAR --}}
     <label class="block mb-2 font-semibold">Photo / Avatar</label>
     @if($card->avatar ?? false)
-        <img id="avatar-preview" src="{{ asset('storage/' . $card->avatar) }}" alt="avatar"
+        <img id="avatar-preview" src="{{ asset($card->avatar) }}" alt="avatar"
             class="w-20 h-20 rounded-full object-cover mb-2">
     @else
         <img id="avatar-preview" src="" alt="avatar" class="w-20 h-20 rounded-full object-cover mb-2 hidden">
     @endif
 
     <input id="avatar" name="avatar" type="file" class="w-full p-2 border rounded mb-4" accept="image/*">
+
+
+    <div class="mb-4">
+        <label for="honorMember" class="font-semibold block mb-1">Type de membre</label>
+        <select id="honorMember" name="honorMember" class="w-full p-2 border rounded">
+            <option value="Membre simple" {{ old('honorMember', $card->honorMember ?? 'Membre simple') === 'Membre simple' ? 'selected' : '' }}>Membre simple</option>
+            <option value="Membre d'honneur" {{ old('honorMember', $card->honorMember ?? 'Membre simple') === "Membre d'honneur" ? 'selected' : '' }}>Membre d'honneur</option>
+        </select>
+    </div>
 
     {{-- BOUTON --}}
     <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded">
