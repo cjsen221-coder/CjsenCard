@@ -6,258 +6,258 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <style>
         .card {
             width: 85.6mm;
             height: 54mm;
             border-radius: 12px;
             overflow: hidden;
+            font-family: 'Georgia', serif;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border: 2px solid #FFD700;
+            position: relative;
+        }
+
+        /* --- RECTO --- */
+        .front {
+            background: linear-gradient(135deg, #0b0f2e, #1a1f4b);
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            font-size: 8pt;
-            font-family: Arial, sans-serif;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* --- Recto --- */
-        .card.honor {
-            background-color: #009688;
-            /* turquoise du logo */
-            color: #ffffff;
-            border: 2px solid #FF9800;
-            /* orange */
+        .front::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.05) 1px,
+                    transparent 1px,
+                    transparent 10px);
+            pointer-events: none;
         }
 
-        .back-card.honor {
-            background-color: #009688;
-            color: #ffffff;
-            border: 2px solid #FF9800;
+        .front::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            top: 10px;
+            right: 10px;
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        /* En-tête sans couleur de fond */
-        .card .header {
+        .front .vip {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 6px 10px;
-        }
-
-        .header-logo {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #FFEB3B;
-            /* jaune vif */
-        }
-
-        .header-title {
+            justify-content: space-between;
+            font-size: 18pt;
             font-weight: bold;
-            font-size: 10pt;
-            user-select: none;
-            color: #FFEB3B;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Contenu */
-        .content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: row;
-            padding: 8px 10px;
+        .front .vip span span {
+            margin-left: 5px;
         }
 
-        .left {
-            width: 60%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
+        .front .header-logo {
+            width: 40px;
+            height: auto;
+            border-radius: 10px;
         }
 
-        .name {
+        /* Trait horizontal recto */
+        .front .divider {
+            height: 2px;
+            background-color: #FFD700;
+            margin: 10px 0;
+            border-radius: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .front .name {
             font-size: 12pt;
             font-weight: bold;
-            color: #FFEB3B;
-            /* jaune vif */
+            position: relative;
+            z-index: 2;
         }
 
-        .role {
-            font-size: 9pt;
-            color: #fff8dc;
-            margin-bottom: 6px;
-        }
-
-        .info {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .front .class {
+            font-family: "cursive";
             font-size: 8pt;
-            color: #ffffff;
+            text-align: right;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+            word-spacing: 1px;
         }
 
-        .info i {
-            width: 12px;
-            text-align: center;
-            color: #FFEB3B;
+        .front .contact-info {
+            margin-top: 10px;
+            font-size: 10pt;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
         }
 
-        .divider {
-            width: 3px;
-            background-color: #FF9800;
-            margin: 0 -15px 0 12px;
-            border-radius: 1px;
+        .front .contact-info div {
+            margin-bottom: 2px;
         }
 
-        .right {
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #FFEB3B;
-            object-fit: cover;
-            margin-bottom: 8px;
-        }
-
-        .honor-badge {
-            display: inline-block;
-            padding: 5px ;
-            font-size: 8pt;
-            font-weight: bold;
-            color: #009688;
-            /* texte turquoise */
-            background-color: #FFEB3B;
-            /* fond jaune vif */
-            border-radius: 12px;
-            /* capsule élégante */
-            text-align: center;
-            align-self: flex-start;
-            /* évite que ça colle à droite */
-            margin-bottom: 6px;
-            white-space: nowrap;
-        }
-
-
-        /* --- Verso --- */
-        .back-card {
-            width: 85.6mm;
-            height: 54mm;
-            border-radius: 12px;
+        /* --- VERSO --- */
+        .back {
+            background: linear-gradient(135deg, #0b0f2e, #1a1f4b);
+            padding: 15px;
+            position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 8pt;
-            font-family: Arial, sans-serif;
-            gap: 12px;
+            border: 2px solid #FFD700;
         }
 
-        .qr-label {
-            font-weight: bold;
-            user-select: none;
+        .back::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(-45deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.03) 2px,
+                    transparent 2px,
+                    transparent 20px);
+            pointer-events: none;
+        }
+
+        .back .stripe {
+            background-color: #FFD700;
+            color: #FFF;
+            height: 7mm;
             display: flex;
+            border-radius: 5px;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            justify-content: center;
-            color: #ffffff;
-        }
-
-        .qr-code {
-            width: 110px;
-            height: 110px;
-        }
-
-        .divider-horizontal {
-            width: 60%;
-            border-bottom: 1.5px solid #FFEB3B;
-            margin: 0 auto;
-        }
-
-        .url {
             font-size: 9pt;
-            letter-spacing: 0.5px;
-            user-select: none;
-            color: #ffffff;
+            font-weight: bold;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .back .stripe i {
+            font-size: 12pt;
+            color: #FFF;
+        }
+
+        /* Container verso pour QR et texte alignés en bas */
+        .back .back-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            right: 15px;
+            z-index: 2;
+        }
+
+        /* Trait vertical verso */
+        .back .vertical-divider {
+            width: 2px;
+            background-color: #FFD700;
+            margin: 0 15px;
+            border-radius: 1px;
+            height: 100px;
+        }
+
+        .back .qr img {
+            width: 100px;
+            height: 100px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        .back .info {
+            font-size: 8pt;
+            color: #40E0D0;
+            text-align: right;
         }
     </style>
-
-
-
 </head>
 
 <body>
-    <div class="card-wrapper" id="card-wrapper">
-
-        <!-- RECTO Membre d'Honneur -->
-        <div class="card honor">
-            <div class="header">
+    <div id="card-wrapper">
+        <!-- RECTO -->
+        <div class="card front">
+            <div class="vip">
+                <span class="vip-text">
+                    <span style="color:#40E0D0;">Membre</span>
+                    <span style="color:#3EB489;"> D'Honneur</span>
+                </span>
                 <img class="header-logo" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo">
-                <div class="header-title">SEN CARREFOUR JEUNESSE (CJSEN)</div>
             </div>
 
-            <div class="content">
-                <div class="left">
-                    <div class="name">{{ $card->name }}</div>
-                    <div class="honor-badge">🏅 Membre d'Honneur</div>
+            <!-- Trait horizontal -->
+            <div class="divider" style="background-color:#FFD700;"></div>
 
-                    @if($card->phone)
-                        <div class="info"><i class="fas fa-phone"></i>{{ $card->phone }}</div>
-                    @endif
+            <div class="name" style="color:#FFD700;">{{ $card->name }}</div>
 
-                    @if($card->email)
-                        <div class="info"><i class="fas fa-envelope"></i>{{ $card->email }}</div>
-                    @endif
+            <!-- Informations supplémentaires -->
+            <div class="contact-info">
+                <div class="phone" style="color:#ffffff;">📞 {{ $card->phone }}</div>
+                <div class="email" style="color:#ffffff;">✉️ {{ $card->email }}</div>
+                <div class="address" style="color:#ffffff;">🏠 {{ $card->address }}</div>
+            </div>
 
-                    @if($card->whatsapp)
-                        <div class="info"><i class="fas fa-map-marker-alt"></i>{{ $card->address }}</div>
-                    @endif
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="right">
-                    <img class="avatar"
-                        src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
-                        alt="Avatar de {{ $card->name }}">
-
-                </div>
+            <div class="class" style="color:#40E0D0;">
+                SEN CARREFOUR JEUNESSE - CJSEN
             </div>
         </div>
 
-        <!-- VERSO Membre d'Honneur -->
-        <div class="back-card honor">
-            <div class="qr-label">
-                <i class="fas fa-eye" style="color: #FFD700; font-size: 14pt;"></i>
+        <!-- VERSO -->
+        <div class="card back">
+            <div class="stripe">
+                <i class="fas fa-eye"></i>
                 <span>Orientation - Engagement - Épanouissement</span>
             </div>
 
-            @if(isset($qr))
-                <img class="qr-code" src="data:image/svg+xml;base64,{{ $qr }}" alt="QR Code de {{ $card->name }}" />
-            @endif
+            <div class="back-content">
+                <div class="qr">
+                    @if(isset($qr))
+                        <img src="data:image/svg+xml;base64,{{ $qr }}" alt="QR Code {{ $card->name }}">
+                    @endif
+                </div>
 
-            <div class="divider-horizontal"></div>
-            <div class="url">www.cjsen.sn</div>
+                <!-- Trait vertical -->
+                <div class="vertical-divider"></div>
+
+                <div class="info">
+                    SEN CARREFOUR JEUNESSE <br>
+                    cjsen221@gmail.com <br>
+                    +221 78 849 57 30 <br>
+                    www.cjsen.sn
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
         window.addEventListener('DOMContentLoaded', async () => {
-            const fileName = "{{ $fileName }}.pdf";
+            const fileName = "{{ $fileName ?? 'vip-card' }}.pdf";
             const { jsPDF } = window.jspdf;
 
             const generateCardImage = async (selector) => {
                 const element = document.querySelector(selector);
+                if (!element) return null;
 
                 await Promise.all(Array.from(element.querySelectorAll('img')).map(img => {
                     return new Promise(resolve => {
@@ -271,23 +271,27 @@
                     useCORS: true,
                     backgroundColor: null
                 });
-
                 return canvas.toDataURL('image/png');
             };
 
-            const CARD_WIDTH = 85.60;  // mm
-            const CARD_HEIGHT = 53.98; // mm
+            const CARD_WIDTH = 85.60;
+            const CARD_HEIGHT = 53.98;
 
-            const frontData = await generateCardImage('.card.honor');
+            // Recto
+            const frontData = await generateCardImage('.card.front');
+            if (!frontData) return;
+
             const pdf = new jsPDF({
                 orientation: 'landscape',
                 unit: 'mm',
                 format: [CARD_WIDTH, CARD_HEIGHT]
             });
-
             pdf.addImage(frontData, 'PNG', 0, 0, CARD_WIDTH, CARD_HEIGHT);
 
-            const backData = await generateCardImage('.back-card.honor');
+            // Verso
+            const backData = await generateCardImage('.card.back');
+            if (!backData) return;
+
             pdf.addPage([CARD_WIDTH, CARD_HEIGHT], 'landscape');
             pdf.addImage(backData, 'PNG', 0, 0, CARD_WIDTH, CARD_HEIGHT);
 
