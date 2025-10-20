@@ -12,9 +12,9 @@ class SiteController extends Controller
     }
 
     
-     public function services()
+     public function domaines()
     {
-        return view('site.services');
+        return view('site.domaine');
     }
 
     
@@ -23,10 +23,16 @@ class SiteController extends Controller
         return view('site.apropos');
     }
 
+         public function equipe()
+    {
+        return view('site.equipe');
+    }
+
     
      public function contact()
     {
         return view('site.contact');
     }
+
 
 }

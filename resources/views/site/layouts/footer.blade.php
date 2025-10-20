@@ -1,45 +1,93 @@
-<footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3">
-            <img src="{{ asset('site/images/img_1.jpg') }}" alt="Image" class="img-fluid mb-5">
-            <h2 class="footer-heading mb-3">About Us</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-          </div>
-          <div class="col-lg-8 ml-auto">
-            <div class="row">
-              <div class="col-lg-6 ml-auto">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
-                <ul class="list-unstyled">
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Testimonials</a></li>
-                  <li><a href="#">Terms of Service</a></li>
-                  <li><a href="#">Privacy</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <h2 class="footer-heading mb-4">Newsletter</h2>
-                <form action="#" class="d-flex" class="subscribe">
-                  <input type="text" class="form-control mr-3" placeholder="Email">
-                  <input type="submit" value="Send" class="btn btn-primary">
-                </form>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            </div>
-          </div>
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container py-5">
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Sen Carrefour Jeunesse</h4>
+        <a class="btn btn-link" href="{{ route('site.apropos') }}">A Propos</a>
+        <a class="btn btn-link" href="{{ route('site.domaines') }}">Domaines d'Action</a>
+        <a class="btn btn-link" href="{{ route('site.equipe') }}">Equipe</a>
+        <a class="btn btn-link" href="">Media</a>
+        <a class="btn btn-link" href="">Blog</a>
+        <a class="btn btn-link" href="">Contact</a>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+        <p class="mb-2">
+          <i class="fa fa-map-marker-alt me-3"></i>
+          <a href="https://www.google.com/maps?q=Foire,+Dakar,+Sénégal" target="_blank"
+            class="text-white text-decoration-none">
+            Foire, Dakar, Sénégal
+          </a>
+        </p>
+
+        <p class="mb-2">
+          <i class="fa fa-phone-alt me-3"></i>
+          <a href="tel:+221788495730" class="text-white text-decoration-none">
+            +221 78 849 57 30
+          </a>
+        </p>
+
+        <p class="mb-2">
+          <i class="fa fa-envelope me-3"></i>
+          <a href="mailto:cjsen221@gmail.com" class="text-white text-decoration-none">
+            cjsen221@gmail.com
+          </a>
+        </p>
+
+        <p class="mb-2">
+          <i class="fa fa-globe me-3"></i>
+          <a href="https://www.cjsen.sn" target="_blank" class="text-white text-decoration-none">
+            www.cjsen.sn
+          </a>
+        </p>
+
+        <div class="d-flex pt-2">
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
+          <a class="btn btn-outline-dark btn-social" href="#">
+            <i class="fab fa-tiktok"></i>
+          </a>
 
         </div>
       </div>
-    </footer>
+      {{-- <div class="col-lg-3 col-md-6">
+        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+        <h5 class="text-light fw-normal">Monday - Saturday</h5>
+        <p>09AM - 09PM</p>
+        <h5 class="text-light fw-normal">Sunday</h5>
+        <p>10AM - 08PM</p>
+      </div> --}}
+      <div class="col-lg-4 col-md-6">
+        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
+        <p>Recevez nos actualités et annonces directement dans votre boîte mail.</p>
+        <div class="position-relative mx-auto" style="max-width: 400px;">
+          <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="email"
+            placeholder="Votre adresse email">
+          <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <div class="copyright">
+      <div class="row">
+        <div class="col-md-12 text-center text-md-between mb-3 mb-md-0" style="font-size: 12px;">
+          &copy; Sen Carrefour Jeunesse, Tous droits réservés | Conception : Cellule du Numérique et de l'Innovation
+          Digitale (CNID)
+        </div>
+        {{-- <div class="col-md-6 text-center text-md-end">
+          <div class="footer-menu">
+            <a href="">Home</a>
+            <a href="">Cookies</a>
+            <a href="">Help</a>
+            <a href="">FQAs</a>
+          </div>
+        </div> --}}
+      </div>
+    </div>
+  </div>
+</div>
