@@ -41,6 +41,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            margin-top: 20px;
             padding: 6px 10px;
         }
 
@@ -106,8 +107,9 @@
         .divider {
             width: 3px;
             background-color: #FF9800;
-            margin: 0 -15px 0 12px;
+            margin: 20px 15px 0;
             border-radius: 1px;
+            height: 110px;
         }
 
         .right {
@@ -125,12 +127,11 @@
             border-radius: 50%;
             border: 3px solid #FFEB3B;
             object-fit: cover;
-            margin-bottom: 8px;
         }
 
         .honor-badge {
             display: inline-block;
-            padding: 5px ;
+            padding: 5px;
             font-size: 8pt;
             font-weight: bold;
             color: #009688;
@@ -202,7 +203,7 @@
         <!-- RECTO Membre d'Honneur -->
         <div class="card honor">
             <div class="header">
-                <img class="header-logo" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo">
+                {{-- <img class="header-logo" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo"> --}}
                 <div class="header-title">SEN CARREFOUR JEUNESSE (CJSEN)</div>
             </div>
 
@@ -227,9 +228,7 @@
                 <div class="divider"></div>
 
                 <div class="right">
-                    <img class="avatar"
-                        src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
-                        alt="Avatar de {{ $card->name }}">
+                    <img class="avatar" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Avatar de {{ $card->name }}">
 
                 </div>
             </div>
@@ -247,7 +246,11 @@
             @endif
 
             <div class="divider-horizontal"></div>
-            <div class="url">www.cjsen.sn</div>
+            <div class="url">
+                www.cjsen.sn
+                <span class="separator">|</span>
+                {{ $card->serial_number }}
+            </div>
         </div>
     </div>
 
@@ -291,11 +294,11 @@
             pdf.addPage([CARD_WIDTH, CARD_HEIGHT], 'landscape');
             pdf.addImage(backData, 'PNG', 0, 0, CARD_WIDTH, CARD_HEIGHT);
 
-            pdf.save(fileName);
+            // pdf.save(fileName);
 
-            setTimeout(() => {
-                window.location.href = "{{ route('cards.index') }}";
-            }, 100);
+            // setTimeout(() => {
+            //     window.location.href = "{{ route('cards.index') }}";
+            // }, 100);
         });
     </script>
 </body>

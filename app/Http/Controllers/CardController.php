@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Storage;
 
 class CardController extends Controller
 {
+    public function dashboard()
+    {
+        $cardsCount = Card::count();
+
+        return view('dashboard', compact('cardsCount'));
+    }
     /**
      * Display a listing of the resource.
      */

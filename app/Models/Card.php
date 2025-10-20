@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-
 class Card extends Model
 {
-    //
     use HasFactory;
+
     protected $fillable = [
         'name',
         'gender',
@@ -25,7 +24,7 @@ class Card extends Model
         'role',
         'avatar',
         'slug',
-        'serial_number', 
+        'serial_number',
         'honorMember',
     ];
 
@@ -34,9 +33,32 @@ class Card extends Model
         parent::boot();
 
         static::creating(function ($card) {
-            $card->slug = Str::slug($card->name) . '-' . uniqid();
+
+            // 1️⃣ Générer un numéro de carte unique (serial_number)
+            $lastCard = self::orderBy('id', 'desc')->first();
+
+            if ($lastCard && preg_match('/\d+$/', $lastCard->serial_number, $matches)) {
+                $nextNumber = intval($matches[0]) + 1;
+            } else {
+                $nextNumber = 1;
+            }
+
+            $card->serial_number = 'SEN-CJ-' . str_pad($nextNumber, 3, '0', STR_PAD_LEFT);
+
+            // 2️⃣ Générer le slug unique basé sur le nom et le numéro de carte
+            $baseSlug = Str::slug($card->name . '-' . $card->serial_number);
+            $slug = $baseSlug;
+            $count = 1;
+
+            // Éviter les doublons
+            while (self::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $count++;
+            }
+
+            $card->slug = $slug;
         });
     }
+
     public function getRouteKeyName()
     {
         return 'slug';

@@ -161,6 +161,16 @@
             font-size: 9pt;
             letter-spacing: 0.5px;
             user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .separator {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 10pt;
         }
     </style>
 </head>
@@ -215,7 +225,11 @@
                 {{-- <img class="qr-code" src="data:image/png;base64,{{ $qr }}" alt="QR Code" /> --}}
             @endif
             <div class="divider-horizontal"></div>
-            <div class="url">www.cjsen.sn</div>
+            <div class="url">
+                www.cjsen.sn
+                <span class="separator">|</span>
+                {{ $card->serial_number }}
+            </div>
         </div>
 
     </div>

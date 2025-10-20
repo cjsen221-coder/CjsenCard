@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             // Serial number unique
-            $table->string('serial_number')->unique()->nullable();
+            $table->string('serial_number')->unique();
 
             // Informations d'identité
             $table->string('name');                     

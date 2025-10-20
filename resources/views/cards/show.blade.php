@@ -5,10 +5,12 @@
                 Détails d'une carte
             </h2>
 
-            <a href="{{ route('cards.create') }}"
-                class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
-                ➕ Nouvelle carte
-            </a>
+            @auth
+                <a href="{{ route('cards.create') }}"
+                    class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
+                    ➕ Nouvelle carte
+                </a>
+            @endauth
         </div>
     </x-slot>
 
@@ -39,45 +41,58 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800 text-sm">
             <!-- Colonne 1 : Informations personnelles -->
             <div class="space-y-2">
-                <h3 class="font-semibold text-lg text-blue-900 mb-2">Informations personnelles</h3>
+                @auth
+                        <h3 class="font-semibold text-lg text-blue-900 mb-2">Informations personnelles</h3>
 
-                @if($card->gender)
-                    <p><strong>Sexe :</strong> {{ ucfirst($card->gender) }}</p>
-                @endif
-                @if($card->birthdate)
-                    <p><strong>Date de naissance :</strong>
-                        {{ \Carbon\Carbon::parse($card->birthdate)->format('d/m/Y') }}
-                    </p>
-                @endif
-                @if($card->nationality)
-                    <p><strong>Nationalité :</strong> {{ $card->nationality }}</p>
-                @endif
-                @if($card->address)
-                    <p><strong>Adresse :</strong> {{ $card->address }}</p>
-                @endif
-                @if($card->region)
-                    <p><strong>Région :</strong> {{ $card->region }}</p>
-                @endif
-                @if($card->city)
-                    <p><strong>Ville :</strong> {{ $card->city }}</p>
-                @endif
-            </div>
+                        @if($card->gender)
+                            <p><strong>Sexe :</strong> {{ ucfirst($card->gender) }}</p>
+                        @endif
+                        @if($card->birthdate)
+                            <p><strong>Date de naissance :</strong>
+                                {{ \Carbon\Carbon::parse($card->birthdate)->format('d/m/Y') }}
+                            </p>
+                        @endif
+                        @if($card->nationality)
+                            <p><strong>Nationalité :</strong> {{ $card->nationality }}</p>
+                        @endif
+                        @if($card->address)
+                            <p><strong>Adresse :</strong> {{ $card->address }}</p>
+                        @endif
+                        @if($card->region)
+                            <p><strong>Région :</strong> {{ $card->region }}</p>
+                        @endif
+                        @if($card->city)
+                            <p><strong>Ville :</strong> {{ $card->city }}</p>
+                        @endif
+                    </div>
+                @endauth
 
             <!-- Colonne 2 : Coordonnées -->
             <div class="space-y-2">
                 <h3 class="font-semibold text-lg text-blue-900 mb-2">Coordonnées</h3>
+                @if($card->address)
+                    <p><strong>Adresse :</strong> {{ $card->address }}</p>
+                @endif
                 @if($card->email)
                     <p><strong>Email :</strong> {{ $card->email }}</p>
                 @endif
                 @if($card->phone)
                     <p><strong>Téléphone :</strong> {{ $card->phone }}</p>
                 @endif
-                @if($card->whatsapp)
-                    <p><strong>WhatsApp :</strong> {{ $card->whatsapp }}</p>
+                @auth
+
+                    @if($card->whatsapp)
+                        <p><strong>WhatsApp :</strong> {{ $card->whatsapp }}</p>
+                    @endif
+                    @if($card->slug)
+                        <p><strong>Identifiant public (slug) :</strong> {{ $card->slug }}</p>
+                    @endif
+
+                @endauth
+                @if($card->serial_number)
+                    <p><strong>NUMERO :</strong> {{ $card->serial_number }}</p>
                 @endif
-                @if($card->slug)
-                    <p><strong>Identifiant public (slug) :</strong> {{ $card->slug }}</p>
-                @endif
+
             </div>
         </div>
 
