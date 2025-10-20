@@ -44,7 +44,8 @@ Route::get('/accueil', [SiteController::class, 'accueil'])->name('site.accueil')
 Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaines');
 Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
 Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
-
+Route::get('/media', [SiteController::class, 'media'])->name('site.media');
+Route::get('/blog', [SiteController::class, 'blog'])->name('site.blog');
 Route::get('/contact', [SiteController::class, 'contact'])->name('site.contact');
 
 

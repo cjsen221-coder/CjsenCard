@@ -8,7 +8,7 @@
         <a class="btn btn-link" href="{{ route('site.equipe') }}">Equipe</a>
         <a class="btn btn-link" href="">Media</a>
         <a class="btn btn-link" href="">Blog</a>
-        <a class="btn btn-link" href="">Contact</a>
+        <a class="btn btn-link" href="{{ route('site.contact') }}">Contact</a>
       </div>
       <div class="col-lg-4 col-md-6">
         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>

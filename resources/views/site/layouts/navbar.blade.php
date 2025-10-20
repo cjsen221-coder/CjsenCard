@@ -63,7 +63,7 @@
                 </div>
             </div>
             <a href="" class="nav-item nav-link">Blog</a>
-            <a href="" class="nav-item nav-link">Contact</a>
+            <a href="{{ route('site.contact') }}" class="nav-item nav-link">Contact</a>
         </div>
         {{-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> --}}
     </div>
