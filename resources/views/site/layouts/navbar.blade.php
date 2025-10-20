@@ -56,13 +56,13 @@
                 </div>
             </div> --}}
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle">Media</a>
+                <a href="{{ route('site.media') }}" class="nav-link dropdown-toggle">Media</a>
                 <div class="dropdown-menu m-0">
                     <a href="" class="dropdown-item">Podcasts</a>
                     <a href="" class="dropdown-item">Photos & Vidéos</a>
                 </div>
             </div>
-            <a href="" class="nav-item nav-link">Blog</a>
+            <a href="{{ route('site.blog') }}" class="nav-item nav-link">Blog</a>
             <a href="{{ route('site.contact') }}" class="nav-item nav-link">Contact</a>
         </div>
         {{-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> --}}
