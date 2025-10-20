@@ -431,7 +431,7 @@
     <script src="{{ asset('site/lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('site/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('site/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('site/lib/counterup/counterup.min.js' }}"></script>
+    <script src="{{ asset('site/lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('site/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
