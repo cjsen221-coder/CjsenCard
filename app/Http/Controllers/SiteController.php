@@ -28,6 +28,15 @@ class SiteController extends Controller
         return view('site.equipe');
     }
 
+         public function media()
+    {
+        return view('site.media');
+    }
+
+         public function blog()
+    {
+        return view('site.blog');
+    }
     
      public function contact()
     {
