@@ -21,7 +21,7 @@
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -52,7 +52,7 @@
         <div class="container-xxl position-relative p-0">
             @include('site.layouts.navbar')
             <div class="container-xxl py-5 bg-white hero-header mb-5 position-relative"
-                style="background: url('{{ asset('media/1.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
+                style="background: url('{{ asset('media/IMG-20250508-WA0085.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
                 <!-- Bande blanche transparente en bas -->
                 <div class="position-absolute bottom-0 start-0 w-100"
                     style="background: rgba(0, 129, 116, 0.25); backdrop-filter: blur(6px); padding-top: 20px;">
@@ -223,8 +223,9 @@
                         </p>
                         <p class="mb-4">
                             Face à ces réalités, un constat s’impose : les jeunes ont soif de repères, d’opportunés et
-                            de cadres solides pour tracer leur chemin. 
-                            C’est de ce constat qu’est né Sen Carrefour Jeunesse (CJSEN), comme une réponse, mais aussi comme un
+                            de cadres solides pour tracer leur chemin.
+                            C’est de ce constat qu’est né Sen Carrefour Jeunesse (CJSEN), comme une réponse, mais aussi
+                            comme un
                             appel : si nous voulons transformer nos
                             sociétés, nous devons d’abord donner à la jeunesse les moyens de se transformer elle-même.
                         </p>
