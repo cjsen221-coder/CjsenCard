@@ -6,7 +6,7 @@
 }
 
 .ff-secondary {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Open Sans', sans serif;
 }
 
 .fw-medium {
@@ -52,6 +52,24 @@
 .btn.btn-primary,
 .btn.btn-secondary {
     color: #FFFFFF;
+}
+
+body {
+    font-family: 'Open Sans' ,sans-serif;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    font-family: 'Open Sans' ,sans-serif;
+    
+}
+h1, .h1 {
+    font-weight: 400;
+}
+h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 ,p {
+    font-weight: 100;
+}
+.display-5 {
+    font-weight: 500;
 }
 
 .btn-square {

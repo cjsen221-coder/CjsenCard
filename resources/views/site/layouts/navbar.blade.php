@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-white px-4 px-lg-5 py-3 py-lg-0"
     style="border-bottom: 1px solid #22445e;">
-    <a href="" class="navbar-brand p-0">
-        <p class="m-0" style="color: #22445e;">
-            {{-- <i class="fa fa-utensils me-3"></i> --}}
-            <img src="{{ asset('images/logo-rm.png') }}" alt="Logo">
-            SEN CARREFOUR JEUNESSE
+    <a href="{{ route('site.accueil') }}" class="navbar-brand p-0">
+        <p class="d-flex align-items-center m-0" style="color: #22445e;">
+            <img src="{{ asset('images/logo-rm.png') }}" alt="Logo"
+                style="height: 70px; width: auto; margin-right: 10px;">
+            <span class="fw-bold fs-4">SEN CARREFOUR JEUNESSE</span>
         </p>
-        <!-- <img src="img/logo.png" alt="Logo"> -->
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="fa fa-bars"></span>
     </button>
@@ -16,7 +16,8 @@
             {{-- <a href="" class="nav-item nav-link active">Accueil</a> --}}
             <!-- Menu A Propos -->
             <div class="nav-item dropdown">
-                <a href="{{ route('site.apropos') }}" class="nav-link dropdown-toggle {{ Route::is('site.apropos*') ? 'active' : '' }}">
+                <a href="{{ route('site.apropos') }}"
+                    class="nav-link dropdown-toggle {{ Route::is('site.apropos*') ? 'active' : '' }}">
                     A Propos
                 </a>
                 <div class="dropdown-menu m-0">
@@ -30,7 +31,9 @@
             </div>
 
             <div class="nav-item dropdown">
-                <a href="{{ route('site.domaines') }}" class="nav-link dropdown-toggle {{ Route::is('site.domaine*') ? 'active' : '' }}" >Domaines d'Action</a>
+                <a href="{{ route('site.domaines') }}"
+                    class="nav-link dropdown-toggle {{ Route::is('site.domaine*') ? 'active' : '' }}">Domaines
+                    d'Action</a>
                 <div class="dropdown-menu m-0">
                     <a href="" class="dropdown-item">Formations</a>
                     <a href="" class="dropdown-item">Causeries</a>
@@ -41,7 +44,8 @@
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="{{ route('site.equipe') }}" class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}" >Equipe</a>
+                <a href="{{ route('site.equipe') }}"
+                    class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}">Equipe</a>
                 <div class="dropdown-menu m-0">
                     <a href="" class="dropdown-item">Bureau Exécutif</a>
                     <a href="" class="dropdown-item">Bureau Fonctionnel</a>
@@ -56,14 +60,17 @@
                 </div>
             </div> --}}
             <div class="nav-item dropdown">
-                <a href="{{ route('site.mediatheque') }}" class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}">Media</a>
+                <a href="{{ route('site.mediatheque') }}"
+                    class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}">Media</a>
                 <div class="dropdown-menu m-0">
                     <a href="" class="dropdown-item">Podcasts</a>
                     <a href="" class="dropdown-item">Photos & Vidéos</a>
                 </div>
             </div>
-            <a href="{{ route('site.blog') }}" class="nav-item nav-link {{ Route::is('site.blog') ? 'active' : '' }}">Blog</a>
-            <a href="{{ route('site.contact') }}" class="nav-item nav-link {{ Route::is('site.contact') ? 'active' : '' }}">Contact</a>
+            <a href="{{ route('site.blog') }}"
+                class="nav-item nav-link {{ Route::is('site.blog') ? 'active' : '' }}">Blog</a>
+            <a href="{{ route('site.contact') }}"
+                class="nav-item nav-link {{ Route::is('site.contact') ? 'active' : '' }}">Contact</a>
         </div>
         {{-- <a href="" class="btn btn-primary py-2 px-4">Book A Table</a> --}}
     </div>

@@ -121,6 +121,8 @@
                                     <p>Discussions et échanges sur des thématiques sociales et éducatives.</p>
                                 </div>
                             </div>
+
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -132,36 +134,50 @@
                                     <p>Renforcer l’esprit d’équipe à travers des sorties et activités collectives.</p>
                                 </div>
                             </div>
+
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
-                                <h5>Ateliers de Sensibilisation</h5>
-                                <p>Sessions de sensibilisation sur la santé, l’environnement et la citoyenneté.</p>
+                        <a href="{{ route('site.domaines') }}#sensibilisations" class="text-decoration-none">
+
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
+                                    <h5>Ateliers de Sensibilisation</h5>
+                                    <p>Sessions de sensibilisation sur la santé, l’environnement et la citoyenneté.</p>
+                                </div>
                             </div>
-                        </div>
+
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
-                                <h5>Actions Communautaires</h5>
-                                <p>Initiatives solidaires pour soutenir les populations locales.</p>
+                        <a href="{{ route('site.domaines') }}#actions" class="text-decoration-none">
+
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
+                                    <h5>Actions Communautaires</h5>
+                                    <p>Initiatives solidaires pour soutenir les populations locales.</p>
+                                </div>
                             </div>
-                        </div>
+
+                        </a>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="1.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <i class="fa fa-3x fa-lightbulb text-primary mb-4"></i>
-                                <h5>Projets Spéciaux</h5>
-                                <p>Innovations et projets pilotes pour l’épanouissement de la jeunesse.</p>
+                        <a href="{{ route('site.domaines') }}#projets" class="text-decoration-none">
+
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-lightbulb text-primary mb-4"></i>
+                                    <h5>Projets Spéciaux</h5>
+                                    <p>Innovations et projets pilotes pour l’épanouissement de la jeunesse.</p>
+                                </div>
                             </div>
-                        </div>
+
+                        </a>
                     </div>
 
                 </div>
@@ -178,38 +194,48 @@
                         <div class="row g-3">
                             <div class="col-6 text-start">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
-                                    src="img/about-1.jpg">
-                            </div>
-                            <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
-                                    src="img/about-2.jpg" style="margin-top: 25%;">
+                                    src="{{ asset('media/IMG-20250301-WA0033.jpg') }}">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
-                                    src="img/about-3.jpg">
+                                    src="{{ asset('media/IMG-20250508-WA0085.jpg') }}">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
+                                    src="{{ asset('media/IMG-20250508-WA0077.jpg') }}" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
-                                    src="img/about-4.jpg">
+                                    src="{{ asset('media/IMG-20250508-WA0088.jpg') }}">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
-                        <h1 class="mb-4">Welcome to <i class="fa fa-utensils text-primary me-2"></i>Restoran</h1>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                            diam et eos erat ipsum et lorem et sit, sed stet lorem sit.</p>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                            diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
-                            dolore erat amet</p>
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">A Propos de Nous</h5>
+                        <h1 class="mb-4">Présentation de CJSEN</h1>
+                        <p class="mb-4">
+                            Le XXI siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a compté autant
+                            de jeunes. En Afrique en particulier, elle représente
+                            plus de 60 % de la population. Cette force est une chance, mais elle porte aussi en elle des
+                            défis immenses : chômage endémique, dérèglements climatiques, désorientation scolaire et
+                            professionnelle, perte de repères
+                            citoyens, inégalités grandissantes.
+                        </p>
+                        <p class="mb-4">
+                            Face à ces réalités, un constat s’impose : les jeunes ont soif de repères, d’opportunés et
+                            de cadres solides pour tracer leur chemin. 
+                            C’est de ce constat qu’est né Sen Carrefour Jeunesse (CJSEN), comme une réponse, mais aussi comme un
+                            appel : si nous voulons transformer nos
+                            sociétés, nous devons d’abord donner à la jeunesse les moyens de se transformer elle-même.
+                        </p>
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">15
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">01
                                     </h1>
                                     <div class="ps-4">
-                                        <p class="mb-0">Years of</p>
-                                        <h6 class="text-uppercase mb-0">Experience</h6>
+                                        <p class="mb-0">Année</p>
+                                        <h6 class="text-uppercase mb-0">d'Experience</h6>
                                     </div>
                                 </div>
                             </div>
@@ -218,13 +244,13 @@
                                     <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50
                                     </h1>
                                     <div class="ps-4">
-                                        <p class="mb-0">Popular</p>
-                                        <h6 class="text-uppercase mb-0">Master Chefs</h6>
+                                        <p class="mb-0">+</p>
+                                        <h6 class="text-uppercase mb-0">Membres</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="{{ route('site.apropos') }}">Voir Plus</a>
                     </div>
                 </div>
             </div>
