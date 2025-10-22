@@ -42,14 +42,32 @@
         </p>
 
         <div class="d-flex pt-2">
-          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-          <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-          <a class="btn btn-outline-dark btn-social" href="#">
+          <a class="btn btn-outline-light btn-social" href="https://x.com/cjsen221" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/profile.php?id=61575020594135"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@SenCarrefourJeunesse"
+            target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social"
+            href="https://www.linkedin.com/company/sen-carrefour-jeunesse/?viewAsMember=true" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/cjsen_2025/" target="_blank"
+            rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="btn btn-outline-dark btn-social" href="https://www.tiktok.com/@sen.carrefour.jeunesse"
+            target="_blank" rel="noopener noreferrer">
             <i class="fab fa-tiktok"></i>
           </a>
+
 
         </div>
       </div>
