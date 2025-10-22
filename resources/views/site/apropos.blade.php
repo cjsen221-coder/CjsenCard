@@ -41,12 +41,10 @@
             </div>
         </div>
         <!-- Spinner End -->
-
-
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            
+        <div class="container-xxl position-relative p-0">            
             @include('site.layouts.navbar')
+
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
@@ -61,10 +59,226 @@
                 </div>
             </div>
         </div>
+
+     
+
+
+    <section class="apropos-header text-center">
+   
+</section>
+
+<!-- Historique -->
+<section class="apropos-section">
+    <div class="container d-flex flex-wrap align-items-center">
+        <div class="apropos-image">
+            <img src="{{ asset('media/19.jpg') }}" >
+        </div>
+        <div class="apropos-text">
+            <h2>Notre Historique</h2>
+            <p>
+                Le XXI siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a compté autant de jeunes.
+                En Afrique en particulier, elle représente plus de 60% de la population. Cette force est une chance,mais 
+                elle porte aussi en elle des défis immenses : chômage endémique, dérèglements climatiques, désorientation 
+                scolaire et professionnelle, perte de repères citoyens, inégalités grandissantes. 
+                Face à ces réalités, un constat s’impose : les jeunes ont soif de repères, d’opportunités et de cadres 
+                solides pour tracer leur chemin. C’est de ce constat qu’est né Sen Carrefour Jeunesse (CJSEN), comme une réponse,
+                mais aussi comme un appel : si nous voulons transformer nos sociétés, nous devons d’abord donner à la 
+                jeunesse les moyens de se transformer elle-même.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Missions -->
+<section class="apropos-section bg-light">
+    <div class="container d-flex flex-wrap align-items-center flex-row-reverse">
+        <div class="apropos-image">
+            <img src="{{ asset('media/15.jpg') }}" alt="Nos missions">
+        </div>
+        <div class="apropos-text">
+            <h2>Nos Missions</h2>
+           De cette vision est née notre mission. CJSEN accompagne la jeunesse du Sénégal, d’Afrique et du monde
+            entier, en lui offrant un accès à l’information, à la formation, à l’orientation et à la sensibilisation.
+             Car nous croyons que l’avenir se construit d’abord par l’éducation et l’engagement. Notre rôle est donc 
+             simple et essentiel : permettre à chaque jeune de disposer des outils nécessaires pour faire des 
+             choix éclairés, devenir un citoyen responsable et contribuer au bien commun.
+        </div>
+    </div>
+</section>
+
+<!-- Valeurs -->
+<section class="apropos-section">
+    <div class="container d-flex flex-wrap align-items-center">
+        <div class="apropos-image">
+            <img src="{{ asset('media/16.jpg') }}" alt="Nos valeurs">
+        </div>
+        <div class="apropos-text">
+            <h2>Nos Valeurs</h2>
+            <p>
+            Au cœur de nos actions, nos valeurs sont la charpente de notre engagement :
+                Engagement
+                Responsabilité
+                Partage
+                Exemplarité
+                Citoyenneté active
+                Epanouissement
+                Ces valeurs ne sont pas de simples mots. Elles sont le souffle qui anime chacune de nos actions, 
+                le ciment qui lie nos membres et la promesse que nous faisons à la jeunesse.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Antennes -->
+<section class="apropos-section bg-light">
+    <div class="container d-flex flex-wrap align-items-center flex-row-reverse">
+        <div class="apropos-image">
+            <img src="{{ asset('images/antennes.jpg') }}" alt="Nos antennes">
+        </div>
+        <div class="apropos-text">
+            <h2>Relations Extérieures (Nos Antennes)</h2>
+            <p>
+                Présents dans plusieurs régions, nos antennes locales assurent la proximité avec les bénéficiaires
+                et garantissent la mise en œuvre efficace de nos programmes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Partenariats -->
+<section class="apropos-section">
+    <div class="container d-flex flex-wrap align-items-center">
+        <div class="apropos-image">
+            <img src="{{ asset('images/partenariats.jpg') }}" alt="Nos partenariats">
+        </div>
+        <div class="apropos-text">
+            <h2>Nos Partenariats</h2>
+            <p>
+                Nous collaborons avec des organisations nationales et internationales, des institutions publiques et
+                des entreprises privées, pour maximiser l’impact de nos actions sur le terrain.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Témoignages -->
+<section class="apropos-section bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Témoignages</h2>
+        <div class="temoignages">
+            <div class="temoignage">
+                <img src="{{ asset('images/temoin1.jpg') }}" alt="Témoin 1">
+                <p>« Grâce à cette association, j’ai pu lancer mon activité agricole. Une vraie opportunité ! »</p>
+                <h5>– Awa Diop</h5>
+            </div>
+            <div class="temoignage">
+                <img src="{{ asset('images/temoin2.jpg') }}" alt="Témoin 2">
+                <p>« Leur programme de formation m’a permis d’acquérir de nouvelles compétences. »</p>
+                <h5>– Mamadou Ndiaye</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- Navbar & Hero End -->
 
-
-        <!-- About Start -->
+<!--          <div class="container-xxl py-5 bg-white hero-header mb-5">
+                <div class="container my-5 py-5">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="display-3 text-dark animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
+                            <p class="text-dark animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam
+                                dolor
+                                diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
+                                lorem
+                                sit clita duo justo magna dolore erat amet</p>
+                            <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
+                                style="background-color: #e2ab4d !important;">Book A Table</a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            {{-- <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt=""> --}}
+                            
+                            <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        About Start 
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-5 align-items-center">
@@ -98,7 +312,8 @@
                                         <h6 class="text-uppercase mb-0">Experience</h6>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
+                            
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
                                     <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">50</h1>
@@ -114,10 +329,9 @@
                 </div>
             </div>
         </div>
-        <!-- About End -->
+        
 
 
-        <!-- Team Start -->
         <div class="container-xxl pt-5 pb-3">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -184,7 +398,7 @@
                 </div>
             </div>
         </div>
-        <!-- Team End -->
+        Team End --> 
         
 
         <!-- Footer Start -->
