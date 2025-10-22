@@ -6,8 +6,8 @@
         <a class="btn btn-link" href="{{ route('site.apropos') }}">A Propos</a>
         <a class="btn btn-link" href="{{ route('site.domaines') }}">Domaines d'Action</a>
         <a class="btn btn-link" href="{{ route('site.equipe') }}">Equipe</a>
-        <a class="btn btn-link" href="">Media</a>
-        <a class="btn btn-link" href="">Blog</a>
+        <a class="btn btn-link" href="{{ route('site.mediatheque') }}">Media</a>
+        <a class="btn btn-link" href="{{ route('site.blog') }}">Blog</a>
         <a class="btn btn-link" href="{{ route('site.contact') }}">Contact</a>
       </div>
       <div class="col-lg-4 col-md-6">

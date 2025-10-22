@@ -28,9 +28,9 @@ class SiteController extends Controller
         return view('site.equipe');
     }
 
-         public function media()
+         public function mediatheque()
     {
-        return view('site.media');
+        return view('site.mediatheque');
     }
 
          public function blog()
