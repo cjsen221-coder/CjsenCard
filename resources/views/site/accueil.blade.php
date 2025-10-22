@@ -113,23 +113,25 @@
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <i class="fa fa-3x fa-comments text-primary mb-4"></i>
-                                <h5>Causeries</h5>
-                                <p>Discussions et échanges sur des thématiques sociales et éducatives.</p>
+                        <a href="{{ route('site.domaines') }}#causeries" class="text-decoration-none">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-comments text-primary mb-4"></i>
+                                    <h5>Causeries</h5>
+                                    <p>Discussions et échanges sur des thématiques sociales et éducatives.</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4 text-center">
-                                <i class="fa fa-3x fa-users text-primary mb-4"></i>
-                                <h5>Activités de Cohésion</h5>
-                                <p>Renforcer l’esprit d’équipe à travers des sorties et activités collectives.</p>
+                        <a href="{{ route('site.domaines') }}#formations" class="text-decoration-none">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-users text-primary mb-4"></i>
+                                    <h5>Activités de Cohésion</h5>
+                                    <p>Renforcer l’esprit d’équipe à travers des sorties et activités collectives.</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
 
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
