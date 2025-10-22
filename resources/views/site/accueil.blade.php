@@ -65,6 +65,8 @@
                                 style="background-color: #e2ab4d !important;">Book A Table</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+                            {{-- <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt=""> --}}
+                            
                             <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt="">
                         </div>
                     </div>

@@ -13,7 +13,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0 pe-4">
-            <a href="" class="nav-item nav-link active">Accueil</a>
+            {{-- <a href="" class="nav-item nav-link active">Accueil</a> --}}
             <!-- Menu A Propos -->
             <div class="nav-item dropdown">
                 <a href="{{ route('site.apropos') }}" class="nav-link dropdown-toggle">
