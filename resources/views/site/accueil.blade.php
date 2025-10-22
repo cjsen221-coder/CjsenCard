@@ -51,27 +51,44 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             @include('site.layouts.navbar')
-            <div class="container-xxl py-5 bg-white hero-header mb-5">
-                <div class="container my-5 py-5">
-                    <div class="row align-items-center g-5">
-                        <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="display-3 text-dark animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
-                            <p class="text-dark animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam
-                                dolor
-                                diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet
-                                lorem
-                                sit clita duo justo magna dolore erat amet</p>
-                            <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
-                                style="background-color: #e2ab4d !important;">Book A Table</a>
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                            {{-- <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt=""> --}}
-                            
-                            <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt="">
+            <div class="container-xxl py-5 bg-white hero-header mb-5 position-relative"
+                style="background: url('{{ asset('media/1.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
+                <!-- Bande blanche transparente en bas -->
+                <div class="position-absolute bottom-0 start-0 w-100"
+                    style="background: rgba(0, 129, 116, 0.25); backdrop-filter: blur(6px); padding-top: 20px;">
+                    <div class="container" style="margin-bottom: 0px;">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-8 text-center text-lg-start">
+                                <h2 class="display-5 text-white text-uppercase animated slideInLeft">
+                                    Sen Carrefour Jeunesse
+                                </h2>
+                                <p class="text-white animated slideInLeft mb-4 pb-2">
+                                    CJSEN est le petit colibri de la jeunesse mondiale.
+                                    Une organisation née au Sénégal mais qui porte une vision universelle : donner à
+                                    chaque jeune les moyens de s’informer, de s’orienter, de s’éduquer,
+                                    de s’engager et d’innover.
+                                    Nous faisons notre part.
+                                    Et nous croyons qu’ensemble, avec la jeunesse du monde entier, nous pouvons bâtir un
+                                    avenir plus juste, plus responsable et plus solidaire.
+                                </p>
+                                {{-- <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
+                                    style="background-color: #e2ab4d !important;">Book A Table</a> --}}
+                            </div>
+
+                            <div class="col-lg-4 text-center text-lg-end overflow-hidden">
+                                {{-- <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt=""> --}}
+                                <a href="{{ route('site.apropos') }}"
+                                    class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
+                                    style="background-color: #e2ab4d !important;">
+                                    En Savoir Plus
+                                </a>
+                                {{-- <img class="img-fluid" src="{{ asset('media/1.jpg') }}" alt=""> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- Navbar & Hero End -->
 
@@ -80,42 +97,71 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h2 class="display-5 text-center text-dark text-uppercase animated slideInLeft">
+                        Domaines d'Action
+                    </h2>
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <a href="{{ route('site.domaines') }}#formations" class="text-decoration-none">
+                            <div class="service-item rounded pt-3">
+                                <div class="p-4 text-center">
+                                    <i class="fa fa-3x fa-chalkboard-teacher text-primary mb-4"></i>
+                                    <h5>Formations</h5>
+                                    <p>Ateliers pratiques et formations pour renforcer les compétences des jeunes.</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <div class="p-4 text-center">
+                                <i class="fa fa-3x fa-comments text-primary mb-4"></i>
+                                <h5>Causeries</h5>
+                                <p>Discussions et échanges sur des thématiques sociales et éducatives.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <div class="p-4 text-center">
+                                <i class="fa fa-3x fa-users text-primary mb-4"></i>
+                                <h5>Activités de Cohésion</h5>
+                                <p>Renforcer l’esprit d’équipe à travers des sorties et activités collectives.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <div class="p-4 text-center">
+                                <i class="fa fa-3x fa-bullhorn text-primary mb-4"></i>
+                                <h5>Ateliers de Sensibilisation</h5>
+                                <p>Sessions de sensibilisation sur la santé, l’environnement et la citoyenneté.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.9s">
                         <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <div class="p-4 text-center">
+                                <i class="fa fa-3x fa-hand-holding-heart text-primary mb-4"></i>
+                                <h5>Actions Communautaires</h5>
+                                <p>Initiatives solidaires pour soutenir les populations locales.</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="1.1s">
+                        <div class="service-item rounded pt-3">
+                            <div class="p-4 text-center">
+                                <i class="fa fa-3x fa-lightbulb text-primary mb-4"></i>
+                                <h5>Projets Spéciaux</h5>
+                                <p>Innovations et projets pilotes pour l’épanouissement de la jeunesse.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
