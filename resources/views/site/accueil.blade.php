@@ -52,7 +52,7 @@
         <div class="container-xxl position-relative p-0">
             @include('site.layouts.navbar')
             <div class="container-xxl py-5 bg-white hero-header mb-5 position-relative"
-                style="background: url('{{ asset('media/IMG-20250508-WA0085.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
+                style="background: url('{{ asset('media/2.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
                 <!-- Bande blanche transparente en bas -->
                 <div class="position-absolute bottom-0 start-0 w-100"
                     style="background: rgba(0, 129, 116, 0.25); backdrop-filter: blur(6px); padding-top: 20px;">
@@ -194,19 +194,19 @@
                         <div class="row g-3">
                             <div class="col-6 text-start">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
-                                    src="{{ asset('media/IMG-20250301-WA0033.jpg') }}">
+                                    src="{{ asset('media/11.jpg') }}">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
-                                    src="{{ asset('media/IMG-20250508-WA0085.jpg') }}">
+                                    src="{{ asset('media/12.jpg') }}">
                             </div>
                             <div class="col-6 text-start">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
-                                    src="{{ asset('media/IMG-20250508-WA0077.jpg') }}" style="margin-top: 25%;">
+                                    src="{{ asset('media/13.jpg') }}" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
-                                    src="{{ asset('media/IMG-20250508-WA0088.jpg') }}">
+                                    src="{{ asset('media/14.jpg') }}">
                             </div>
                         </div>
                     </div>

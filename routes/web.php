@@ -5,16 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\SiteController;
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('site.accueil');
+});
 
 // Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
 Route::get('/cards/{card:slug}', [CardController::class, 'show'])->name('cards.show');
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [CardController::class, 'dashboard'])->name('dashboard');
+    // Route::get('/', [CardController::class, 'dashboard'])->name('dashboard');
     Route::get('/cards', [CardController::class, 'index'])->name('cards.index');
     Route::get('/create', [CardController::class, 'create'])->name('cards.create');
     Route::post('/cards', [CardController::class, 'store'])->name('cards.store');
