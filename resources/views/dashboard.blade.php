@@ -44,7 +44,7 @@
                     <div class="bg-gray-50 p-4 rounded-lg shadow">
                         <h4 class="font-semibold text-gray-700 mb-2">Médias</h4>
                         <p><strong>Images :</strong> {{ \App\Models\Media::count() }}</p>
-                        <a href="{{ route('photos.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir tous</a>
+                        <a href="{{ route('medias.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir tous</a>
                     </div>
 
                     <!-- Vidéos -->
