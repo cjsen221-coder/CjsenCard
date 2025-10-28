@@ -54,6 +54,7 @@ Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaine
 Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
 Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
 Route::get('/mediatheque', [SiteController::class, 'mediatheque'])->name('site.mediatheque');
+Route::get('/mediatheque/{photo}', [SiteController::class, 'showPhoto'])->name('photo.show');
 Route::get('/blog', [SiteController::class, 'blog'])->name('site.blog');
 Route::get('/blog/{blog}', [SiteController::class, 'show_blog'])->name('blog.show');
 Route::get('/contact', [SiteController::class, 'contact'])->name('site.contact');

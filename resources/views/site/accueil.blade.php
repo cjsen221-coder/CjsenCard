@@ -351,8 +351,7 @@
                                                 <small class="fst-italic text-muted">Publié le
                                                     {{ $blog->created_at->format('d M Y') }}</small>
                                                 <p class="mb-0">{{ Str::limit($blog->content, 100) }}</p>
-                                                <a href="{{ route('blog.show', $blog->id) }}"
-                                                    class="text-primary mt-2">
+                                                <a href="{{ route('blog.show', $blog->id) }}" class="text-primary mt-2">
                                                     Lire plus <i class="fa fa-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -382,6 +381,9 @@
                                         <div class="gallery-item position-relative overflow-hidden rounded">
                                             <img class="img-fluid w-100" src="{{ asset('storage/' . $item->image) }}"
                                                 alt="{{ $item->title }}">
+                                            <div class="card-body text-center">
+                                                <h6 class="card-title">{{ $item->title }}</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 @empty
@@ -393,9 +395,8 @@
 
                             @if($gallery->count() > 0)
                                 <div class="text-center mt-4">
-                                    <a href="{{ route('site.mediatheque')}}" class="btn btn-primary py-2 px-4 rounded-pill">
-                                        Voir plus de médias
-                                    </a>
+                                    <a href="{{ route('site.mediatheque') }}#tab-photos"
+                                        class="btn btn-primary py-2 px-4 rounded-pill">Voir plus de photos</a>
                                 </div>
                             @endif
                         </div>
@@ -419,10 +420,8 @@
 
                                 @if($videos->count() > 0)
                                     <div class="text-center mt-5">
-                                        <a href="{{ route('site.mediatheque') }}"
-                                            class="btn btn-primary py-2 px-4 rounded-pill">
-                                            Voir plus de vidéos
-                                        </a>
+                                        <a href="{{ route('site.mediatheque') }}#tab-videos"
+                                            class="btn btn-primary py-2 px-4 rounded-pill">Voir plus de vidéos</a>
                                     </div>
                                 @endif
                             </div>

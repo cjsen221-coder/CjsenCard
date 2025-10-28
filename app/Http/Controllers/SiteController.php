@@ -50,12 +50,26 @@ class SiteController extends Controller
 
     public function mediatheque()
     {
-        // Récupère tous les articles, toutes les images et toutes les vidéos
-        $blogs = Blog::latest()->get();
-        $gallery = Media::latest()->get();
-        $videos = Video::latest()->get();
+        $gallery = Media::latest()->paginate(12);
+        $videos = Video::latest()->paginate(6);
 
-        return view('site.mediatheque', compact('blogs', 'gallery', 'videos'));
+        // Convertir les URLs YouTube en URLs embed
+        $videos->transform(function ($video) {
+            if (str_contains($video->url, 'youtube.com/watch?v=')) {
+                $video->embed_url = str_replace('watch?v=', 'embed/', $video->url);
+            } elseif (str_contains($video->url, 'youtu.be/')) {
+                $video->embed_url = str_replace('youtu.be/', 'www.youtube.com/embed/', $video->url);
+            } else {
+                $video->embed_url = $video->url; // Pour d'autres sources
+            }
+            return $video;
+        });
+
+        return view('site.mediatheque', compact('gallery', 'videos'));
+    }
+    public function showPhoto(Media $photo)
+    {
+        return view('site.photo_show', compact('photo'));
     }
 
     public function blog()
