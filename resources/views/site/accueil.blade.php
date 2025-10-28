@@ -129,7 +129,8 @@
             <div class="container">
                 <div class="row g-4">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h5 class="section-title ff-secondary text-center text-uppercase text-primary fw-normal">Domaines d'action </h5>
+                        <h5 class="section-title ff-secondary text-center text-uppercase text-primary fw-normal">
+                            Domaines d'action </h5>
                         <h1 class="mb-5">Nos dernières activités</h1>
                     </div>
                     <div class="col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -335,161 +336,96 @@
                     </ul>
 
                     <div class="tab-content">
+
                         <!-- Onglet 1 : Blog -->
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/1.jpg') }}"
-                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="border-bottom pb-2">Les jeunes au cœur du changement</h5>
-                                            <small class="fst-italic text-muted">Publié le 15 octobre 2025</small>
-                                            <p class="mb-0">Retour sur notre dernier atelier de formation destiné aux
-                                                jeunes leaders...</p>
-                                            <a href="#" class="text-primary mt-2">Lire plus <i
-                                                    class="fa fa-arrow-right"></i></a>
+                                @forelse($blogs as $blog)
+                                    <div class="col-lg-6">
+                                        <div class="d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('storage/' . $blog->image) }}"
+                                                alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <h5 class="border-bottom pb-2">{{ $blog->title }}</h5>
+                                                <small class="fst-italic text-muted">Publié le
+                                                    {{ $blog->created_at->format('d M Y') }}</small>
+                                                <p class="mb-0">{{ Str::limit($blog->content, 100) }}</p>
+                                                <a href=""
+                                                    class="text-primary mt-2">
+                                                    Lire plus <i class="fa fa-arrow-right"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @empty
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Aucun article disponible pour le moment.</p>
+                                    </div>
+                                @endforelse
 
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/11.jpg') }}"
-                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="border-bottom pb-2">Sensibilisation à l’entrepreneuriat</h5>
-                                            <small class="fst-italic text-muted">Publié le 8 octobre 2025</small>
-                                            <p class="mb-0">Une rencontre inspirante entre jeunes porteurs de projets et
-                                                mentors...</p>
-                                            <a href="#" class="text-primary mt-2">Lire plus <i
-                                                    class="fa fa-arrow-right"></i></a>
-                                        </div>
+                                @if($blogs->count() > 0)
+                                    <div class="text-center mt-5">
+                                        <a href="{{ route('site.blog') }}" class="btn btn-primary py-2 px-4 rounded-pill">
+                                            Voir plus de blogs
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/1.jpg') }}"
-                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="border-bottom pb-2">Les jeunes au cœur du changement</h5>
-                                            <small class="fst-italic text-muted">Publié le 15 octobre 2025</small>
-                                            <p class="mb-0">Retour sur notre dernier atelier de formation destiné aux
-                                                jeunes leaders...</p>
-                                            <a href="#" class="text-primary mt-2">Lire plus <i
-                                                    class="fa fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/11.jpg') }}"
-                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="border-bottom pb-2">Sensibilisation à l’entrepreneuriat</h5>
-                                            <small class="fst-italic text-muted">Publié le 8 octobre 2025</small>
-                                            <p class="mb-0">Une rencontre inspirante entre jeunes porteurs de projets et
-                                                mentors...</p>
-                                            <a href="#" class="text-primary mt-2">Lire plus <i
-                                                    class="fa fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Bouton Voir Plus -->
-                                <div class="text-center mt-5">
-                                    <a href="{{ route('site.blog') }}" class="btn btn-primary py-2 px-4 rounded-pill">
-                                        Voir plus de blog
-                                    </a>
-                                </div>
+                                @endif
                             </div>
                         </div>
 
                         <!-- Onglet 2 : Galerie -->
                         <div id="tab-2" class="tab-pane fade show p-0">
                             <div class="row g-4">
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="gallery-item position-relative overflow-hidden rounded">
-                                        <img class="img-fluid w-100" src="{{ asset('media/17.jpg') }}" alt="Galerie 1">
+                                @forelse($gallery as $item)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="gallery-item position-relative overflow-hidden rounded">
+                                            <img class="img-fluid w-100" src="{{ asset('storage/' . $item->image) }}"
+                                                alt="{{ $item->title }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="gallery-item position-relative overflow-hidden rounded">
-                                        <img class="img-fluid w-100" src="{{ asset('media/2.jpg') }}" alt="Galerie 2">
+                                @empty
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Aucune image disponible pour le moment.</p>
                                     </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="gallery-item position-relative overflow-hidden rounded">
-                                        <img class="img-fluid w-100" src="{{ asset('media/4.jpg') }}" alt="Galerie 3">
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
 
-                            <!-- Bouton Voir plus -->
-                            <div class="text-center mt-4">
-                                <a href="{{ route('site.mediatheque')}}" class="btn btn-primary py-2 px-4 rounded-pill">
-                                    Voir plus de médias
-                                </a>
-                            </div>
+                            @if($gallery->count() > 0)
+                                <div class="text-center mt-4">
+                                    <a href="{{ route('site.mediatheque')}}" class="btn btn-primary py-2 px-4 rounded-pill">
+                                        Voir plus de médias
+                                    </a>
+                                </div>
+                            @endif
                         </div>
 
-                        <!-- Onglet 3 : Galerie Vidéo -->
+                        <!-- Onglet 3 : Vidéos -->
                         <div id="tab-3" class="tab-pane fade show p-0">
                             <div class="row g-4 justify-content-center">
-
-                                <!-- Vidéo 1 -->
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
-                                        <iframe src="https://www.youtube.com/embed/0GXlg8saaOA"
-                                            title="Visite à Keur Moussa Frontière"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen>
-                                        </iframe>
+                                @forelse($videos as $video)
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
+                                            <iframe src="{{ $video->embed_url }}" title="{{ $video->title }}"
+                                                allowfullscreen></iframe>
+                                        </div>
+                                        <p class="mt-3 text-center fw-semibold">{{ $video->title }}</p>
                                     </div>
-                                    <p class="mt-3 text-center fw-semibold">
-                                        Revivez les meilleurs moments de notre visite à Keur Moussa Frontière 🎥
-                                    </p>
-                                </div>
-
-                                <!-- Vidéo 2 -->
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
-                                        <iframe src="https://www.youtube.com/embed/tNsipU03Es8"
-                                            title="Atelier de sensibilisation"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen>
-                                        </iframe>
+                                @empty
+                                    <div class="text-center py-5">
+                                        <p class="text-muted">Aucune vidéo disponible pour le moment.</p>
                                     </div>
-                                    <p class="mt-3 text-center fw-semibold">
-                                        Visite chez les habitants de Keur Moussa.
-                                    </p>
-                                </div>
+                                @endforelse
 
-                                <!-- Vidéo 3 -->
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="ratio ratio-16x9 rounded overflow-hidden shadow">
-                                        <iframe src="https://www.youtube.com/embed/kOHwDTWs9uo"
-                                            title="Journée de don et de partage"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen>
-                                        </iframe>
+                                @if($videos->count() > 0)
+                                    <div class="text-center mt-5">
+                                        <a href="{{ route('site.mediatheque') }}"
+                                            class="btn btn-primary py-2 px-4 rounded-pill">
+                                            Voir plus de vidéos
+                                        </a>
                                     </div>
-                                    <p class="mt-3 text-center fw-semibold">
-                                        Témoignages des membres de CJSEN sur la distribution de kits scolaires 🎒
-                                    </p>
-                                </div>
-
-                            </div>
-
-                            <!-- Bouton Voir Plus -->
-                            <div class="text-center mt-5">
-                                <a href="{{ route('site.mediatheque') }}"
-                                    class="btn btn-primary py-2 px-4 rounded-pill">
-                                    Voir plus de vidéos
-                                </a>
+                                @endif
                             </div>
                         </div>
-
 
 
 

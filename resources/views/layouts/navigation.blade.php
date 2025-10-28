@@ -2,27 +2,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <!-- Logo -->
-            @auth
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
-                            class="h-9 w-auto rounded-full shadow-md">
-                    </a>
-                    <span class="font-bold text-xl text-yellow-400 inline">CJSENCARD</span>
-                </div>
-            @endauth
-            @guest
-                <div class="flex items-center gap-3">
-                    <a href="#">
-                        <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
-                            class="h-9 w-auto rounded-full shadow-md">
-                    </a>
-                    <span class="font-bold text-xl text-yellow-400 inline">CJSENCARD</span>
-                </div>
-            @endguest
+            <div class="flex items-center gap-3">
+                <a href="{{ route('dashboard') }}">
+                    <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
+                        class="h-9 w-auto rounded-full shadow-md">
+                </a>
+                <span class="font-bold text-xl text-yellow-400 inline">CJSENCARD</span>
+            </div>
 
-
-            <!-- Navigation Links -->
+            <!-- Navigation Links (Desktop) -->
             @auth
                 <div class="hidden sm:flex sm:items-center sm:space-x-6">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')"
@@ -33,9 +21,20 @@
                         class="text-white hover:text-yellow-300">
                         Cartes
                     </x-nav-link>
+                    <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.*')"
+                        class="text-white hover:text-yellow-300">
+                        Blog
+                    </x-nav-link>
+                    <x-nav-link :href="route('medias.index')" :active="request()->routeIs('medias.*')"
+                        class="text-white hover:text-yellow-300">
+                        Médias
+                    </x-nav-link>
+                    <x-nav-link :href="route('videos.index')" :active="request()->routeIs('videos.*')"
+                        class="text-white hover:text-yellow-300">
+                        Vidéos
+                    </x-nav-link>
                 </div>
             @endauth
-
 
             <!-- User Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6 relative z-50">
@@ -84,36 +83,35 @@
             </div>
 
             <!-- Hamburger (Mobile) -->
-            @auth
-                <div class="sm:hidden">
-                    <button @click="open = ! open" class="text-yellow-400 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path :class="{'hidden': !open, 'inline-flex': open}" class="hidden" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            @endauth
-            @guest
-                <div class="sm:hidden">
-                    <button class="text-yellow-400 focus:outline-none">
-                        VISITEUR
-                    </button>
-                </div>
-            @endguest
+            <div class="sm:hidden">
+                <button @click="open = ! open" class="text-yellow-400 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': !open, 'inline-flex': open}" class="hidden" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Mobile Menu -->
-    <div :class="{'block': open, 'hidden': ! open}"
-        class="hidden sm:hidden bg-[#002244] text-white px-4 py-3 space-y-2">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-[#002244] text-white px-4 py-3 space-y-2">
         <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
         </x-responsive-nav-link>
         <x-responsive-nav-link :href="route('cards.index')" :active="request()->routeIs('cards.*')">
             Cartes
+        </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.*')">
+            Blog
+        </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('medias.index')" :active="request()->routeIs('medias.*')">
+            Médias
+        </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('videos.index')" :active="request()->routeIs('videos.*')">
+            Vidéos
         </x-responsive-nav-link>
         <x-responsive-nav-link :href="route('profile.edit')">
             Profil
