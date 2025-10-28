@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Media;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SiteController extends Controller
 {
@@ -85,5 +86,33 @@ class SiteController extends Controller
     public function contact()
     {
         return view('site.contact');
+    }
+
+    public function send(Request $request)
+    {
+        $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'messageContent' => $request->message,
+        ];
+
+        Mail::raw(
+            "Nom: {$data['name']}\nEmail: {$data['email']}\nMessage: {$data['messageContent']}",
+            function ($mail) use ($data) {
+                $mail->to('cjsen221@gmail.com')
+                    ->subject($data['subject'])
+                    ->from($data['email'], $data['name']);
+            }
+        );
+
+        return back()->with('success', 'Votre message a été envoyé avec succès !');
     }
 }

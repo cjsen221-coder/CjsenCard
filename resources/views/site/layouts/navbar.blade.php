@@ -63,8 +63,8 @@
                 <a href="{{ route('site.mediatheque') }}"
                     class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}">Media</a>
                 <div class="dropdown-menu m-0">
-                    <a href="" class="dropdown-item">Photos</a>
-                    <a href="" class="dropdown-item">Vidéos</a>
+                    <a href="{{ route('site.mediatheque') }}#tab-photos" class="dropdown-item">Photos</a>
+                    <a href="{{ route('site.mediatheque') }}#tab-videos" class="dropdown-item">Vidéos</a>
                 </div>
             </div>
             <a href="{{ route('site.blog') }}"
