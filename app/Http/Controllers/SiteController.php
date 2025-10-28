@@ -60,7 +60,12 @@ class SiteController extends Controller
 
     public function blog()
     {
-        return view('site.blog');
+        $blogs = Blog::latest()->paginate(12);
+        return view('site.blog', compact('blogs'));
+    }
+    public function show_blog(Blog $blog)
+    {
+        return view('site.show_blog', compact('blog'));
     }
 
     public function contact()

@@ -58,7 +58,8 @@
                         <ol class="breadcrumb justify-content-center text-uppercase">
                             <li class="breadcrumb-item"><a href="#">Accueil</a></li>
                             <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Blog</li>
+                            <li class="breadcrumb-item"><a href="{{ route('site.blog') }}">Blog</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Details</li>
                         </ol>
                     </nav>
                 </div>
@@ -69,39 +70,43 @@
 
         <div class="container-xxl py-5">
             <div class="container">
+                <!-- Titre -->
                 <div class="text-center mb-5">
-                    <h1 class="display-4">Blog</h1>
-                    <p class="text-muted">Derniers articles et actualités de Sen Carrefour Jeunesse</p>
+                    <h1 class="display-4">{{ $blog->title }}</h1>
+                    <p class="text-muted">
+                        Publié le {{ $blog->created_at->format('d M Y') }}
+                    </p>
                 </div>
 
-                <div class="row g-4">
-                    @forelse($blogs as $blog)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card shadow-sm h-100">
-                                @if($blog->image)
-                                    <img src="{{ asset('storage/' . $blog->image) }}" class="card-img-top"
-                                        alt="{{ $blog->title }}">
-                                @endif
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-center">{{ $blog->title }}</h5>
-                                    <p class="card-text text-center">
-                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}</p>
-                                    <a href="{{ route('blog.show', $blog) }}" class="mt-auto btn btn-primary">Lire la
-                                        suite</a>
-                                </div>
-                            </div>
+                <div class="row justify-content-center g-4 align-items-stretch">
+                    @if($blog->image)
+                        <div class="col-md-4 d-flex">
+                            <img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid rounded"
+                                alt="{{ $blog->title }}" style="object-fit: cover; width: 100%; height: 100%;">
                         </div>
-                    @empty
-                        <p class="text-center text-muted">Aucun article pour le moment.</p>
-                    @endforelse
+                    @endif
+
+                    <div class="{{ $blog->image ? 'col-md-8' : 'col-md-12' }} d-flex flex-column">
+                        <!-- Titre -->
+                        <h2 class="mb-3">{{ $blog->title }}</h2>
+
+                        <!-- Description complète -->
+                        <div class="blog-content mb-4 flex-grow-1">
+                            {!! nl2br(e($blog->content)) !!}
+                        </div>
+
+                        <!-- Bouton retour -->
+                        <div class="text-start mt-auto">
+                            <a href="{{ route('site.blog') }}" class="btn btn-primary">
+                                ← Retour aux articles
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mt-4">
-                    {{ $blogs->links() }}
-                </div>
+
             </div>
         </div>
-
 
         <!-- Footer Start -->
         @include('site.layouts.footer')

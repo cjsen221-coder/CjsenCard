@@ -343,14 +343,15 @@
                                 @forelse($blogs as $blog)
                                     <div class="col-lg-6">
                                         <div class="d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('storage/' . $blog->image) }}"
-                                                alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                            <img class="flex-shrink-0 img-fluid rounded"
+                                                src="{{ asset('storage/' . $blog->image) }}" alt=""
+                                                style="width: 100px; height: 100px; object-fit: cover;">
                                             <div class="w-100 d-flex flex-column text-start ps-4">
                                                 <h5 class="border-bottom pb-2">{{ $blog->title }}</h5>
                                                 <small class="fst-italic text-muted">Publié le
                                                     {{ $blog->created_at->format('d M Y') }}</small>
                                                 <p class="mb-0">{{ Str::limit($blog->content, 100) }}</p>
-                                                <a href=""
+                                                <a href="{{ route('blog.show', $blog->id) }}"
                                                     class="text-primary mt-2">
                                                     Lire plus <i class="fa fa-arrow-right"></i>
                                                 </a>
