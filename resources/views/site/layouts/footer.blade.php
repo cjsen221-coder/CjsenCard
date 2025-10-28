@@ -78,14 +78,30 @@
         <h5 class="text-light fw-normal">Sunday</h5>
         <p>10AM - 08PM</p>
       </div> --}}
+      
       <div class="col-lg-4 col-md-6">
         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
         <p>Recevez nos actualités et annonces directement dans votre boîte mail.</p>
-        <div class="position-relative mx-auto" style="max-width: 400px;">
-          <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="email"
-            placeholder="Votre adresse email">
-          <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
-        </div>
+
+        @if(session('success'))
+          <div class="alert alert-success py-2 px-3">
+            {{ session('success') }}
+          </div>
+        @endif
+
+        <form action="{{ route('newsletter.subscribe') }}" method="POST" class="position-relative mx-auto"
+          style="max-width: 400px;">
+          @csrf
+          <input class="form-control border-primary w-100 py-3 ps-4 pe-5 @error('email') is-invalid @enderror"
+            type="email" name="email" placeholder="Votre adresse email" required>
+          <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
+            S'inscrire
+          </button>
+        </form>
+
+        @error('email')
+          <p class="text-danger small mt-2">{{ $message }}</p>
+        @enderror
       </div>
 
     </div>

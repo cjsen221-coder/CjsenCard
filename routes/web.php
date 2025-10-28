@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SiteController;
 
 Route::get('/', function () {
@@ -47,6 +48,10 @@ Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
 Route::get('/mediatheque', [SiteController::class, 'mediatheque'])->name('site.mediatheque');
 Route::get('/blog', [SiteController::class, 'blog'])->name('site.blog');
 Route::get('/contact', [SiteController::class, 'contact'])->name('site.contact');
+
+// web.php
+Route::post('/newsletter', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
 
 
 

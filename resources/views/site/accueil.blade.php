@@ -367,6 +367,35 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/1.jpg') }}"
+                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="border-bottom pb-2">Les jeunes au cœur du changement</h5>
+                                            <small class="fst-italic text-muted">Publié le 15 octobre 2025</small>
+                                            <p class="mb-0">Retour sur notre dernier atelier de formation destiné aux
+                                                jeunes leaders...</p>
+                                            <a href="#" class="text-primary mt-2">Lire plus <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="d-flex align-items-center">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('media/11.jpg') }}"
+                                            alt="" style="width: 100px; height: 100px; object-fit: cover;">
+                                        <div class="w-100 d-flex flex-column text-start ps-4">
+                                            <h5 class="border-bottom pb-2">Sensibilisation à l’entrepreneuriat</h5>
+                                            <small class="fst-italic text-muted">Publié le 8 octobre 2025</small>
+                                            <p class="mb-0">Une rencontre inspirante entre jeunes porteurs de projets et
+                                                mentors...</p>
+                                            <a href="#" class="text-primary mt-2">Lire plus <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- Bouton Voir Plus -->
                                 <div class="text-center mt-5">
                                     <a href="{{ route('site.blog') }}" class="btn btn-primary py-2 px-4 rounded-pill">
