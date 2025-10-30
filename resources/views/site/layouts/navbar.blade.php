@@ -1,12 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-white px-4 px-lg-5 py-3 py-lg-0"
-    style="border-bottom: 1px solid #22445e;">
+    style="border-bottom: 2px solid #22445e;">
     <a href="{{ route('site.accueil') }}" class="navbar-brand p-0">
         <p class="d-flex align-items-center m-0" style="color: #22445e;">
-            <img src="{{ asset('images/logo-rm.png') }}" alt="Logo"
-                style="height: 70px; width: auto; margin-right: 10px;">
-            <span class="fw-bold fs-4">SEN CARREFOUR JEUNESSE</span>
+            <img src="{{ asset('images/logo-og.png') }}" alt="Logo" style="
+                height: 80px; 
+                width: auto; 
+                margin-right: 0px;
+                transition: transform 0.3s ease, filter 0.3s ease;
+                filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+             " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <span class="fw-bold fs-5" style="letter-spacing: 0.5px;">SEN CARREFOUR JEUNESSE</span>
         </p>
     </a>
+
+
+
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <i class="fa-solid fa-bars" style="color: #22445e;"></i>

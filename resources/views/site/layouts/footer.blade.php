@@ -11,7 +11,7 @@
         <a class="btn btn-link" href="{{ route('site.contact') }}">Contact</a>
       </div>
       <div class="col-lg-4 col-md-6">
-        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+        <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contacts</h4>
         <p class="mb-2">
           <i class="fa fa-map-marker-alt me-3"></i>
           <a href="https://www.google.com/maps?q=Foire,+Dakar,+Sénégal" target="_blank"
