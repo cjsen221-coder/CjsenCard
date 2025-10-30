@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('favicon.ico') }}" rel="icon">
+    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +35,23 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
     <style>
+        .service-item i {
+            margin-bottom: 1rem !important;
+            /* au lieu de mb-4 */
+        }
+
+        .about-section img {
+            object-fit: cover;
+            height: 250px;
+        }
+
+        .blog-preview {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
         .gallery-item img {
             width: 100%;
             height: 220px;
@@ -82,7 +99,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             @include('site.layouts.navbar')
-            <div class="container-xxl py-5 bg-white hero-header mb-5 position-relative"
+            <div class="container-xxl py-4 bg-white hero-header mb-5 position-relative"
                 style="background: url('{{ asset('media/2.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
                 <!-- Bande blanche transparente en bas -->
                 <div class="position-absolute bottom-0 start-0 w-100"
@@ -125,7 +142,7 @@
 
 
         <!-- Service Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-4">
             <div class="container">
                 <div class="row g-4">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -220,25 +237,25 @@
 
 
         <!-- About Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-4 about-section">
             <div class="container">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
+                                <img class="img-fluid rounded w-100 wow zoomIn" loading="lazy" data-wow-delay="0.1s"
                                     src="{{ asset('media/11.jpg') }}">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
+                                <img class="img-fluid rounded w-75 wow zoomIn" loading="lazy" data-wow-delay="0.5s"
                                     src="{{ asset('media/12.jpg') }}">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
+                                <img class="img-fluid rounded w-75 wow zoomIn" loading="lazy" data-wow-delay="0.3s"
                                     src="{{ asset('media/13.jpg') }}" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
+                                <img class="img-fluid rounded w-100 wow zoomIn" loading="lazy" data-wow-delay="0.7s"
                                     src="{{ asset('media/14.jpg') }}">
                             </div>
                         </div>
@@ -294,7 +311,7 @@
 
 
         <!-- Menu Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-4">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-uppercase text-primary fw-normal">Médias &
@@ -343,7 +360,7 @@
                                 @forelse($blogs as $blog)
                                     <div class="col-lg-6">
                                         <div class="d-flex align-items-center">
-                                            <img class="flex-shrink-0 img-fluid rounded"
+                                            <img class="flex-shrink-0 img-fluid rounded" loading="lazy"
                                                 src="{{ asset('storage/' . $blog->image) }}" alt=""
                                                 style="width: 100px; height: 100px; object-fit: cover;">
                                             <div class="w-100 d-flex flex-column text-start ps-4">
@@ -378,7 +395,7 @@
                             <div class="row g-4">
                                 @forelse($gallery as $item)
                                     <div class="col-lg-4 col-md-6">
-                                        <div class="gallery-item position-relative overflow-hidden rounded">
+                                        <div class="gallery-item position-relative overflow-hidden rounded" loading="lazy">
                                             <img class="img-fluid w-100" src="{{ asset('storage/' . $item->image) }}"
                                                 alt="{{ $item->title }}">
                                             <div class="card-body text-center">
@@ -532,7 +549,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="{{ asset('media/mounirou.jpeg') }}" alt="">
+                                <img class="img-fluid" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}" alt="">
                             </div>
                             <h5 class="mb-0">Mamadou Mounirou TALL</h5>
                             <small>Président</small>
@@ -548,7 +565,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="{{ asset('media/ABABACAR.jpg') }}" alt="">
+                                <img class="img-fluid" loading="lazy" src="{{ asset('media/ABABACAR.jpg') }}" alt="">
                             </div>
                             <h5 class="mb-0">Ababacar BA</h5>
                             <small>Secrétaire Général</small>
@@ -562,7 +579,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="{{ asset('media/marianne R.jpg') }}" alt="">
+                                <img class="img-fluid" loading="lazy" src="{{ asset('media/marianne R.jpg') }}" alt="">
                             </div>
                             <h5 class="mb-0">Mariane Dji Fall Fatim TALL</h5>
                             <small>Trésorière</small>
@@ -595,7 +612,7 @@
 
 
         <!-- Testimonial Start -->
-        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container-xxl py-4 wow fadeInUp " data-wow-delay="0.1s" >
             <div class="container">
                 <div class="text-center">
                     <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">Témoignages
@@ -608,7 +625,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ asset('media/mounirou.jpeg') }}"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
@@ -621,7 +638,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ asset('media/mounirou.jpeg') }}"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
@@ -634,7 +651,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ asset('media/mounirou.jpeg') }}"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
@@ -647,7 +664,7 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ asset('media/mounirou.jpeg') }}"
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
                                 style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
