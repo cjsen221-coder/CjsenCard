@@ -13,9 +13,6 @@
         </p>
     </a>
 
-
-
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <i class="fa-solid fa-bars" style="color: #22445e;"></i>
     </button>
@@ -40,17 +37,20 @@
 
             <div class="nav-item dropdown">
                 <a href="{{ route('site.domaines') }}"
-                    class="nav-link dropdown-toggle {{ Route::is('site.domaine*') ? 'active' : '' }}">Domaines
-                    d'Action</a>
+                    class="nav-link dropdown-toggle {{ Route::is('site.domaines') ? 'active' : '' }}">
+                    Domaines d'Action
+                </a>
                 <div class="dropdown-menu m-0">
-                    <a href="" class="dropdown-item">Formations</a>
-                    <a href="" class="dropdown-item">Causeries</a>
-                    <a href="" class="dropdown-item">Activités de Cohésion</a>
-                    <a href="" class="dropdown-item">Atélier de Sensibilisation</a>
-                    <a href="" class="dropdown-item">Actions Communautaires</a>
-                    <a href="" class="dropdown-item">Projets Spéciaux</a>
+                    <a href="{{ route('site.domaines') }}#formations" class="dropdown-item">Formations</a>
+                    <a href="{{ route('site.domaines') }}#causeries" class="dropdown-item">Causeries</a>
+                    <a href="{{ route('site.domaines') }}#cohesion" class="dropdown-item">Activités de Cohésion</a>
+                    <a href="{{ route('site.domaines') }}#sensibilisation" class="dropdown-item">Ateliers de
+                        Sensibilisation</a>
+                    <a href="{{ route('site.domaines') }}#actions" class="dropdown-item">Actions Communautaires</a>
+                    <a href="{{ route('site.domaines') }}#projets" class="dropdown-item">Projets Spéciaux</a>
                 </div>
             </div>
+
             <div class="nav-item dropdown">
                 <a href="{{ route('site.equipe') }}"
                     class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}">Equipe</a>

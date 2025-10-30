@@ -33,6 +33,10 @@
                         class="text-white hover:text-yellow-300">
                         Vidéos
                     </x-nav-link>
+                    <x-nav-link :href="route('domaine.index')" :active="request()->routeIs('domaine.*')"
+                        class="text-white hover:text-yellow-300">
+                        Domaines d'Action
+                    </x-nav-link>
                 </div>
             @endauth
 

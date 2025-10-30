@@ -14,7 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -35,7 +37,8 @@
 <body>
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -45,7 +48,7 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            
+
             @include('site.layouts.navbar')
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
@@ -63,180 +66,244 @@
         </div>
         <!-- Navbar & Hero End -->
 
-
-        <!-- Service Start -->
-        <div class="container-xxl py-5">
+        <!-- ======================= FORMATIONS ======================= -->
+        <div class="container-xxl py-5" id="formations">
             <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Our Services</h5>
-                    <h1 class="mb-5">Explore Our Services</h1>
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Formations</h5>
+                    <h1 class="mb-4">Apprendre, Partager et Grandir Ensemble</h1>
                 </div>
+
                 <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    @forelse($formations as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucune formation disponible pour le moment.</p>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
+
+                @if($formations->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $formations->links() }}
+                    </div>
+                @endif
             </div>
         </div>
-        <!-- Service End -->
 
-        <!-- Service Start -->
-        <div class="container-xxl py-5"  id="formations">
+        <!-- ======================= CAUSERIES ======================= -->
+        <div class="container-xxl py-5" id="causeries">
             <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Nos Formations</h5>
-                    <h1 class="mb-5">Explore Our Formations</h1>
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Causeries</h5>
+                    <h1 class="mb-4">Des échanges pour s’inspirer et grandir</h1>
                 </div>
+
                 <div class="row g-4">
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    @forelse($causeries as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucune causerie programmée pour le moment.</p>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                                <h5>Master Chefs</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-utensils text-primary mb-4"></i>
-                                <h5>Quality Food</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-cart-plus text-primary mb-4"></i>
-                                <h5>Online Order</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="service-item rounded pt-3">
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-headset text-primary mb-4"></i>
-                                <h5>24/7 Service</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
                 </div>
+
+                @if($causeries->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $causeries->links() }}
+                    </div>
+                @endif
             </div>
         </div>
-        <!-- Service End -->
-        
+
+        <!-- ======================= SENSIBILISATIONS ======================= -->
+        <div class="container-xxl py-5" id="sensibilisations">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Sensibilisations</h5>
+                    <h1 class="mb-4">Agir pour la prise de conscience</h1>
+                </div>
+
+                <div class="row g-4">
+                    @forelse($sensibilisations as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucune activité de sensibilisation pour le moment.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                @if($sensibilisations->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $sensibilisations->links() }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <!-- ======================= COHÉSIONS ======================= -->
+        <div class="container-xxl py-5" id="cohesions">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Activités de Cohésion</h5>
+                    <h1 class="mb-4">Renforcer les liens et l’esprit d’équipe</h1>
+                </div>
+
+                <div class="row g-4">
+                    @forelse($cohesions as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucune activité de cohésion n’a encore été organisée.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                @if($cohesions->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $cohesions->links() }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <!-- ======================= ACTIONS ======================= -->
+        <div class="container-xxl py-5" id="actions">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Actions Communautaires</h5>
+                    <h1 class="mb-4">Des actes concrets pour le changement</h1>
+                </div>
+
+                <div class="row g-4">
+                    @forelse($actions as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucune action communautaire disponible pour le moment.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                @if($actions->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $actions->links() }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        <!-- ======================= PROJETS ======================= -->
+        <div class="container-xxl py-5" id="projets">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos Projets</h5>
+                    <h1 class="mb-4">Construire l’avenir ensemble</h1>
+                </div>
+
+                <div class="row g-4">
+                    @forelse($projets as $domaine)
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                    @endif
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Publié le
+                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucun projet n’est en cours actuellement.</p>
+                        </div>
+                    @endforelse
+                </div>
+
+                @if($projets->count())
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $projets->links() }}
+                    </div>
+                @endif
+            </div>
+        </div>
+
+
 
         <!-- Footer Start -->
-      @include('site.layouts.footer')
+        @include('site.layouts.footer')
         <!-- Footer End -->
 
 

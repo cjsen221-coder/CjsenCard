@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\DomaineController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\ProfileController;
@@ -34,6 +35,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::resource('medias', MediaController::class);
     Route::resource('videos', VideoController::class);
+
+    // Gérer les domaines d'action
+    Route::resource('domaine', DomaineController::class);
 
 });
 

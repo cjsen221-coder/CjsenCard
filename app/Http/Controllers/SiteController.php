@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Domaine;
 use App\Models\Media;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -32,10 +33,41 @@ class SiteController extends Controller
         return view('site.accueil', compact('blogs', 'gallery', 'videos'));
     }
 
-
-    public function domaines()
+    public function domaines(Request $request)
     {
-        return view('site.domaine');
+        // Pagination séparée pour chaque type
+        $formations = Domaine::where('type', 'formation')
+            ->latest()
+            ->paginate(8, ['*'], 'page_formations');
+
+        $causeries = Domaine::where('type', 'causerie')
+            ->latest()
+            ->paginate(8, ['*'], 'page_causeries');
+
+        $sensibilisations = Domaine::where('type', 'sensibilisation')
+            ->latest()
+            ->paginate(8, ['*'], 'page_sensibilisations');
+
+        $cohesions = Domaine::where('type', 'cohesion')
+            ->latest()
+            ->paginate(8, ['*'], 'page_cohesions');
+
+        $actions = Domaine::where('type', 'action')
+            ->latest()
+            ->paginate(8, ['*'], 'page_actions');
+
+        $projets = Domaine::where('type', 'projet')
+            ->latest()
+            ->paginate(8, ['*'], 'page_projets');
+
+        return view('site.domaine', compact(
+            'formations',
+            'causeries',
+            'sensibilisations',
+            'cohesions',
+            'actions',
+            'projets'
+        ));
     }
 
 

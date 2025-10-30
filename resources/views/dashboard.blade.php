@@ -54,6 +54,13 @@
                         <a href="{{ route('videos.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir toutes</a>
                     </div>
 
+                    <!-- Domaines -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold text-gray-700 mb-2">Domaines d'Action</h4>
+                        <p><strong>Total :</strong> {{ \App\Models\Domaine::count() }}</p>
+                        <a href="{{ route('domaine.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir plus</a>
+                    </div>
+
                 </div>
 
                 <!-- Diagramme Cartes -->
