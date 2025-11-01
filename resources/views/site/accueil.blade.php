@@ -98,46 +98,39 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
+            {{-- Navbar --}}
             @include('site.layouts.navbar')
-            <div class="container-xxl py-4 bg-white hero-header mb-5 position-relative"
-                style="background: url('{{ asset('media/2.jpg') }}') center center / cover no-repeat; min-height: 120vh;">
-                <!-- Bande blanche transparente en bas -->
-                <div class="position-absolute bottom-0 start-0 w-100"
-                    style="background: rgba(0, 129, 116, 0.25); backdrop-filter: blur(6px); padding-top: 20px;">
-                    <div class="container" style="margin-bottom: 0px;">
-                        <div class="row align-items-center g-5">
-                            <div class="col-lg-8 text-center text-lg-start">
-                                <h2 class="display-5 text-white text-uppercase animated slideInLeft">
-                                    Sen Carrefour Jeunesse
-                                </h2>
-                                <p class="text-white animated slideInLeft mb-4 pb-2">
-                                    CJSEN est le petit colibri de la jeunesse mondiale.
-                                    Une organisation née au Sénégal mais qui porte une vision universelle : donner à
-                                    chaque jeune les moyens de s’informer, de s’orienter, de s’éduquer,
-                                    de s’engager et d’innover.
-                                    Nous faisons notre part.
-                                    Et nous croyons qu’ensemble, avec la jeunesse du monde entier, nous pouvons bâtir un
-                                    avenir plus juste, plus responsable et plus solidaire.
-                                </p>
-                                {{-- <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
-                                    style="background-color: #e2ab4d !important;">Book A Table</a> --}}
-                            </div>
 
-                            <div class="col-lg-4 text-center text-lg-end overflow-hidden">
-                                {{-- <img class="img-fluid" src="{{ asset('site/img/hero.png') }}" alt=""> --}}
-                                <a href="{{ route('site.apropos') }}"
-                                    class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft"
-                                    style="background-color: #e2ab4d !important;">
-                                    En Savoir Plus
-                                </a>
-                                {{-- <img class="img-fluid" src="{{ asset('media/1.jpg') }}" alt=""> --}}
-                            </div>
+            {{-- Hero Section --}}
+            <div class="hero-section d-flex flex-column justify-content-end text-center text-white position-relative">
+
+                <!-- Overlay flouté en bas -->
+                <div class="hero-overlay"></div>
+
+                <!-- Contenu principal -->
+                <div class="container hero-content position-relative z-2">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="hero-overlay"></div>
+                            <h1 class="display-4 fw-bold text-uppercase mb-2 animate__animated animate__fadeInDown">
+                                Sen Carrefour Jeunesse
+                            </h1>
+                            <p class="lead text-white-50 mb-2 animate__animated animate__fadeInUp">
+                                CJSEN est le petit colibri de la jeunesse mondiale 🌍<br>
+                                Une organisation née au Sénégal mais qui porte une vision universelle :
+                                donner à chaque jeune les moyens de s’informer, de s’orienter, de s’éduquer, de
+                                s’engager et d’innover.
+                            </p>
+                            <a href="{{ route('site.apropos') }}"
+                                class="btn btn-hero btn-lg rounded-pill shadow-lg animate__animated animate__fadeInUp">
+                                En Savoir Plus
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
         <!-- Navbar & Hero End -->
 
 
@@ -612,7 +605,7 @@
 
 
         <!-- Testimonial Start -->
-        <div class="container-xxl py-4 wow fadeInUp " data-wow-delay="0.1s" >
+        <div class="container-xxl py-4 wow fadeInUp " data-wow-delay="0.1s">
             <div class="container">
                 <div class="text-center">
                     <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">Témoignages
@@ -625,8 +618,8 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy"
+                                src="{{ asset('media/mounirou.jpeg') }}" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
                                 <small>Profession</small>
@@ -638,8 +631,8 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy"
+                                src="{{ asset('media/mounirou.jpeg') }}" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
                                 <small>Profession</small>
@@ -651,8 +644,8 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy"
+                                src="{{ asset('media/mounirou.jpeg') }}" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
                                 <small>Profession</small>
@@ -664,8 +657,8 @@
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
                             diam</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}"
-                                style="width: 50px; height: 50px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" loading="lazy"
+                                src="{{ asset('media/mounirou.jpeg') }}" style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">Son Nom</h5>
                                 <small>Profession</small>
