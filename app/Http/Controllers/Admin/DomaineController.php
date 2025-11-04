@@ -63,4 +63,6 @@ class DomaineController extends Controller
         $domaine->delete();
         return back()->with('success', 'Domaine supprimé avec succès.');
     }
+
+   
 }

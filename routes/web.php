@@ -38,7 +38,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Gérer les domaines d'action
     Route::resource('domaine', DomaineController::class);
-
 });
 
 Route::middleware('auth')->group(function () {
@@ -55,6 +54,8 @@ Route::middleware('auth')->group(function () {
 // Les routes du site
 Route::get('/', [SiteController::class, 'accueil'])->name('site.accueil');
 Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaines');
+// Page détails générique (pour causerie, projet, etc.)
+Route::get('/domaine/{type}/{id}', [SiteController::class, 'show_domaine'])->name('domaine.details');
 Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
 Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
 

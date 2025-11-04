@@ -147,4 +147,15 @@ class SiteController extends Controller
 
         return back()->with('success', 'Votre message a été envoyé avec succès !');
     }
+
+     public function show_domaine($type, $id)
+    {
+        // On récupère le domaine correspondant à l’ID et au type
+        $domaine = Domaine::where('id', $id)
+            ->where('type', $type)
+            ->firstOrFail();
+
+        // On renvoie vers la vue détail
+        return view('site.show_domaine', compact('domaine'));
+    }
 }

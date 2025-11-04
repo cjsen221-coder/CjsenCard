@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Blog - Sen Carrefour Jeunesse</title>
+    <title>Détails Domaines - Sen Carrefour Jeunesse</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -27,7 +27,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('site/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('site/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('site/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('site/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -50,59 +50,60 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-
             @include('site.layouts.navbar')
 
-            <div class="container-xxl py-5 bg-dark hero-header">
+            <div class="container-xxl py-5 bg-dark hero-header mb-5" style="height: 300px;">
                 <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Blog</h1>
+                    <h1 class="display-4 text-white mb-3 animated slideInDown">
+                        {{ $domaine->nom }}
+                    </h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Blog</li>
+                            <li class="breadcrumb-item"><a href="{{ route('site.accueil') }}">Accueil</a></li>
+                            <li class="breadcrumb-item"><a href="#">Domaines</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">
+                                {{ ucfirst($domaine->type) }}
+                            </li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
-        <!-- Navbar & Hero End -->
 
-
+        <!-- Contenu principal -->
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center mb-5">
-                    <h1 class="display-4">Blog</h1>
-                    <p class="text-muted">Derniers articles et actualités de Sen Carrefour Jeunesse</p>
-                </div>
+                <div class="row g-5 align-items-center">
+                    <!-- Image -->
+                    <div class="col-lg-5 col-md-6">
+                        @if($domaine->image)
+                            <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                class="img-fluid rounded shadow-sm w-100" style="object-fit: cover; height: 350px;">
+                        @else
+                            <img src="{{ asset('images/default.jpg') }}" alt="Image par défaut"
+                                class="img-fluid rounded shadow-sm w-100" style="object-fit: cover; height: 350px;">
+                        @endif
+                    </div>
 
-                <div class="row g-4">
-                    @forelse($blogs as $blog)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card shadow-sm h-100">
-                                @if($blog->image)
-                                    <img src="{{ asset('storage/' . $blog->image) }}" class="card-img-top"
-                                        alt="{{ $blog->title }}">
-                                @endif
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-center">{{ $blog->title }}</h5>
-                                    <p class="card-text text-center">
-                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}</p>
-                                    <a href="{{ route('blog.show', $blog) }}" class="mt-auto btn btn-primary">Lire la
-                                        suite</a>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-muted">Aucun article pour le moment.</p>
-                    @endforelse
-                </div>
+                    <!-- Texte -->
+                    <div class="col-lg-7 col-md-6">
+                        <h2 class="mb-3">{{ $domaine->nom }}</h2>
+                        <p class="text-muted mb-4">
+                            <i class="fa fa-calendar-alt text-primary me-2"></i>
+                            Publié le {{ $domaine->created_at->format('d M Y') }}
+                        </p>
+                        <p class="lead text-justify">
+                            {{ $domaine->description }}
+                        </p>
 
-                <div class="mt-4">
-                    {{ $blogs->links() }}
+                        <a href="{{ url()->previous() }}" class="btn btn-primary mt-3">
+                            <i class="fa fa-arrow-left me-2"></i> Retour
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
 
 
         <!-- Footer Start -->
