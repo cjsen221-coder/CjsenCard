@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\DomaineController;
 use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\Temoignage;
+use App\Http\Controllers\Admin\TemoignageController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Gérer les domaines d'action
     Route::resource('domaine', DomaineController::class);
+
+    // Gérer les témoignages
+    Route::resource('temoignage', TemoignageController::class);
 });
 
 Route::middleware('auth')->group(function () {

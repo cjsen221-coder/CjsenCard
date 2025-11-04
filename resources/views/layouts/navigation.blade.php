@@ -37,6 +37,10 @@
                         class="text-white hover:text-yellow-300">
                         Domaines d'Action
                     </x-nav-link>
+                    <x-nav-link :href="route('temoignage.index')" :active="request()->routeIs('temoignage.*')"
+                        class="text-white hover:text-yellow-300">
+                        Témoignages
+                    </x-nav-link>
                 </div>
             @endauth
 
@@ -101,7 +105,8 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-[#002244] text-white px-4 py-3 space-y-2">
+    <div :class="{'block': open, 'hidden': ! open}"
+        class="hidden sm:hidden bg-[#002244] text-white px-4 py-3 space-y-2">
         <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
         </x-responsive-nav-link>
@@ -116,6 +121,12 @@
         </x-responsive-nav-link>
         <x-responsive-nav-link :href="route('videos.index')" :active="request()->routeIs('videos.*')">
             Vidéos
+        </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('domaine.index')" :active="request()->routeIs('domaine.*')">
+            Domaines d'Action
+        </x-responsive-nav-link>
+        <x-responsive-nav-link :href="route('temoignage.index')" :active="request()->routeIs('temoignage.*')">
+            Témoignages
         </x-responsive-nav-link>
         <x-responsive-nav-link :href="route('profile.edit')">
             Profil

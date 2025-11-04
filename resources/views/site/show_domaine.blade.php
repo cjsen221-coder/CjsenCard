@@ -77,11 +77,13 @@
                     <!-- Image -->
                     <div class="col-lg-5 col-md-6">
                         @if($domaine->image)
-                            <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
-                                class="img-fluid rounded shadow-sm w-100" style="object-fit: cover; height: 350px;">
+                            <img src="{{ $domaine->image ? asset('storage/' . $domaine->image) : asset('images/default.jpg') }}"
+                                alt="{{ $domaine->nom }}" class="img-fluid rounded shadow-lg w-auto"
+                                style="object-fit: contain; max-height: 350px; border: 2px solid #eee;">
                         @else
                             <img src="{{ asset('images/default.jpg') }}" alt="Image par défaut"
-                                class="img-fluid rounded shadow-sm w-100" style="object-fit: cover; height: 350px;">
+                                class="img-fluid rounded shadow-lg w-100"
+                                style="object-fit: cover; height: 350px; border: 2px solid #eee;">
                         @endif
                     </div>
 
@@ -103,7 +105,6 @@
                 </div>
             </div>
         </div>
-
 
 
         <!-- Footer Start -->

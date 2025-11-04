@@ -61,6 +61,14 @@
                         <a href="{{ route('domaine.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir plus</a>
                     </div>
 
+                    
+                    <!-- Témoignages -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow">
+                        <h4 class="font-semibold text-gray-700 mb-2">Témoignages</h4>
+                        <p><strong>Total :</strong> {{ \App\Models\Temoignage::count() }}</p>
+                        <a href="{{ route('temoignage.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir plus</a>
+                    </div>
+
                 </div>
 
                 <!-- Diagramme Cartes -->

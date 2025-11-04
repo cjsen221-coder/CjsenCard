@@ -67,7 +67,6 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
-
         <!-- ======================= FORMATIONS ======================= -->
         <div class="container-xxl py-5" id="formations">
             <div class="container">
@@ -78,7 +77,7 @@
 
                 <div class="row g-4">
                     @forelse($formations as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -99,9 +98,38 @@
                     @endforelse
                 </div>
 
-                @if($formations->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $formations->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($formations->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            {{-- Previous --}}
+                            @if ($formations->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $formations->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            {{-- Pages --}}
+                            @foreach ($formations->getUrlRange(1, $formations->lastPage()) as $page => $url)
+                                @if ($page == $formations->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            {{-- Next --}}
+                            @if ($formations->hasMorePages())
+                                <a href="{{ $formations->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
@@ -117,7 +145,7 @@
 
                 <div class="row g-4">
                     @forelse($causeries as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -141,9 +169,35 @@
                     @endforelse
                 </div>
 
-                @if($causeries->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $causeries->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($causeries->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            @if ($causeries->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $causeries->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            @foreach ($causeries->getUrlRange(1, $causeries->lastPage()) as $page => $url)
+                                @if ($page == $causeries->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($causeries->hasMorePages())
+                                <a href="{{ $causeries->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
@@ -159,7 +213,7 @@
 
                 <div class="row g-4">
                     @forelse($sensibilisations as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -183,9 +237,35 @@
                     @endforelse
                 </div>
 
-                @if($sensibilisations->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $sensibilisations->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($sensibilisations->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            @if ($sensibilisations->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $sensibilisations->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            @foreach ($sensibilisations->getUrlRange(1, $sensibilisations->lastPage()) as $page => $url)
+                                @if ($page == $sensibilisations->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($sensibilisations->hasMorePages())
+                                <a href="{{ $sensibilisations->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
@@ -201,7 +281,7 @@
 
                 <div class="row g-4">
                     @forelse($cohesions as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -225,9 +305,35 @@
                     @endforelse
                 </div>
 
-                @if($cohesions->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $cohesions->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($cohesions->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            @if ($cohesions->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $cohesions->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            @foreach ($cohesions->getUrlRange(1, $cohesions->lastPage()) as $page => $url)
+                                @if ($page == $cohesions->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($cohesions->hasMorePages())
+                                <a href="{{ $cohesions->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
@@ -243,7 +349,7 @@
 
                 <div class="row g-4">
                     @forelse($actions as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -267,9 +373,35 @@
                     @endforelse
                 </div>
 
-                @if($actions->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $actions->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($actions->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            @if ($actions->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $actions->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            @foreach ($actions->getUrlRange(1, $actions->lastPage()) as $page => $url)
+                                @if ($page == $actions->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($actions->hasMorePages())
+                                <a href="{{ $actions->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
@@ -285,7 +417,7 @@
 
                 <div class="row g-4">
                     @forelse($projets as $domaine)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm">
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
@@ -309,13 +441,40 @@
                     @endforelse
                 </div>
 
-                @if($projets->count())
-                    <div class="mt-4 d-flex justify-content-center">
-                        {{ $projets->links() }}
+                {{-- Pagination personnalisée --}}
+                @if($projets->hasPages())
+                    <div class="mt-4 d-flex justify-content-end">
+                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                            @if ($projets->onFirstPage())
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
+                            @else
+                                <a href="{{ $projets->previousPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
+                            @endif
+
+                            @foreach ($projets->getUrlRange(1, $projets->lastPage()) as $page => $url)
+                                @if ($page == $projets->currentPage())
+                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
+                                @else
+                                    <a href="{{ $url }}"
+                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
+                                @endif
+                            @endforeach
+
+                            @if ($projets->hasMorePages())
+                                <a href="{{ $projets->nextPageUrl() }}"
+                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
+                            @else
+                                <span
+                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
+                            @endif
+                        </nav>
                     </div>
                 @endif
             </div>
         </div>
+
 
 
         <!-- Footer Start -->

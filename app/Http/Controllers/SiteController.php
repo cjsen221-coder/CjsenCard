@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Domaine;
 use App\Models\Media;
+use App\Models\Temoignage;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,6 +14,9 @@ class SiteController extends Controller
 {
     public function accueil()
     {
+
+        $temoignages = Temoignage::latest()->get();
+
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();
         $gallery = Media::latest()->take(6)->get();
@@ -30,7 +34,7 @@ class SiteController extends Controller
             return $video;
         });
 
-        return view('site.accueil', compact('blogs', 'gallery', 'videos'));
+        return view('site.accueil', compact('blogs', 'gallery', 'videos', 'temoignages'));
     }
 
     public function domaines(Request $request)
@@ -38,27 +42,27 @@ class SiteController extends Controller
         // Pagination séparée pour chaque type
         $formations = Domaine::where('type', 'formation')
             ->latest()
-            ->paginate(8, ['*'], 'page_formations');
+            ->paginate(6, ['*'], 'page_formations');
 
         $causeries = Domaine::where('type', 'causerie')
             ->latest()
-            ->paginate(8, ['*'], 'page_causeries');
+            ->paginate(6, ['*'], 'page_causeries');
 
         $sensibilisations = Domaine::where('type', 'sensibilisation')
             ->latest()
-            ->paginate(8, ['*'], 'page_sensibilisations');
+            ->paginate(6, ['*'], 'page_sensibilisations');
 
         $cohesions = Domaine::where('type', 'cohesion')
             ->latest()
-            ->paginate(8, ['*'], 'page_cohesions');
+            ->paginate(6, ['*'], 'page_cohesions');
 
         $actions = Domaine::where('type', 'action')
             ->latest()
-            ->paginate(8, ['*'], 'page_actions');
+            ->paginate(6, ['*'], 'page_actions');
 
         $projets = Domaine::where('type', 'projet')
             ->latest()
-            ->paginate(8, ['*'], 'page_projets');
+            ->paginate(6, ['*'], 'page_projets');
 
         return view('site.domaine', compact(
             'formations',
