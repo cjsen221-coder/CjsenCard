@@ -42,27 +42,27 @@ class SiteController extends Controller
         // Pagination séparée pour chaque type
         $formations = Domaine::where('type', 'formation')
             ->latest()
-            ->paginate(6, ['*'], 'page_formations');
+            ->paginate(3, ['*'], 'page_formations');
 
         $causeries = Domaine::where('type', 'causerie')
             ->latest()
-            ->paginate(6, ['*'], 'page_causeries');
+            ->paginate(3, ['*'], 'page_causeries');
 
         $sensibilisations = Domaine::where('type', 'sensibilisation')
             ->latest()
-            ->paginate(6, ['*'], 'page_sensibilisations');
+            ->paginate(3, ['*'], 'page_sensibilisations');
 
         $cohesions = Domaine::where('type', 'cohesion')
             ->latest()
-            ->paginate(6, ['*'], 'page_cohesions');
+            ->paginate(3, ['*'], 'page_cohesions');
 
         $actions = Domaine::where('type', 'action')
             ->latest()
-            ->paginate(6, ['*'], 'page_actions');
+            ->paginate(3, ['*'], 'page_actions');
 
         $projets = Domaine::where('type', 'projet')
             ->latest()
-            ->paginate(6, ['*'], 'page_projets');
+            ->paginate(3, ['*'], 'page_projets');
 
         return view('site.domaine', compact(
             'formations',

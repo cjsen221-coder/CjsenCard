@@ -84,9 +84,12 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-                                    <h5>{{ $domaine->nom }}</h5>
+                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                        class="stretched-link text-decoration-none text-dark">
+                                        <h5>{{ $domaine->nom }}</h5>
+                                    </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">Date :
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
@@ -157,7 +160,7 @@
                                         <h5>{{ $domaine->nom }}</h5>
                                     </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">Date :
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
@@ -225,7 +228,7 @@
                                         <h5>{{ $domaine->nom }}</h5>
                                     </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">  
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
@@ -293,7 +296,7 @@
                                         <h5>{{ $domaine->nom }}</h5>
                                     </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">Date :
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
@@ -361,7 +364,7 @@
                                         <h5>{{ $domaine->nom }}</h5>
                                     </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">Date :
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
@@ -429,7 +432,7 @@
                                         <h5>{{ $domaine->nom }}</h5>
                                     </a>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Publié le
+                                    <small class="text-gray-500">Date :
                                         {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>

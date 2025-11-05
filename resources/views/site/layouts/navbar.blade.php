@@ -43,8 +43,8 @@
                 <div class="dropdown-menu m-0">
                     <a href="{{ route('site.domaines') }}#formations" class="dropdown-item">Formations</a>
                     <a href="{{ route('site.domaines') }}#causeries" class="dropdown-item">Causeries</a>
-                    <a href="{{ route('site.domaines') }}#cohesion" class="dropdown-item">Activités de Cohésion</a>
-                    <a href="{{ route('site.domaines') }}#sensibilisation" class="dropdown-item">Ateliers de
+                    <a href="{{ route('site.domaines') }}#cohesions" class="dropdown-item">Activités de Cohésion</a>
+                    <a href="{{ route('site.domaines') }}#sensibilisations" class="dropdown-item">Ateliers de
                         Sensibilisation</a>
                     <a href="{{ route('site.domaines') }}#actions" class="dropdown-item">Actions Communautaires</a>
                     <a href="{{ route('site.domaines') }}#projets" class="dropdown-item">Projets Spéciaux</a>

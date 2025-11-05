@@ -92,7 +92,7 @@
                         <h2 class="mb-3">{{ $domaine->nom }}</h2>
                         <p class="text-muted mb-4">
                             <i class="fa fa-calendar-alt text-primary me-2"></i>
-                            Publié le {{ $domaine->created_at->format('d M Y') }}
+                            Date : {{ $domaine->created_at->format('d M Y') }}
                         </p>
                         <p class="lead text-justify">
                             {{ $domaine->description }}
