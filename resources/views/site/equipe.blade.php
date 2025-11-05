@@ -55,7 +55,7 @@
         }
 
         /* Titre principal */
-        #team h1 {
+        #executif h1, #fonctionnel h1 {
             font-size: 2.5rem;
             font-weight: 700;
             color: #FEA116;
@@ -64,7 +64,7 @@
             margin-bottom: 1rem;
         }
 
-        #team h1::after {
+        #executif h1::after, #fonctionnel h1::after {
             content: '';
             position: absolute;
             width: 50%;
@@ -208,7 +208,7 @@
             ];
         @endphp
 
-        <section id="team" class="section bg-gray-100 py-5">
+        <section id="executif" class="section bg-gray-100 py-5">
             <div class="container">
                 <div class="text-center mb-5">
                     <h1>Bureau Exécutif</h1>
@@ -414,7 +414,7 @@
             ];
         @endphp
 
-        <section id="team" class="section bg-gray-100 py-5">
+        <section id="fonctionnel" class="section bg-gray-100 py-5">
             <div class="container">
                 <div class="text-center mb-5">
                     <h1>Bureau Opérationnel</h1>

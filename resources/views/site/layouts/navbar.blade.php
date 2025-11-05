@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-white px-4 px-lg-5 py-3 py-lg-0"
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-white px-4 px-lg-5 py-3 py-lg-0"
     style="border-bottom: 2px solid #22445e;">
     <a href="{{ route('site.accueil') }}" class="navbar-brand p-0">
         <p class="d-flex align-items-center m-0" style="color: #22445e;">
@@ -21,23 +21,28 @@
             {{-- <a href="" class="nav-item nav-link active">Accueil</a> --}}
             <!-- Menu A Propos -->
             <div class="nav-item dropdown">
-                <a href="{{ route('site.apropos') }}"
-                    class="nav-link dropdown-toggle {{ Route::is('site.apropos*') ? 'active' : '' }}">
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.apropos*') ? 'active' : '' }}"
+                    data-bs-toggle="dropdown">
                     A Propos
                 </a>
                 <div class="dropdown-menu m-0">
-                    <a href="" class="dropdown-item">Historique</a>
-                    <a href="" class="dropdown-item">Missions</a>
-                    <a href="" class="dropdown-item">Valeurs</a>
-                    <a href="" class="dropdown-item">Relations extérieures (Nos Antennes)</a>
-                    <a href="" class="dropdown-item">Partenariats</a>
-                    <a href="" class="dropdown-item">Témoignages</a>
+                    <a href="{{ route('site.apropos') }}#historique" class="dropdown-item">Historique</a>
+                    <a href="{{ route('site.apropos') }}#missions" class="dropdown-item">Missions</a>
+                    <a href="{{ route('site.apropos') }}#valeurs" class="dropdown-item">Valeurs</a>
+                    <a href="{{ route('site.apropos') }}#relations" class="dropdown-item">Relations extérieures (Nos
+                        Antennes)</a>
+                    <a href="{{ route('site.apropos') }}#partenariats" class="dropdown-item">Partenariats</a>
+                    <a href="{{ route('site.apropos') }}#temoignages" class="dropdown-item">Témoignages</a>
                 </div>
             </div>
 
             <div class="nav-item dropdown">
-                <a href="{{ route('site.domaines') }}"
+                {{-- <a href="{{ route('site.domaines') }}"
                     class="nav-link dropdown-toggle {{ Route::is('site.domaines') ? 'active' : '' }}">
+                    Domaines d'Action
+                </a> --}}
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.domaines') ? 'active' : '' }}"
+                    data-bs-toggle="dropdown">
                     Domaines d'Action
                 </a>
                 <div class="dropdown-menu m-0">
@@ -52,11 +57,11 @@
             </div>
 
             <div class="nav-item dropdown">
-                <a href="{{ route('site.equipe') }}"
-                    class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}">Equipe</a>
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}"
+                    data-bs-toggle="dropdown">Equipe</a>
                 <div class="dropdown-menu m-0">
-                    <a href="" class="dropdown-item">Bureau Exécutif</a>
-                    <a href="" class="dropdown-item">Bureau Fonctionnel</a>
+                    <a href="{{ route('site.equipe') }}#executif" class="dropdown-item">Bureau Exécutif</a>
+                    <a href="{{ route('site.equipe') }}#fonctionnel" class="dropdown-item">Bureau Fonctionnel</a>
                 </div>
             </div>
             {{-- <div class="nav-item dropdown">
@@ -68,8 +73,8 @@
                 </div>
             </div> --}}
             <div class="nav-item dropdown">
-                <a href="{{ route('site.mediatheque') }}"
-                    class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}">Media</a>
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}"
+                    data-bs-toggle="dropdown">Media</a>
                 <div class="dropdown-menu m-0">
                     <a href="{{ route('site.mediatheque') }}#tab-photos" class="dropdown-item">Photos</a>
                     <a href="{{ route('site.mediatheque') }}#tab-videos" class="dropdown-item">Vidéos</a>
@@ -92,6 +97,15 @@
             item.addEventListener('mouseleave', () => {
                 const dropdown = bootstrap.Dropdown.getOrCreateInstance(item.querySelector('.dropdown-toggle'));
                 dropdown.hide();
+            });
+        });
+        document.querySelectorAll('.nav-item.dropdown > .dropdown-toggle').forEach(drop => {
+            drop.addEventListener('click', function (e) {
+                if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+                    e.preventDefault(); // empêche la navigation
+                    const dropdown = bootstrap.Dropdown.getOrCreateInstance(this);
+                    dropdown.toggle(); // ouvre/ferme le menu
+                }
             });
         });
     </script>

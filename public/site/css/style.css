@@ -26,6 +26,22 @@
 }
 
 
+/* navBar */
+/* Style icône mobile */
+.dropdown-mobile-toggle i {
+    font-size: 0.85rem;      /* taille adaptée */
+    color: #22445e;          /* couleur bleu foncé comme ton thème */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Rotation animation quand ouvert */
+.dropdown-mobile-toggle i.rotate {
+    transform: rotate(180deg);
+    color: #1a2e42;          /* légèrement plus foncé à l'ouverture */
+}
+/* Fin Navbar */
+
+
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -160,8 +176,12 @@ p {
 }
 
 @media (max-width: 991.98px) {
-    .sticky-top.navbar-dark {
-        position: relative;
+    .navbar-dark {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
     }
 
     .btn.btn-primary {
