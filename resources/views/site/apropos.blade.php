@@ -101,7 +101,7 @@
         </section>
 
         <!-- Missions -->
-        <section class="apropos-section bg-light"  id="missions">
+        <section class="apropos-section bg-light" id="missions">
             <div class="container d-flex flex-wrap align-items-center flex-row-reverse">
                 <div class="apropos-image">
                     <img src="{{ asset('media/15.jpg') }}" alt="Nos missions">
@@ -178,9 +178,61 @@
         </section>
 
         <!-- Témoignages -->
-        <section class="apropos-section bg-light" id="temoignages">
+        <section class="apropos-text bg-light" id="temoignages">
+            <div class="container">
+                {{-- <div class="text-center"> --}}
+                    {{-- <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">
+                        Témoignages
+                    </h5> --}}
+                    {{-- <h1 class="mb-5">Témoignages</h1> --}}
+
+                    <h2 class="text-center mb-4">Témoignages</h2>
+                {{-- </div> --}}
+
+                @if($temoignages->count() > 1)
+                    <div class="owl-carousel testimonial-carousel">
+                        @foreach($temoignages as $temoignage)
+                            <div class="testimonial-item bg-transparent border rounded p-4">
+                                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                <p>{{ $temoignage->message }}</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid flex-shrink-0 rounded-circle"
+                                        src="{{ $temoignage->image ? asset('storage/' . $temoignage->image) : asset('media/default-avatar.jpg') }}"
+                                        alt="{{ $temoignage->nom }}" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <div class="ps-3">
+                                        <h5 class="mb-1">{{ $temoignage->nom }}</h5>
+                                        <small>{{ $temoignage->profession }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @elseif($temoignages->count() == 1)
+                    <div class="testimonial-item bg-transparent border rounded p-4 text-center mx-auto"
+                        style="max-width: 400px;">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>{{ $temoignages->first()->message }}</p>
+                        <div class="d-flex align-items-center justify-content-center mt-3">
+                            <img class="img-fluid flex-shrink-0 rounded-circle"
+                                src="{{ $temoignages->first()->image ? asset('storage/' . $temoignages->first()->image) : asset('media/default-avatar.jpg') }}"
+                                alt="{{ $temoignages->first()->nom }}"
+                                style="width: 50px; height: 50px; object-fit: cover;">
+                            <div class="ps-3 text-left">
+                                <h5 class="mb-1">{{ $temoignages->first()->nom }}</h5>
+                                <small>{{ $temoignages->first()->profession }}</small>
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
+                @endif
+            </div>
+        </section>
+        {{-- <section class="apropos-section bg-light" id="temoignages">
             <div class="container">
                 <h2 class="text-center mb-4">Témoignages</h2>
+
+                @if($temoignages->count() > 1)
                 <div class="temoignages">
                     <div class="temoignage">
                         <img src="{{ asset('images/temoin1.jpg') }}" alt="Témoin 1">
@@ -194,8 +246,14 @@
                         <h5>– Mamadou Ndiaye</h5>
                     </div>
                 </div>
+
+                @elseif($temoignages->count() == 1)
+
+                @else
+                <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
+                @endif
             </div>
-        </section>
+        </section> --}}
 
 
 

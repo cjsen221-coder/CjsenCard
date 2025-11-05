@@ -77,7 +77,9 @@ class SiteController extends Controller
 
     public function apropos()
     {
-        return view('site.apropos');
+        
+        $temoignages = Temoignage::latest()->get();
+        return view('site.apropos', compact('temoignages'));
     }
 
     public function equipe()
