@@ -1,112 +1,196 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Bienvenue, {{ Auth::user()->name }} sur CJSENCARD
-            </h2>
+    @php
+        // Comptes pour les cartes
+        $cardSimple = \App\Models\Card::where('honorMember', 'Membre simple')->count();
+        $cardHonor = \App\Models\Card::where('honorMember', 'Membre d\'honneur')->count();
+    @endphp
 
-            <a href="{{ route('cards.create') }}"
-               class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
-                ➕ Nouvelle carte
-            </a>
+    <x-slot name="header">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <h2 class="text-2xl font-bold text-[#003366]">
+                Bienvenue, {{ Auth::user()->name }} 👋
+            </h2>
+            <div class="flex gap-3 flex-wrap">
+                <a href="{{ route('cards.create') }}"
+                    class="bg-[#003366] text-white px-4 py-2 rounded-lg shadow hover:bg-[#006B8F] transition">
+                    ➕ Nouvelle carte
+                </a>
+                <a href="{{ route('blogs.index') }}"
+                    class="bg-[#003366] text-white px-4 py-2 rounded-lg shadow hover:bg-[#006B8F] transition">
+                    📝 Blog
+                </a>
+            </div>
         </div>
     </x-slot>
 
-    <div class="py-10">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <div class="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-            <!-- Section statistiques générales -->
-            <div class="bg-white shadow-md rounded-xl p-6 space-y-6">
-
-                <h3 class="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
-                    <i class="fas fa-chart-bar text-[#003366] text-xl"></i>
-                    Statistiques Générales
-                </h3>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                    <!-- Cartes -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Cartes</h4>
-                        <p><strong>Total :</strong> {{ \App\Models\Card::count() }}</p>
-                        <p><strong>Membres d’honneur :</strong> {{ \App\Models\Card::where('honorMember','Membre d\'honneur')->count() }}</p>
-                        <a href="{{ route('cards.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir toutes</a>
-                    </div>
-
-                    <!-- Blog -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Blog</h4>
-                        <p><strong>Articles :</strong> {{ \App\Models\Blog::count() }}</p>
-                        <a href="{{ route('blogs.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir tous</a>
-                    </div>
-
-                    <!-- Media -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Médias</h4>
-                        <p><strong>Images :</strong> {{ \App\Models\Media::count() }}</p>
-                        <a href="{{ route('medias.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir tous</a>
-                    </div>
-
-                    <!-- Vidéos -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Vidéos</h4>
-                        <p><strong>Total :</strong> {{ \App\Models\Video::count() }}</p>
-                        <a href="{{ route('videos.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir toutes</a>
-                    </div>
-
-                    <!-- Domaines -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Domaines d'Action</h4>
-                        <p><strong>Total :</strong> {{ \App\Models\Domaine::count() }}</p>
-                        <a href="{{ route('domaine.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir plus</a>
-                    </div>
-
-                    
-                    <!-- Témoignages -->
-                    <div class="bg-gray-50 p-4 rounded-lg shadow">
-                        <h4 class="font-semibold text-gray-700 mb-2">Témoignages</h4>
-                        <p><strong>Total :</strong> {{ \App\Models\Temoignage::count() }}</p>
-                        <a href="{{ route('temoignage.index') }}" class="text-blue-600 mt-2 inline-block hover:underline">Voir plus</a>
-                    </div>
-
+        <!-- Statistiques Générales : deux blocs par ligne -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Cartes -->
+            <div class="flex flex-col bg-[#006B8F]/10 p-6 rounded-xl shadow hover:shadow-xl transition justify-between">
+                <h4 class="text-[#003366] font-semibold mb-2">Cartes</h4>
+                <p class="text-2xl font-bold text-[#003366]">{{ $cardSimple + $cardHonor }}</p>
+                <p class="text-[#003366]/70 text-sm mt-1">Total</p>
+                <div class="mt-4 flex justify-between items-center">
+                    <span class="bg-[#23C1B5]/20 text-[#23C1B5] px-2 py-1 rounded-full text-xs">Simple:
+                        {{ $cardSimple }}</span>
+                    <span class="bg-[#F6B623]/20 text-[#F6B623] px-2 py-1 rounded-full text-xs">Honneur:
+                        {{ $cardHonor }}</span>
                 </div>
-
-                <!-- Diagramme Cartes -->
-                <div class="flex justify-center w-full mt-6">
-                    <canvas id="cardsStatsChart" style="max-width: 400px; height: 300px;"></canvas>
-                </div>
-
             </div>
-        </div>
+
+            <div class="bg-[#006B8F]/10 p-6 rounded-xl shadow">
+                <h3 class="text-lg font-semibold text-[#003366] mb-4">Témoignages</h3>
+                <p>Total : <strong>{{ \App\Models\Temoignage::count() }}</strong></p>
+                <a href="{{ route('temoignage.index') }}" class="text-[#F6B623] mt-2 inline-block hover:underline">Voir
+                    plus</a>
+            </div>
+
+
+            <!-- Blog -->
+            <div class="bg-[#23C1B5]/10 p-6 rounded-xl shadow hover:shadow-xl transition">
+                <h4 class="text-[#003366] font-semibold mb-2">Blog</h4>
+                <p class="text-2xl font-bold text-[#003366]">{{ \App\Models\Blog::count() }}</p>
+                <p class="text-[#003366]/70 text-sm mt-1">Articles</p>
+                <a href="{{ route('blogs.index') }}" class="text-[#E67C35] mt-2 inline-block hover:underline">Voir
+                    tous</a>
+            </div>
+
+            <!-- Médias -->
+            <div class="bg-[#23C1B5]/10 p-6 rounded-xl shadow hover:shadow-xl transition">
+                <h4 class="text-[#003366] font-semibold mb-2">Médias</h4>
+                <p class="text-2xl font-bold text-[#003366]">{{ \App\Models\Media::count() }}</p>
+                <p class="text-[#003366]/70 text-sm mt-1">Images</p>
+                <a href="{{ route('medias.index') }}" class="text-[#E67C35] mt-2 inline-block hover:underline">Voir
+                    tous</a>
+            </div>
+
+
+        </section>
+        <!-- Témoignages & Domaines -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <!-- Vidéos -->
+            <div class="bg-[#23C1B5]/10 p-6 rounded-xl shadow hover:shadow-xl transition">
+                <h4 class="text-[#003366] font-semibold mb-2">Vidéos</h4>
+                <p class="text-2xl font-bold text-[#003366]">{{ \App\Models\Video::count() }}</p>
+                <p class="text-[#003366]/70 text-sm mt-1">Total</p>
+                <a href="{{ route('videos.index') }}" class="text-[#E67C35] mt-2 inline-block hover:underline">Voir
+                    toutes</a>
+            </div>
+
+            <div class="bg-[#23C1B5]/10 p-6 rounded-xl shadow">
+                <h3 class="text-lg font-semibold text-[#003366] mb-4">Domaines d'action</h3>
+                <p>Total : <strong>{{ \App\Models\Domaine::count() }}</strong></p>
+                <a href="{{ route('domaine.index') }}" class="text-[#F6B623] mt-2 inline-block hover:underline">Voir
+                    plus</a>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <!-- Graphique Cartes -->
+            <div class="flex bg-white p-6 rounded-xl shadow justify-center items-center">
+                <canvas id="cardsStatsChart" class="w-full h-64 max-w-md"></canvas>
+            </div>
+
+            <div class="bg-[#23C1B5]/10 p-6 rounded-xl shadow">
+                <h3 class="text-lg font-semibold text-[#003366] mb-4">Newsletters</h3>
+                @if(\App\Models\Newsletter::count() > 0)
+                    <div class="overflow-x-auto">
+                        @php
+                            $newsletters = \App\Models\Newsletter::latest()->get();
+                            $total = $newsletters->count();
+                        @endphp
+
+                        <table class="min-w-full divide-y divide-[#003366]/30">
+                            <thead class="bg-[#003366]/10">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">#</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">Date</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-[#003366]/20">
+                                @foreach($newsletters as $newsletter)
+                                    <tr>
+                                        <!-- Numéro décroissant -->
+                                        <td class="px-6 py-4 whitespace-nowrap">{{  $loop->iteration }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap">{{ $newsletter->email }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-[#003366]/70 text-sm">
+                                            {{ $newsletter->created_at->format('d M Y') }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                @else
+                    <p class="text-[#003366]/70">Aucune inscription à la newsletter pour le moment.</p>
+                @endif
+            </div>
+        </section>
+
+
+        <!-- Newsletters -->
+        {{-- <section class="bg-[#23C1B5]/10 p-6 rounded-xl shadow mt-6">
+            <h3 class="text-lg font-semibold text-[#003366] mb-4">Newsletters</h3>
+            @if(\App\Models\Newsletter::count() > 0)
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-[#003366]/30">
+                    <thead class="bg-[#003366]/10">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">
+                                #</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">
+                                Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[#003366] uppercase tracking-wider">
+                                Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-[#003366]/20">
+                        @foreach(\App\Models\Newsletter::latest()->get() as $newsletter)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $newsletter->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{ $newsletter->email }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-[#003366]/70 text-sm">{{
+                                $newsletter->created_at->format('d M Y') }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @else
+            <p class="text-[#003366]/70">Aucune inscription à la newsletter pour le moment.</p>
+            @endif
+        </section> --}}
+
     </div>
 
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('cardsStatsChart').getContext('2d');
-        const cardsStatsChart = new Chart(ctx, {
+        new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Cartes simples', 'Membres d’honneur'],
                 datasets: [{
                     label: 'Nombre de cartes',
-                    data: [
-                        {{ \App\Models\Card::where('honorMember', '!=', 'Membre d\'honneur')->count() }},
-                        {{ \App\Models\Card::where('honorMember', 'Membre d\'honneur')->count() }}
-                    ],
-                    backgroundColor: ['#003366', '#FFD700'],
+                    data: [{{ $cardSimple }}, {{ $cardHonor }}],
+                    backgroundColor: ['#003366', '#F6B623'],
                     borderRadius: 6
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
                 scales: {
-                    x: { ticks: { color: 'black', font: { size: 13 } }, grid: { display: false } },
-                    y: { ticks: { color: 'black', font: { size: 13 } }, grid: { color: '#eee' }, beginAtZero: true }
-                },
-                plugins: { legend: { display: false }, tooltip: { titleColor: 'black', bodyColor: 'black' } }
+                    x: { grid: { display: false }, ticks: { color: '#003366', font: { size: 13 } } },
+                    y: { grid: { color: '#23C1B5/20' }, ticks: { beginAtZero: true, color: '#003366', font: { size: 13 } } }
+                }
             }
         });
     </script>
-
 </x-app-layout>

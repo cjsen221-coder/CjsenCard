@@ -26,6 +26,7 @@
                     A Propos
                 </a>
                 <div class="dropdown-menu m-0">
+                    <a href="{{ route('site.apropos') }}" class="dropdown-item">A Propos</a>
                     <a href="{{ route('site.apropos') }}#historique" class="dropdown-item">Historique</a>
                     <a href="{{ route('site.apropos') }}#missions" class="dropdown-item">Missions</a>
                     <a href="{{ route('site.apropos') }}#valeurs" class="dropdown-item">Valeurs</a>
@@ -46,6 +47,7 @@
                     Domaines d'Action
                 </a>
                 <div class="dropdown-menu m-0">
+                    <a href="{{ route('site.domaines') }}" class="dropdown-item">Domaines d'Action</a>
                     <a href="{{ route('site.domaines') }}#formations" class="dropdown-item">Formations</a>
                     <a href="{{ route('site.domaines') }}#causeries" class="dropdown-item">Causeries</a>
                     <a href="{{ route('site.domaines') }}#cohesions" class="dropdown-item">Activités de Cohésion</a>
@@ -60,6 +62,7 @@
                 <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}"
                     data-bs-toggle="dropdown">Equipe</a>
                 <div class="dropdown-menu m-0">
+                    <a href="{{ route('site.equipe') }}" class="dropdown-item">Equipe</a>
                     <a href="{{ route('site.equipe') }}#executif" class="dropdown-item">Bureau Exécutif</a>
                     <a href="{{ route('site.equipe') }}#fonctionnel" class="dropdown-item">Bureau Fonctionnel</a>
                 </div>
@@ -76,6 +79,7 @@
                 <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}"
                     data-bs-toggle="dropdown">Media</a>
                 <div class="dropdown-menu m-0">
+                    <a href="{{ route('site.mediatheque') }}" class="dropdown-item">Media</a>
                     <a href="{{ route('site.mediatheque') }}#tab-photos" class="dropdown-item">Photos</a>
                     <a href="{{ route('site.mediatheque') }}#tab-videos" class="dropdown-item">Vidéos</a>
                 </div>
