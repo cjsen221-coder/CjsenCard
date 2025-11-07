@@ -15,7 +15,7 @@ class SiteController extends Controller
     public function accueil()
     {
 
-        $temoignages = Temoignage::latest()->get();
+        $temoignages = Temoignage::where('is_approved', true)->latest()->get();
 
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();
@@ -78,7 +78,7 @@ class SiteController extends Controller
     public function apropos()
     {
         
-        $temoignages = Temoignage::latest()->get();
+        $temoignages = Temoignage::where('is_approved', true)->latest()->get();
         return view('site.apropos', compact('temoignages'));
     }
 

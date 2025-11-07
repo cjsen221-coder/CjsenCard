@@ -43,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Gérer les témoignages
     Route::resource('temoignage', TemoignageController::class);
+    Route::patch('temoignage/{temoignage}/approve', [TemoignageController::class, 'approve'])
+     ->name('temoignage.approve');
+
 });
 
 Route::middleware('auth')->group(function () {
@@ -75,7 +78,7 @@ Route::post('/contact', [SiteController::class, 'send'])->name('site.contact.sen
 // web.php
 Route::post('/newsletter', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-
-
+Route::post('/temoignages/store', [TemoignageController::class, 'storeUser'])
+    ->name('temoignages.store.user');   
 
 require __DIR__ . '/auth.php';

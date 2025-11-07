@@ -80,6 +80,248 @@
             font-size: 0.95rem;
             color: #333;
         }
+
+
+        /* // TEMOIGNAGES  */
+        /* ✅ PALETTE CJSEN */
+        :root {
+            --cjsen-blue-dark: #003366;
+            --cjsen-blue: #006B8F;
+            --cjsen-turquoise: #23C1B5;
+            --cjsen-yellow: #F6B623;
+            --cjsen-orange: #E67C35;
+        }
+
+        /* ✅ BOUTON */
+        .btn-temoignage {
+            background: linear-gradient(135deg, var(--cjsen-blue-dark), var(--cjsen-blue));
+            border: none;
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 10px 28px;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .btn-temoignage:hover {
+            background: linear-gradient(135deg, var(--cjsen-blue), var(--cjsen-turquoise));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 107, 143, 0.35);
+        }
+
+        /* ✅ BACKDROP FLUO */
+        .modal-backdrop.show {
+            backdrop-filter: blur(7px);
+        }
+
+        /* ✅ ANIMATION DU MODAL */
+        .modal.fade .modal-dialog {
+            transform: translateY(40px);
+            transition: all 0.4s ease-out;
+            opacity: 0;
+        }
+
+        .modal.fade.show .modal-dialog {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ✅ MODAL */
+        .modal-content {
+            border-radius: 22px;
+            border: none;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ✅ HEADER AVEC DÉGRADÉ DU LOGO */
+        .modal-header {
+            background: linear-gradient(135deg, var(--cjsen-blue-dark), var(--cjsen-orange));
+            padding: 20px 24px;
+        }
+
+        .modal-header .modal-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(2000);
+            opacity: 1;
+        }
+
+        /* ✅ INPUTS */
+        .modal-body .form-control {
+            border-radius: 12px;
+            border: 1px solid #d6d6d6;
+            padding: 10px 14px;
+            transition: 0.2s ease;
+        }
+
+        .modal-body .form-control:focus {
+            border-color: var(--cjsen-blue);
+            box-shadow: 0 0 0 0.2rem rgba(0, 107, 143, 0.2);
+        }
+
+        /* ✅ LABELS */
+        label.form-label {
+            font-weight: 600;
+            color: var(--cjsen-blue-dark);
+        }
+
+        /* ✅ BUTTON ENVOYER */
+        .btn-send {
+            background: linear-gradient(135deg, var(--cjsen-blue), var(--cjsen-turquoise));
+            border: none;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .btn-send:hover {
+            background: linear-gradient(135deg, var(--cjsen-turquoise), var(--cjsen-yellow));
+            box-shadow: 0 6px 16px rgba(35, 193, 181, 0.35);
+        }
+
+        /* ✅ MOBILE — BOTTOM SHEET STYLE (≤ 576px) */
+        @media (max-width: 576px) {
+
+            /* ---- DIALOG ---- */
+            .modal-dialog {
+                margin: 0 !important;
+                position: fixed !important;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100% !important;
+                max-width: 100% !important;
+                transform: translateY(100%);
+                transition: transform 0.35s ease-out;
+            }
+
+            .modal.show .modal-dialog {
+                transform: translateY(0);
+            }
+
+            /* ---- CONTENT ---- */
+            .modal-content {
+                border-radius: 18px 18px 0 0 !important;
+                max-height: 84vh !important;
+                /* ✅ encore un peu plus compact */
+                overflow-y: auto !important;
+                padding-bottom: 55px !important;
+            }
+
+            /* ---- HEADER ---- */
+            .modal-header {
+                padding: 12px 14px !important;
+                position: sticky;
+                top: 0;
+                background: white;
+                z-index: 5;
+                border-bottom: 1px solid #e6e6e6;
+            }
+
+            .modal-header .modal-title {
+                font-size: 15px !important;
+                font-weight: 700;
+            }
+
+            .modal-header .btn-close {
+                display: none !important;
+            }
+
+            /* ---- BODY ---- */
+            .modal-body {
+                padding: 12px 16px !important;
+            }
+
+            .modal-body .form-control {
+                padding: 7px 10px !important;
+                font-size: 13.5px !important;
+                border-radius: 8px !important;
+            }
+
+            /* ---- BOUTON ENVOYER ---- */
+            .btn-send {
+                font-size: 14px !important;
+                padding: 9px !important;
+                border-radius: 10px !important;
+            }
+
+            /* ---- BOUTON FERMER (bas) ---- */
+            .bottom-close-btn {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 10px 16px;
+                border-top: 1px solid #ddd;
+                z-index: 50;
+                text-align: center;
+            }
+
+            .bottom-close-btn button {
+                width: 100%;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 14px;
+                font-weight: 600;
+                background: linear-gradient(90deg, var(--cjsen-orange), var(--cjsen-yellow));
+                color: white;
+                border: none;
+            }
+
+            .bottom-close-btn button:hover {
+                opacity: 0.9;
+            }
+        }
+
+
+        /* ✅ TABLETTE (577px → 992px) */
+        @media (min-width: 577px) and (max-width: 992px) {
+
+            .modal-dialog {
+                width: 90% !important;
+                /* Large but not too large */
+                margin: 20px auto !important;
+                max-height: 85vh !important;
+            }
+
+            .modal-content {
+                max-height: 85vh !important;
+                overflow-y: auto !important;
+                border-radius: 18px !important;
+            }
+
+            .modal-header {
+                padding: 18px 22px !important;
+                position: sticky;
+                top: 0;
+                z-index: 5;
+            }
+
+            .modal-header .modal-title {
+                font-size: 18px !important;
+            }
+
+            .modal-body {
+                padding: 20px !important;
+            }
+
+            .modal-body .form-control {
+                padding: 10px 14px !important;
+                font-size: 15px !important;
+            }
+
+            .btn-send {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+        }
     </style>
 
 </head>
@@ -454,7 +696,7 @@
                     <h1 class="mb-5">Bureau Exécutif</h1>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}" alt="">
@@ -462,15 +704,17 @@
                             <h5 class="mb-0">Mamadou Mounirou TALL</h5>
                             <small>Président</small>
                             <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                --}}
                             </div>
                         </div>
 
 
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid" loading="lazy" src="{{ asset('media/ABABACAR.jpg') }}" alt="">
@@ -478,41 +722,49 @@
                             <h5 class="mb-0">Ababacar BA</h5>
                             <small>Secrétaire Général</small>
                             <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                --}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" loading="lazy" src="{{ asset('media/marianne R.jpg') }}" alt="">
+                                <img class="img-fluid" loading="lazy" src="{{ asset('media/marianne.jpg') }}" alt="">
                             </div>
                             <h5 class="mb-0">Mariane Dji Fall Fatim TALL</h5>
                             <small>Trésorière</small>
                             <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                --}}
                             </div>
                         </div>
 
                     </div>
-                    {{-- <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" src="img/team-4.jpg" alt="">
+                                <img class="img-fluid" loading="lazy" src="{{ asset('media/Diam_Pathe.jpg') }}" alt="">
                             </div>
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                            <h5 class="mb-0">Diam Pathé SALL</h5>
+                            <small>Commisaire aux Comptes</small>
                             <div class="d-flex justify-content-center mt-3">
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
+                                        class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                --}}
                             </div>
                         </div>
-                    </div> --}}
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -520,36 +772,7 @@
 
 
         <!-- ======================= Témoignages ======================= -->
-        {{-- <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="text-center">
-                    <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">
-                        Témoignages
-                    </h5>
-                    <h1 class="mb-5">Témoignages de nos membres</h1>
-                </div>
 
-                <div class="owl-carousel testimonial-carousel">
-                    @forelse($temoignages as $temoignage)
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>{{ $temoignage->message }}</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle"
-                                src="{{ $temoignage->image ? asset('storage/' . $temoignage->image) : asset('media/default-avatar.jpg') }}"
-                                alt="{{ $temoignage->nom }}" style="width: 50px; height: 50px; object-fit: cover;">
-                            <div class="ps-3">
-                                <h5 class="mb-1">{{ $temoignage->nom }}</h5>
-                                <small>{{ $temoignage->profession }}</small>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                    <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
-                    @endforelse
-                </div>
-            </div>
-        </div> --}}
         <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
                 <div class="text-center">
@@ -596,6 +819,72 @@
                     <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
                 @endif
             </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-temoignage px-4 py-2" data-bs-toggle="modal" data-bs-target="#temoignageModal">
+                    ✍️ Laisser un témoignage
+                </button>
+            </div>
+
+            <div class="modal fade" id="temoignageModal" tabindex="-1" aria-labelledby="temoignageModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="temoignageModalLabel">
+                                ✍️ Ajouter un témoignage
+                            </h5>
+                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body p-4">
+
+                            @if(session('success'))
+                                <div class="alert alert-success mb-3">
+                                    ✅ Votre témoignage a été envoyé et sera publié après validation.
+                                </div>
+                            @endif
+
+                            <form action="{{ route('temoignages.store.user') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label class="form-label">Nom *</label>
+                                    <input type="text" name="nom" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Profession (optionnel)</label>
+                                    <input type="text" name="profession" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Message *</label>
+                                    <textarea name="message" rows="4" class="form-control" required></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Image *</label>
+                                    <input type="file" name="image" class="form-control" required>
+                                </div>
+
+                                <button class="btn btn-primary w-100 py-2 mt-3 rounded-3 btn-send">
+                                    ✅ Envoyer le témoignage
+                                </button>
+
+                            </form>
+
+                        </div>
+                        <div class="bottom-close-btn d-block d-sm-none">
+                            <button type="button" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- ======================= Fin Témoignages ======================= -->

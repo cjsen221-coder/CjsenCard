@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CJSEN') }}</title>
+    <title>ADMIN - Sen Carrefour Jeunesse</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('images/favicon_io/favicon.ico') }}">
@@ -66,7 +66,9 @@
 
         <!-- Footer -->
         <footer class="bg-[#003366] text-white text-center py-3 text-sm">
-            &copy; {{ date('Y') }} CJSENCARD. Tous droits réservés.
+            &copy; {{ date('Y') }} Sen Carrefour Jeunesse, Tous droits réservés | Conception : Cellule du
+            Numérique et de l'Innovation
+            Digitale (CNID)
         </footer>
     </div>
 </body>
