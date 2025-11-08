@@ -696,7 +696,7 @@
                     <h1 class="mb-5">Bureau Exécutif</h1>
                 </div>
                 <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}" alt="">
@@ -714,7 +714,7 @@
 
 
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid" loading="lazy" src="{{ asset('media/ABABACAR.jpg') }}" alt="">
@@ -730,7 +730,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid" loading="lazy" src="{{ asset('media/marianne.jpg') }}" alt="">
@@ -748,23 +748,6 @@
 
                     </div>
 
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" loading="lazy" src="{{ asset('media/Diam_Pathe.jpg') }}" alt="">
-                            </div>
-                            <h5 class="mb-0">Diam Pathé SALL</h5>
-                            <small>Commisaire aux Comptes</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                --}}
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
             </div>
         </div>
