@@ -329,18 +329,18 @@
         .hero-section-modern {
             position: relative;
             width: 100%;
-            height: 100vh;
+            height: 110vh;
             background: url('{{ asset("media/8.jpg") }}') center/cover no-repeat;
             display: flex;
             justify-content: flex-end;
-            padding-top: 90px;
+            /* padding-top: 90px; */
             /* ✅ LE POINT IMPORTANT */
             padding-bottom: 20px;
         }
 
         /* Overlay moderne avec dégradé + blur */
         .hero-overlay-modern {
-            position: absolute;
+            position: absolute; 
             inset: 0;
             background: linear-gradient(to top,
                     rgba(11, 32, 56, 0.85),
@@ -396,8 +396,12 @@
         /* RESPONSIVE */
         @media(max-width: 767px) {
             .hero-section-modern {
-                height: 78vh;
+                height: 60vh;
             }
+        }
+
+        .apres-nav {
+            margin-top: 50px;
         }
     </style>
 
@@ -460,7 +464,7 @@
 
         <!-- Service Start -->
         <div class="container-xxl py-4">
-            <div class="container">
+            <div class="container apres-nav">
                 <div class="row g-4">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                         <h5 class="section-title ff-secondary text-center text-uppercase text-primary fw-normal">
