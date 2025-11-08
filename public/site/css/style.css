@@ -27,21 +27,108 @@
 
 
 /* navBar */
-/* Style icône mobile */
+/* NAVBAR – version améliorée */
+
+/* Icône mobile */
 .dropdown-mobile-toggle i {
-    font-size: 0.85rem;
-    /* taille adaptée */
+    font-size: 0.95rem;
     color: #22445e;
-    /* couleur bleu foncé comme ton thème */
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Rotation animation quand ouvert */
 .dropdown-mobile-toggle i.rotate {
     transform: rotate(180deg);
     color: #1a2e42;
-    /* légèrement plus foncé à l'ouverture */
 }
+
+/* Liens navbar (desktop) */
+.navbar-dark .navbar-nav .nav-link {
+    position: relative;
+    margin-left: 20px;
+    padding: 28px 0;
+    font-size: 13px;
+    color: #22445e !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    font-size: 12px !important;
+}
+
+/* Sticky desktop */
+.sticky-top.navbar-dark .navbar-nav .nav-link {
+    padding: 16px 0;
+}
+
+/* Hover + active */
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #43bbc2 !important;
+}
+
+/* Logo desktop */
+.navbar-dark .navbar-brand img {
+    max-height: 80px;
+    transition: .4s ease;
+}
+
+/* Logo sticky desktop */
+.sticky-top.navbar-dark .navbar-brand img {
+    max-height: 55px;
+}
+
+/* MOBILE */
+@media (max-width: 991.98px) {
+
+    .navbar-dark {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background: #ffffff !important;
+        padding: 8px 0;
+    }
+
+    .navbar-dark .navbar-collapse {
+        margin-top: 10px;
+        border-top: 1px solid rgba(0, 0, 0, .07);
+    }
+
+    .navbar-dark .navbar-nav .nav-link,
+    .sticky-top.navbar-dark .navbar-nav .nav-link {
+        padding: 10px 0;
+        margin-left: 0;
+    }
+
+    .navbar-dark .navbar-brand img {
+        max-height: 55px !important;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+
+    .navbar-dark {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent;
+    }
+
+    /* Sticky desktop */
+    .sticky-top.navbar-dark {
+        position: fixed;
+        background: #ffffff !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+}
+
 
 /* Fin Navbar */
 
@@ -144,87 +231,6 @@ p {
 }
 
 
-/*** Navbar ***/
-.navbar-dark .navbar-nav .nav-link {
-    position: relative;
-    margin-left: 20px;
-    padding: 35px 0;
-    font-size: 13px;
-    color: var(--dark) !important;
-    text-transform: uppercase;
-    font-weight: 500;
-    outline: none;
-    transition: .5s;
-}
-
-.dropdown-menu {
-    font-size: 12px !important;
-}
-
-.sticky-top.navbar-dark .navbar-nav .nav-link {
-    padding: 20px 0;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
-    color: #43bbc2 !important;
-}
-
-.navbar-dark .navbar-brand img {
-    max-height: 100px;
-    transition: .5s;
-}
-
-.sticky-top.navbar-dark .navbar-brand img {
-    max-height: 50px;
-}
-
-@media (max-width: 991.98px) {
-    .navbar-dark {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 9999;
-    }
-
-    .btn.btn-primary {
-        margin-bottom: 10px;
-    }
-
-
-    .navbar-dark .navbar-collapse {
-        margin-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, .1)
-    }
-
-    .navbar-dark .navbar-nav .nav-link,
-    .sticky-top.navbar-dark .navbar-nav .nav-link {
-        padding: 10px 0;
-        margin-left: 0;
-    }
-
-    .navbar-dark .navbar-brand img {
-        max-height: 45px;
-    }
-}
-
-@media (min-width: 992px) {
-    .navbar-dark {
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        /* background: transparent !important; */
-    }
-
-    .sticky-top.navbar-dark {
-        position: fixed;
-        background: #fdfcfb !important;
-    }
-}
-
 /* ---------------- Hero Section ---------------- */
 .hero-section {
     position: relative;
@@ -324,10 +330,22 @@ p {
         padding: 10px 30px;
         font-size: 0.9rem;
     }
+
+    .hero-header .container {
+        margin-top: 1rem !important;
+    }
 }
 
 /* Mobiles */
 @media (max-width: 576px) {
+    .hero-header {
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        margin-bottom: 0rem !important;
+        margin-top: 2rem !important;
+        height: 30vh !important;
+    }
+
     .hero-header .container {
         margin-bottom: 1rem !important;
     }
@@ -359,7 +377,9 @@ p {
         font-size: 0.85rem;
     }
 }
+
 @media (max-width: 450px) {
+
     /* .hero-header h1, */
     .navbar .fw-bold {
         font-size: 1rem !important;
@@ -411,6 +431,7 @@ p {
 .hero-header .breadcrumb {
     margin-top: 15px;
 }
+
 /* 
 @media (max-width: 992px) {
     .hero-header .container {
