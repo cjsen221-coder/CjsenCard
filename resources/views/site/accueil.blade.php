@@ -322,6 +322,83 @@
                 padding: 12px !important;
             }
         }
+
+
+        /* ===== HERO MODERNE ===== */
+
+        .hero-section-modern {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('{{ asset("media/8.jpg") }}') center/cover no-repeat;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 90px;
+            /* ✅ LE POINT IMPORTANT */
+            padding-bottom: 20px;
+        }
+
+        /* Overlay moderne avec dégradé + blur */
+        .hero-overlay-modern {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(11, 32, 56, 0.85),
+                    rgba(11, 32, 56, 0.5),
+                    rgba(11, 32, 56, 0.15),
+                    rgba(11, 32, 56, 0));
+            /* backdrop-filter: blur(2px); */
+            z-index: 1;
+        }
+
+        /* Contenu */
+        .hero-content-modern {
+            z-index: 2;
+        }
+
+        /* Titre moderne */
+        .hero-title {
+            margin-bottom: 0rem;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+        }
+
+        /* Texte moderne */
+        .hero-text {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #f2f2f2;
+            line-height: 1.7;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.38);
+        }
+
+        /* Bouton moderne */
+        .btn-hero-modern {
+            background: linear-gradient(135deg, #23C1B5, #1a9e93);
+            color: #fff;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.3s ease;
+            border: none;
+        }
+
+        .btn-hero-modern:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 767px) {
+            .hero-section-modern {
+                height: 78vh;
+            }
+        }
     </style>
 
 </head>
@@ -344,29 +421,34 @@
             @include('site.layouts.navbar')
 
             {{-- Hero Section --}}
-            <div class="hero-section d-flex flex-column justify-content-end text-center text-white position-relative">
+            <div
+                class="hero-section-modern d-flex flex-column justify-content-end text-center text-white position-relative">
 
-                <!-- Overlay flouté en bas -->
-                <div class="hero-overlay"></div>
+                <!-- Overlay moderne -->
+                <div class="hero-overlay-modern"></div>
 
-                <!-- Contenu principal -->
-                <div class="container hero-content position-relative z-2">
+                <!-- Contenu -->
+                <div class="container hero-content-modern position-relative z-2">
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
-                            <div class="hero-overlay"></div>
-                            <h1 class="display-4 fw-bold text-uppercase mb-2 animate__animated animate__fadeInDown">
+
+                            <h1 class="hero-title animate__animated animate__fadeInDown">
                                 Sen Carrefour Jeunesse
                             </h1>
-                            <p class="lead text-white-50 mb-2 animate__animated animate__fadeInUp">
-                                CJSEN est le petit colibri de la jeunesse mondiale 🌍<br>
+
+                            <p class="hero-text animate__animated animate__fadeInUp">
+                                CJSEN est le petit colibri de la jeunesse mondiale<br>
                                 Une organisation née au Sénégal mais qui porte une vision universelle :
-                                donner à chaque jeune les moyens de s’informer, de s’orienter, de s’éduquer, de
-                                s’engager et d’innover.
+                                donner à chaque jeune les moyens de s’informer, de s’orienter...
+                                {{-- de s’éduquer, --}}
+                                {{-- de s’engager et d’innover. --}}
                             </p>
+
                             <a href="{{ route('site.apropos') }}"
-                                class="btn btn-hero btn-lg rounded-pill shadow-lg animate__animated animate__fadeInUp">
+                                class="btn btn-hero-modern btn-lg rounded-pill shadow-lg animate__animated animate__fadeInUp">
                                 En Savoir Plus
                             </a>
+
                         </div>
                     </div>
                 </div>

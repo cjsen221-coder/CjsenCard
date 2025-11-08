@@ -257,37 +257,6 @@ p {
     z-index: 1;
 }
 
-/* Overlay dynamique pour le contenu */
-.hero-content .hero-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(14, 43, 69, 0.7);
-    backdrop-filter: blur(1px);
-    z-index: 1;
-    border-radius: 10px;
-}
-
-/* Texte principal */
-.hero-content h1 {
-    position: relative;
-    z-index: 2;
-    font-size: clamp(1rem, 4vw, 3rem);
-    color: #fff;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-    margin: 15px 0 15px;
-}
-
-.hero-content p {
-    position: relative;
-    z-index: 2;
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-    color: #f0f0f0;
-    line-height: 1.7;
-    margin-bottom: 20px;
-}
 
 /* Bouton hero */
 .btn-hero {
@@ -316,14 +285,6 @@ p {
 @media (max-width: 992px) {
     .hero-section {
         height: 90vh;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(1.8rem, 5vw, 3rem);
-    }
-
-    .hero-content p {
-        font-size: clamp(0.85rem, 3vw, 1.1rem);
     }
 
     .btn-hero {
@@ -358,18 +319,6 @@ p {
 
     .hero-section {
         height: 80vh;
-    }
-
-    .hero-content {
-        padding: 10px 15px;
-    }
-
-    .hero-content h1 {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
-    }
-
-    .hero-content p {
-        font-size: clamp(0.8rem, 4vw, 1rem);
     }
 
     .btn-hero {
