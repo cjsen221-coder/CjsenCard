@@ -89,8 +89,8 @@ class SiteController extends Controller
 
     public function mediatheque()
     {
-        $gallery = Media::latest()->paginate(12);
-        $videos = Video::latest()->paginate(6);
+        $gallery = Media::latest()->paginate(20);
+        $videos = Video::latest()->paginate(20);
 
         // Convertir les URLs YouTube en URLs embed
         $videos->transform(function ($video) {
