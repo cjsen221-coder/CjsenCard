@@ -19,7 +19,7 @@ class SiteController extends Controller
 
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();
-        $gallery = Media::latest()->take(6)->get();
+        $gallery = Media::latest()->take(10)->get();
         $videos = Video::latest()->take(3)->get();
 
         // Convertir les URLs YouTube en URLs embed

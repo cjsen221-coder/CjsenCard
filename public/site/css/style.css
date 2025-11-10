@@ -1,9 +1,15 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FEA116;
-    --light: #F1F8FF;
-    --dark: #0F172B;
+    --cjsen-blue-dark: #22445e;
+    --cjsen-blue: #006B8F;
+    --cjsen-turquoise: #23C1B5;
+    --cjsen-turquoise-dark: #1a9e93;
+    --cjsen-yellow: #F6B623;
+    --cjsen-orange: #E87817;
+    --cjsen-light: #F1F8FF;
+    --cjsen-dark-text: #0F172B;
 }
+
 
 .ff-secondary {
     font-family: 'Open Sans', sans serif;
@@ -129,8 +135,20 @@
     }
 }
 
+/* Cacher le texte logo uniquement sur mobile quand le menu est ouvert */
+@media (max-width: 410px) {
+    .navbar .logo-text {
+        display: none;
+    }
+
+    
+
+
+}
+
 
 /* Fin Navbar */
+
 
 
 /*** Spinner ***/
@@ -231,6 +249,7 @@ p {
 }
 
 
+
 /* ---------------- Hero Section ---------------- */
 .hero-section {
     position: relative;
@@ -262,7 +281,7 @@ p {
 .btn-hero {
     position: relative;
     z-index: 2;
-    background: linear-gradient(90deg, #f3b13e, #e06a33);
+    background: linear-gradient(90deg, var(--cjsen-turquoise), var(--cjsen-turquoise-dark));
     color: #fff;
     font-weight: 600;
     text-transform: uppercase;
@@ -274,7 +293,7 @@ p {
 }
 
 .btn-hero:hover {
-    background: linear-gradient(90deg, #2ca7a3, #0e2b45);
+    background: linear-gradient(90deg, var(--cjsen-blue-dark), var(--cjsen-turquoise-dark));
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
@@ -328,7 +347,6 @@ p {
 }
 
 @media (max-width: 450px) {
-
     /* .hero-header h1, */
     .navbar .fw-bold {
         font-size: 1rem !important;
@@ -441,7 +459,7 @@ p {
     top: 50%;
     left: -55px;
     margin-top: -1px;
-    background: var(--primary);
+    background: var(--cjsen-turquoise);
 }
 
 .section-title::after {
@@ -452,7 +470,7 @@ p {
     top: 50%;
     right: -55px;
     margin-top: -1px;
-    background: var(--primary);
+    background: var(--cjsen-turquoise);
 }
 
 .section-title.text-start::before,
@@ -468,7 +486,7 @@ p {
 }
 
 .service-item:hover {
-    background: var(--primary);
+    background: var(--cjsen-turquoise);
 }
 
 .service-item * {
@@ -628,45 +646,6 @@ p {
 }
 
 
-/*** Testimonial ***/
-.testimonial-carousel .owl-item .testimonial-item,
-.testimonial-carousel .owl-item.center .testimonial-item * {
-    transition: .5s;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item {
-    background: var(--primary) !important;
-    border-color: var(--primary) !important;
-}
-
-.testimonial-carousel .owl-item.center .testimonial-item * {
-    color: var(--light) !important;
-}
-
-.testimonial-carousel .owl-dots {
-    margin-top: 24px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.testimonial-carousel .owl-dot {
-    position: relative;
-    display: inline-block;
-    margin: 0 5px;
-    width: 15px;
-    height: 15px;
-    border: 1px solid #CCCCCC;
-    border-radius: 15px;
-    transition: .5s;
-}
-
-.testimonial-carousel .owl-dot.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-
 /*** Footer ***/
 .footer .btn.btn-social {
     margin-right: 5px;
@@ -682,7 +661,7 @@ p {
 }
 
 .footer .btn.btn-social:hover {
-    color: var(--primary);
+    color: var(--cjsen-turquoise);
 }
 
 .footer .btn.btn-link {
@@ -815,7 +794,7 @@ p {
 
 .temoignage h5 {
     margin-top: 10px;
-    color: #0b3d91;
+    color: var(--cjsen-blue-dark);
     font-weight: bold;
 }
 

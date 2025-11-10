@@ -4,17 +4,14 @@
     <!-- LOGO -->
     <a href="{{ route('site.accueil') }}" class="navbar-brand p-0">
         <p class="d-flex align-items-center m-0" style="color: #22445e;">
-            <img src="{{ asset('images/logo-og.png') }}" alt="Logo" 
-                style="
+            <img src="{{ asset('images/logo-og.png') }}" alt="Logo" style="
                     height: 80px; 
                     width: auto; 
                     margin-right: 0px;
                     transition: transform 0.3s ease, filter 0.3s ease;
                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-                "
-                onmouseover="this.style.transform='scale(1.05)'"
-                onmouseout="this.style.transform='scale(1)'">
-            <span class="fw-bold fs-5" style="letter-spacing: 0.5px;">SEN CARREFOUR JEUNESSE</span>
+                " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <span class="fw-bold fs-5 logo-text" style="letter-spacing: 0.5px;">SEN CARREFOUR JEUNESSE</span>
         </p>
     </a>
 
@@ -79,9 +76,11 @@
                 </div>
             </div>
 
-            <a href="{{ route('site.blog') }}" class="nav-item nav-link {{ Route::is('site.blog') ? 'active' : '' }}">Blog</a>
+            <a href="{{ route('site.blog') }}"
+                class="nav-item nav-link {{ Route::is('site.blog') ? 'active' : '' }}">Blog</a>
 
-            <a href="{{ route('site.contact') }}" class="nav-item nav-link {{ Route::is('site.contact') ? 'active' : '' }}">Contact</a>
+            <a href="{{ route('site.contact') }}"
+                class="nav-item nav-link {{ Route::is('site.contact') ? 'active' : '' }}">Contact</a>
 
         </div>
     </div>
