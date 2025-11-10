@@ -135,16 +135,30 @@
     }
 }
 
-/* Cacher le texte logo uniquement sur mobile quand le menu est ouvert */
+/* Défilement du texte logo sur mobile */
 @media (max-width: 410px) {
     .navbar .logo-text {
-        display: none;
+        display: inline-block;      /* permet l'animation */
+        white-space: nowrap;        /* texte sur une seule ligne */
+        overflow: hidden;           /* cache ce qui dépasse */
+        width: 120px;               /* largeur du container du texte, ajustable */
+        vertical-align: middle;
+        position: relative;
     }
 
-    
+    .navbar .logo-text span {
+        display: inline-block;
+        padding-left: 100%;         /* espace avant que le texte commence */
+        animation: scrollLogo 10s linear infinite; /* défilement continu */
+    }
 
-
+    @keyframes scrollLogo {
+        0%   { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
 }
+
+
 
 
 /* Fin Navbar */

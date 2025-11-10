@@ -11,7 +11,9 @@
                     transition: transform 0.3s ease, filter 0.3s ease;
                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
                 " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            <span class="fw-bold fs-5 logo-text" style="letter-spacing: 0.5px;">SEN CARREFOUR JEUNESSE</span>
+            <span class="fw-bold fs-5 logo-text" style="letter-spacing: 0.5px;">
+                <span>SEN CARREFOUR JEUNESSE</span>
+            </span>
         </p>
     </a>
 
