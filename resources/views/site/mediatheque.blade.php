@@ -79,6 +79,31 @@
             color: #fff !important;
             /* icône blanche */
         }
+
+        /* Pagination CJSEN */
+        .pagination .page-link {
+            color: var(--cjsen-blue-dark);
+            background-color: var(--cjsen-turquoise);
+            border: none;
+            margin: 0 3px;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .pagination .page-link:hover {
+            background-color: var(--cjsen-yellow);
+            color: var(--cjsen-blue-dark);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--cjsen-blue);
+            color: #fff;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #e9ecef;
+            color: #6c757d;
+        }
     </style>
 
 </head>
