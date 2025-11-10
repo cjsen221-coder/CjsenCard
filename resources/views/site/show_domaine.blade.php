@@ -49,26 +49,8 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl pt-5 bg-dark hero-header mb-5">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-4 text-white mb-3 animated slideInDown">
-                        {{ $domaine->nom }}
-                    </h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="{{ route('site.accueil') }}">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="#">Domaines</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">
-                                {{ ucfirst($domaine->type) }}
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="{{ $domaine->nom }}" current="{{ $domaine->nom }}" parent="Domaines d'Action"
+            parentUrl="{{ route('site.domaines') }}" titleSize="display-4" />
 
         <!-- Contenu principal -->
         <div class="container-xxl py-5">

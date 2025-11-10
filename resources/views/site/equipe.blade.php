@@ -72,7 +72,8 @@
             transition: transform 0.3s;
         }
 
-        .img-fluid:hover,  .adjoint-card img:hover {
+        .img-fluid:hover,
+        .adjoint-card img:hover {
             transform: scale(1.05);
         }
 
@@ -125,24 +126,9 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
 
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl pt-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Dispositif Organisationnel</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Dispositif Organisationnel
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="Dispositif Organisationnel" current="Equipe" parent="" parentUrl=""
+            titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
         @php
@@ -236,7 +222,7 @@
                         'membre' => ['nom' => 'Samba Dramé', 'photo' => 'media/Samba.png'],
                         'missions' => [
                             'Développer et gérer les outils numériques de l’association pour faciliter la communication, la gestion interne et la
-                                                 diffusion de l’information.',
+                                                                         diffusion de l’information.',
                             'Développer et maintenir les plateformes numériques (site web, bases de données, applications internes).',
                             'Assurer la sécurité, la performance et la mise à jour des outils numériques.',
                             'Collecter, centraliser et structurer l’information pour la rendre accessible aux membres et aux autres cellules.',

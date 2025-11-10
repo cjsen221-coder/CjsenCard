@@ -49,23 +49,8 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl pt-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Blog</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Blog</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="Blog" current="Blog" parent=""
+            parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
 
@@ -87,7 +72,8 @@
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title text-center">{{ $blog->title }}</h5>
                                     <p class="card-text text-center">
-                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}</p>
+                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}
+                                    </p>
                                     <a href="{{ route('blog.show', $blog) }}" class="mt-auto btn btn-primary">Lire la
                                         suite</a>
                                 </div>

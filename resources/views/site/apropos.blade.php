@@ -46,30 +46,12 @@
             </div>
         </div>
         <!-- Spinner End -->
+
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            @include('site.layouts.navbar')
-
-
-            <div class="container-xxl py-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">A Propos de Nous</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">A Propos</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-
+        <x-hero title="A Propos" current="A Propos" parent="" parentUrl="" titleSize="display-4" />
 
 
         <section class="apropos-header text-center">
-
         </section>
 
         <!-- Historique -->
@@ -187,7 +169,8 @@
                     {{-- <h1 class="mb-5">Témoignages</h1> --}}
 
                     <h2 class="text-center mb-4">Témoignages</h2>
-                {{-- </div> --}}
+                    {{--
+                </div> --}}
 
                 @if($temoignages->count() > 1)
                     <div class="owl-carousel testimonial-carousel">
