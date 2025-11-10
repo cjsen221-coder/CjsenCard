@@ -60,6 +60,55 @@
             background-color: #e9ecef;
             color: #6c757d;
         }
+
+        /* Bouton petit et moderne */
+        .btn-cjsen {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            /* espace entre texte et icône */
+            background-color: var(--cjsen-turquoise);
+            color: var(--cjsen-blue-dark);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        /* Hover */
+        .btn-cjsen:hover {
+            background-color: var(--cjsen-yellow);
+            color: var(--cjsen-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Active */
+        .btn-cjsen:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile : masquer le texte, garder l’icône */
+        @media (max-width: 576px) {
+            .btn-cjsen {
+                padding: 6px 10px;
+                /* réduire un peu le bouton */
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Mobile : masquer le texte, garder l’icône */
+        @media (max-width: 376px) {
+            .btn-cjsen span {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -78,7 +127,6 @@
         <!-- Navbar & Hero Start -->
         <x-hero title="Domaines d'Action" current="Domaines d'Action" parent="" parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
-
         <!-- ======================= FORMATIONS ======================= -->
         <div class="container-xxl py-5" id="formations">
             <div class="container-fluid">
@@ -91,7 +139,6 @@
                     @forelse($formations as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
-
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
 
@@ -100,14 +147,10 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">
-                                        Date : {{ $domaine->created_at->format('d M Y') }}
-                                    </small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
-
                             </div>
                         </div>
                     @empty
@@ -117,8 +160,15 @@
                     @endforelse
                 </div>
 
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $formations->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $formations->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0 flex-shrink-0">
+                        <a href="{{ route('domaines.type', ['type' => 'formation']) }}" class="btn btn-cjsen">
+                            <span>Formations</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +185,6 @@
                     @forelse($causeries as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
-
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
 
@@ -144,13 +193,10 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
-
                             </div>
                         </div>
                     @empty
@@ -160,12 +206,18 @@
                     @endforelse
                 </div>
 
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $causeries->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $causeries->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'causerie']) }}" class="btn btn-cjsen">
+                            <span>Causeries</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <!-- ======================= SENSIBILISATIONS ======================= -->
         <div class="container-xxl py-5" id="sensibilisations">
@@ -179,7 +231,6 @@
                     @forelse($sensibilisations as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
-
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
 
@@ -188,12 +239,10 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
                                     <small class="text-gray-500">{{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
-
                             </div>
                         </div>
                     @empty
@@ -203,12 +252,18 @@
                     @endforelse
                 </div>
 
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $sensibilisations->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $sensibilisations->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'sensibilisation']) }}" class="btn btn-cjsen">
+                            <span>Sensibilisations</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <!-- ======================= COHÉSIONS ======================= -->
         <div class="container-xxl py-5" id="cohesions">
@@ -221,8 +276,7 @@
                 <div class="row g-4 justify-content-center">
                     @forelse($cohesions as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="position-relative service-item rounded pt-3 h-100 shadow-sm">
-
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
 
@@ -231,12 +285,9 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
-
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -247,9 +298,15 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $cohesions->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $cohesions->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'cohesion']) }}" class="btn btn-cjsen">
+                            <span>Cohésions</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -265,8 +322,7 @@
                 <div class="row g-4 justify-content-center">
                     @forelse($actions as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="position-relative service-item rounded pt-3 h-100 shadow-sm">
-
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
 
@@ -275,12 +331,9 @@
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
-
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -291,9 +344,15 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $actions->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $actions->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'action']) }}" class="btn btn-cjsen">
+                            <span>Actions</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -309,21 +368,18 @@
                 <div class="row g-4 justify-content-center">
                     @forelse($projets as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="position-relative service-item rounded pt-3 h-100 shadow-sm">
-
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
                                 <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
                                     class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-
                                     <h5>{{ $domaine->nom }}</h5>
-
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -334,12 +390,19 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $projets->links('pagination::bootstrap-5') }}
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $projets->links('pagination::bootstrap-5') }}
+                    </div>
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'projet']) }}" class="btn btn-cjsen">
+                            <span>Projets</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Footer Start -->
         @include('site.layouts.footer')

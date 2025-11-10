@@ -64,6 +64,8 @@ Route::get('/', [SiteController::class, 'accueil'])->name('site.accueil');
 Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaines');
 // Page détails générique (pour causerie, projet, etc.)
 Route::get('/domaine/{type}/{id}', [SiteController::class, 'show_domaine'])->name('domaine.details');
+Route::get('/domaines/{type}', [SiteController::class, 'showByType'])->name('domaines.type');
+
 Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
 Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
 
