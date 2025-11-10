@@ -42,7 +42,7 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('site/css/accueil.css') }}" rel="stylesheet">
-  
+
 
 </head>
 
@@ -83,7 +83,7 @@
                             <p class="hero-text animate__animated animate__fadeInUp">
                                 CJSEN est le petit colibri de la jeunesse mondiale.
                             </p>
-                            
+
                             <p class="hero-text descript animate__animated animate__fadeInUp">
                                 Une organisation née au Sénégal mais qui porte une vision universelle :
                                 donner à chaque jeune les moyens de s’informer, de s’orienter...
@@ -173,9 +173,8 @@
 
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-cjsen px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-cjsen-primary mb-0"
-                                        data-toggle="counter-up">
-                                        50+
+                                    <h1 class="flex-shrink-0 display-5 text-cjsen-primary mb-0">
+                                        <span data-toggle="counter-up">50</span>+
                                     </h1>
                                     <div class="ps-4">
                                         <p class="mb-0">Membres</p>
@@ -183,6 +182,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <a class="btn btn-primary py-3 px-5 mt-2" href="{{ route('site.apropos') }}">Voir Plus</a>
@@ -603,6 +603,8 @@
     <!-- Swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+    <!-- jQuery (nécessaire pour Counter-Up 1) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
