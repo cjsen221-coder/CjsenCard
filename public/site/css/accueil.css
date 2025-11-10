@@ -246,7 +246,7 @@
 /* Petits mobiles ≤576px */
 @media(max-width: 576px) {
     .hero-section-modern { height: 60vh; padding-bottom:10px; }
-    .hero-title { font-size:1.8rem; }
+    .hero-title { font-size:1.6rem; }
     .hero-text { font-size:0.95rem; line-height:1.4; }
     .btn-hero-modern, .btn-cjsen, .btn-temoignage { font-size:0.85rem; padding:8px 20px; }
     .service-card, .service-item-cjsen { padding:20px; text-align:center; }
@@ -265,9 +265,19 @@
     .service-icon, .icon-cjsen { font-size:1.8rem; margin-bottom:12px; }
     .gallery-img { height:220px; }
     .testimonial-item { padding:1.5rem; font-size:0.95rem; }
+    
+    .hero-section-modern {
+        height: 80vh;
+    }
 }
 
 /* Cacher le texte logo sur mobile menu */
 @media (max-width: 600px) {
     .descript { display: none; }
+}
+@media (max-width: 400px) {
+
+    .hero-section-modern {
+        height: 50vh;
+    }
 }
