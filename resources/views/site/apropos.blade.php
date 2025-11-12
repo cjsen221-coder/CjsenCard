@@ -158,24 +158,51 @@
                     </p>
                 </div>
             </div>
-        </section>
+    </section>
 
         <!-- Partenariats -->
-        <section class="apropos-section" id="partenariats">
-            <div class="container d-flex flex-wrap align-items-center">
-                <div class="apropos-image">
-                    <img src="{{ asset('images/partenariats.jpg') }}" alt="Nos partenariats">
-                </div>
-                <div class="apropos-text">
-                    <h2>Nos Partenariats</h2>
-                    <p>
-                        Nous collaborons avec des organisations nationales et internationales, des institutions
-                        publiques et
-                        des entreprises privées, pour maximiser l’impact de nos actions sur le terrain.
-                    </p>
-                </div>
+
+        <section class="partenariats-section" id="partenariats">
+        <div class="container text-center">
+        <h2 class="section-title">Nos Partenariats</h2>
+        <p class="section-intro">
+            Nous travaillons main dans la main avec plusieurs institutions, entreprises et organisations
+            partageant nos valeurs et notre vision d’un développement inclusif et durable.
+        </p>
+
+        <div class="logos-grid">
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner1.png') }}" alt="Partenaire 1">
             </div>
-        </section>
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner2.png') }}" alt="Partenaire 2">
+            </div>
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner3.png') }}" alt="Partenaire 3">
+            </div>
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner4.png') }}" alt="Partenaire 4">
+            </div>
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner5.png') }}" alt="Partenaire 5">
+            </div>
+            <div class="logo-item">
+                <img src="{{ asset('images/partenaires/partner6.png') }}" alt="Partenaire 6">
+            </div>
+        </div>
+    </div>
+</section>
+
+     
+
+
+
+
+
+
+
+
+
 
         <!-- Témoignages -->
         <section class="apropos-text bg-light" id="temoignages">
