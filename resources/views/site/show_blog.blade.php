@@ -49,23 +49,8 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl py-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">{{ $blog->title }}</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('site.blog') }}">Blog</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Details</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="{{ $blog->title }}" current="{{ $blog->title }}" parent="Blog"
+            parentUrl="{{ route('site.blog') }}" titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
 

@@ -15,11 +15,11 @@ class SiteController extends Controller
     public function accueil()
     {
 
-        $temoignages = Temoignage::latest()->get();
+        $temoignages = Temoignage::where('is_approved', true)->latest()->get();
 
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();
-        $gallery = Media::latest()->take(6)->get();
+        $gallery = Media::latest()->take(10)->get();
         $videos = Video::latest()->take(3)->get();
 
         // Convertir les URLs YouTube en URLs embed
@@ -77,8 +77,8 @@ class SiteController extends Controller
 
     public function apropos()
     {
-        
-        $temoignages = Temoignage::latest()->get();
+
+        $temoignages = Temoignage::where('is_approved', true)->latest()->get();
         return view('site.apropos', compact('temoignages'));
     }
 
@@ -89,8 +89,8 @@ class SiteController extends Controller
 
     public function mediatheque()
     {
-        $gallery = Media::latest()->paginate(12);
-        $videos = Video::latest()->paginate(6);
+        $gallery = Media::latest()->paginate(20);
+        $videos = Video::latest()->paginate(20);
 
         // Convertir les URLs YouTube en URLs embed
         $videos->transform(function ($video) {
@@ -154,7 +154,7 @@ class SiteController extends Controller
         return back()->with('success', 'Votre message a été envoyé avec succès !');
     }
 
-     public function show_domaine($type, $id)
+    public function show_domaine($type, $id)
     {
         // On récupère le domaine correspondant à l’ID et au type
         $domaine = Domaine::where('id', $id)
@@ -163,5 +163,15 @@ class SiteController extends Controller
 
         // On renvoie vers la vue détail
         return view('site.show_domaine', compact('domaine'));
+    }
+    public function showByType($type)
+    {
+        // Récupère les items selon le type, insensible à la casse
+        $domaines = Domaine::whereRaw('LOWER(type) = ?', [strtolower($type)])
+            ->latest()
+            ->paginate(12);
+
+        // Envoie les données à la vue
+        return view('site.type', compact('domaines', 'type'));
     }
 }

@@ -34,6 +34,82 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
+
+    <style>
+        /* Pagination CJSEN */
+        .pagination .page-link {
+            color: var(--cjsen-blue-dark);
+            background-color: var(--cjsen-turquoise);
+            border: none;
+            margin: 0 3px;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .pagination .page-link:hover {
+            background-color: var(--cjsen-yellow);
+            color: var(--cjsen-blue-dark);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--cjsen-blue);
+            color: #fff;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #e9ecef;
+            color: #6c757d;
+        }
+
+        /* Bouton petit et moderne */
+        .btn-cjsen {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            /* espace entre texte et icône */
+            background-color: var(--cjsen-turquoise);
+            color: var(--cjsen-blue-dark);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        /* Hover */
+        .btn-cjsen:hover {
+            background-color: var(--cjsen-yellow);
+            color: var(--cjsen-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Active */
+        .btn-cjsen:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile : masquer le texte, garder l’icône */
+        @media (max-width: 576px) {
+            .btn-cjsen {
+                padding: 6px 10px;
+                /* réduire un peu le bouton */
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Mobile : masquer le texte, garder l’icône */
+        @media (max-width: 376px) {
+            .btn-cjsen span {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -49,48 +125,31 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl py-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Domaines d'Action</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Domaines d'Action</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="Domaines d'Action" current="Domaines d'Action" parent="" parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
         <!-- ======================= FORMATIONS ======================= -->
         <div class="container-xxl py-5" id="formations">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Formations</h5>
                     <h1 class="mb-4">Apprendre, Partager et Grandir Ensemble</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($formations as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
-                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                            class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -101,67 +160,42 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($formations->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            {{-- Previous --}}
-                            @if ($formations->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $formations->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            {{-- Pages --}}
-                            @foreach ($formations->getUrlRange(1, $formations->lastPage()) as $page => $url)
-                                @if ($page == $formations->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            {{-- Next --}}
-                            @if ($formations->hasMorePages())
-                                <a href="{{ $formations->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $formations->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0 flex-shrink-0">
+                        <a href="{{ route('domaines.type', ['type' => 'formation']) }}" class="btn btn-cjsen">
+                            <span>Formations</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ======================= CAUSERIES ======================= -->
         <div class="container-xxl py-5" id="causeries">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Causeries</h5>
                     <h1 class="mb-4">Des échanges pour s’inspirer et grandir</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($causeries as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
-                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                            class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -172,64 +206,42 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($causeries->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            @if ($causeries->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $causeries->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            @foreach ($causeries->getUrlRange(1, $causeries->lastPage()) as $page => $url)
-                                @if ($page == $causeries->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            @if ($causeries->hasMorePages())
-                                <a href="{{ $causeries->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $causeries->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'causerie']) }}" class="btn btn-cjsen">
+                            <span>Causeries</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ======================= SENSIBILISATIONS ======================= -->
         <div class="container-xxl py-5" id="sensibilisations">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Sensibilisations</h5>
                     <h1 class="mb-4">Agir pour la prise de conscience</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($sensibilisations as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
-                                            class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
+                                            class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">  
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">{{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -240,64 +252,42 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($sensibilisations->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            @if ($sensibilisations->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $sensibilisations->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            @foreach ($sensibilisations->getUrlRange(1, $sensibilisations->lastPage()) as $page => $url)
-                                @if ($page == $sensibilisations->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            @if ($sensibilisations->hasMorePages())
-                                <a href="{{ $sensibilisations->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $sensibilisations->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'sensibilisation']) }}" class="btn btn-cjsen">
+                            <span>Sensibilisations</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ======================= COHÉSIONS ======================= -->
         <div class="container-xxl py-5" id="cohesions">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Activités de Cohésion</h5>
                     <h1 class="mb-4">Renforcer les liens et l’esprit d’équipe</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($cohesions as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -308,64 +298,42 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($cohesions->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            @if ($cohesions->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $cohesions->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            @foreach ($cohesions->getUrlRange(1, $cohesions->lastPage()) as $page => $url)
-                                @if ($page == $cohesions->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            @if ($cohesions->hasMorePages())
-                                <a href="{{ $cohesions->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $cohesions->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'cohesion']) }}" class="btn btn-cjsen">
+                            <span>Cohésions</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ======================= ACTIONS ======================= -->
         <div class="container-xxl py-5" id="actions">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Actions Communautaires</h5>
                     <h1 class="mb-4">Des actes concrets pour le changement</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($actions as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -376,64 +344,42 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($actions->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            @if ($actions->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $actions->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            @foreach ($actions->getUrlRange(1, $actions->lastPage()) as $page => $url)
-                                @if ($page == $actions->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            @if ($actions->hasMorePages())
-                                <a href="{{ $actions->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $actions->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'action']) }}" class="btn btn-cjsen">
+                            <span>Actions</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ======================= PROJETS ======================= -->
         <div class="container-xxl py-5" id="projets">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
                     <h5 class="section-title ff-secondary text-primary fw-normal">Nos Projets</h5>
                     <h1 class="mb-4">Construire l’avenir ensemble</h1>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @forelse($projets as $domaine)
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                            <div class="service-item rounded pt-3 h-100 shadow-sm">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
                                         <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
-                                    <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
-                                        class="stretched-link text-decoration-none text-dark">
-                                        <h5>{{ $domaine->nom }}</h5>
-                                    </a>
+                                    <h5>{{ $domaine->nom }}</h5>
                                     <p>{{ Str::limit($domaine->description, 100) }}</p>
-                                    <small class="text-gray-500">Date :
-                                        {{ $domaine->created_at->format('d M Y') }}</small>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
@@ -444,40 +390,18 @@
                     @endforelse
                 </div>
 
-                {{-- Pagination personnalisée --}}
-                @if($projets->hasPages())
-                    <div class="mt-4 d-flex justify-content-end">
-                        <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                            @if ($projets->onFirstPage())
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-l-md cursor-not-allowed">&laquo;</span>
-                            @else
-                                <a href="{{ $projets->previousPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-100">&laquo;</a>
-                            @endif
-
-                            @foreach ($projets->getUrlRange(1, $projets->lastPage()) as $page => $url)
-                                @if ($page == $projets->currentPage())
-                                    <span class="px-3 py-2 text-black bg-orange-500 border border-gray-300">{{ $page }}</span>
-                                @else
-                                    <a href="{{ $url }}"
-                                        class="px-3 py-2 text-gray-700 bg-white border border-gray-300 hover:bg-gray-100">{{ $page }}</a>
-                                @endif
-                            @endforeach
-
-                            @if ($projets->hasMorePages())
-                                <a href="{{ $projets->nextPageUrl() }}"
-                                    class="px-3 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-100">&raquo;</a>
-                            @else
-                                <span
-                                    class="px-3 py-2 text-gray-400 bg-white border border-gray-300 rounded-r-md cursor-not-allowed">&raquo;</span>
-                            @endif
-                        </nav>
+                <div class="mt-4 d-flex justify-content-between align-items-start flex-wrap gap-2">
+                    <div class="d-flex align-items-center">
+                        {{ $projets->links('pagination::bootstrap-5') }}
                     </div>
-                @endif
+                    <div class="d-flex align-items-start mt-md-0">
+                        <a href="{{ route('domaines.type', ['type' => 'projet']) }}" class="btn btn-cjsen">
+                            <span>Projets</span> <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-
 
 
         <!-- Footer Start -->

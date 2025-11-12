@@ -40,6 +40,72 @@
     <!-- Template Stylesheet -->
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
 
+    <style>
+        :root {
+            --cjsen-blue-dark: #003366;
+            --cjsen-blue: #006B8F;
+            --cjsen-turquoise: #23C1B5;
+            --cjsen-yellow: #F6B623;
+            --cjsen-orange: #FF6F3C;
+        }
+
+        /* Onglet non actif */
+        .nav-pills .nav-link {
+            /* background-color: var(--cjsen-turquoise); */
+            /* fond turquoise */
+            color: var(--cjsen-blue-dark);
+            /* texte bleu foncé */
+            border-radius: 0.5rem;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-pills .nav-link i {
+            color: var(--cjsen-blue-dark);
+            /* icône bleu foncé */
+        }
+
+        /* Onglet actif */
+        .nav-pills .nav-link.active {
+            background-color: var(--cjsen-turquoise);
+            /* fond bleu */
+            color: #fff;
+            /* texte blanc */
+        }
+
+        .nav-pills .nav-link.active h6,
+        .nav-pills .nav-link.active .text-body,
+        .nav-pills .nav-link.active i {
+            color: #fff !important;
+            /* icône blanche */
+        }
+
+        /* Pagination CJSEN */
+        .pagination .page-link {
+            color: var(--cjsen-blue-dark);
+            background-color: var(--cjsen-turquoise);
+            border: none;
+            margin: 0 3px;
+            border-radius: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .pagination .page-link:hover {
+            background-color: var(--cjsen-yellow);
+            color: var(--cjsen-blue-dark);
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: var(--cjsen-blue);
+            color: #fff;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #e9ecef;
+            color: #6c757d;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -55,23 +121,8 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl py-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Media</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Media</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="Média" current="Média" parent="" parentUrl=""
+            titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
 
@@ -82,12 +133,12 @@
                     <h1 class="mb-5">Galerie photos & vidéos</h1>
                 </div>
 
-                <!-- Onglets pour Photos / Vidéos -->
+                <!-- Onglets Photos / Vidéos -->
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill"
-                                href="#tab-photos">
+                            <a class="nav-link d-flex align-items-center text-start mx-3 ms-0 pb-3 active"
+                                data-bs-toggle="pill" href="#tab-photos">
                                 <i class="fa fa-image fa-2x text-primary"></i>
                                 <div class="ps-3">
                                     <small class="text-body">Galerie</small>
@@ -96,7 +147,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill"
+                            <a class="nav-link d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill"
                                 href="#tab-videos">
                                 <i class="fa fa-video fa-2x text-primary"></i>
                                 <div class="ps-3">
@@ -108,34 +159,34 @@
                     </ul>
 
                     <div class="tab-content">
-
-                        {{-- Photos --}}
-                        <div id="tab-photos" class="tab-pane fade show p-0 active">
+                        <!-- Photos -->
+                        <div id="tab-photos" class="tab-pane fade show active p-0">
                             <div class="row g-4">
                                 @forelse($gallery as $photo)
-                                <a href="{{ route('photo.show', $photo) }}" >
-                                        
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="card shadow-sm">
-                                            <img src="{{ asset('storage/' . $photo->image) }}" class="card-img-top"
-                                                alt="{{ $photo->title }}" style="height: 200px; object-fit: cover;">
-                                            <div class="card-body text-center">
-                                                <h6 class="card-title">{{ $photo->title }}</h6>
+                                    <div class="col-lg-4 col-md-4 col-sm-6">
+                                        <a href="{{ route('photo.show', $photo) }}">
+                                            <div class="card shadow-sm overflow-hidden">
+                                                <img src="{{ asset('storage/' . $photo->image) }}" class="card-img-top"
+                                                    alt="{{ $photo->title }}" style="height: auto; object-fit: cover;">
+                                                {{-- <div class="overlay d-flex align-items-center justify-content-center">
+                                                    --}}
+                                                    <h6 class="text-center" style="padding-top: 10px;">{{ $photo->title }}
+                                                    </h6>
+                                                    {{--
+                                                </div> --}}
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
-                                    
-                                    </a>
                                 @empty
                                     <p class="text-center text-muted">Aucune photo disponible pour le moment.</p>
                                 @endforelse
                             </div>
-                            <div class="mt-4">
-                                {{ $gallery->links() }}
+                            <div class="mt-4 d-flex justify-content-center">
+                                {{ $gallery->links('pagination::bootstrap-5') }}
                             </div>
                         </div>
 
-                        {{-- Vidéos --}}
+                        <!-- Vidéos -->
                         <div id="tab-videos" class="tab-pane fade show p-0">
                             <div class="row g-4">
                                 @forelse($videos as $video)
@@ -150,8 +201,8 @@
                                     <p class="text-center text-muted">Aucune vidéo disponible pour le moment.</p>
                                 @endforelse
                             </div>
-                            <div class="mt-4">
-                                {{ $videos->links() }}
+                            <div class="mt-4 d-flex justify-content-center">
+                                {{ $videos->links('pagination::bootstrap-5') }}
                             </div>
                         </div>
 
@@ -159,6 +210,7 @@
                 </div>
             </div>
         </div>
+
 
 
         <!-- Footer Start -->

@@ -110,7 +110,7 @@
     <div class="copyright">
       <div class="row">
         <div class="col-md-12 text-center text-md-between mb-3 mb-md-0" style="font-size: 12px;">
-          &copy; Sen Carrefour Jeunesse, Tous droits réservés | Conception : Cellule du Numérique et de l'Innovation
+          &copy; {{ date('Y') }} Sen Carrefour Jeunesse, Tous droits réservés | Conception : Cellule du Numérique et de l'Innovation
           Digitale (CNID)
         </div>
         {{-- <div class="col-md-6 text-center text-md-end">

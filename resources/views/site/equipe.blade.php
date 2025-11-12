@@ -39,81 +39,78 @@
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
 
     <style>
-        /* Bloc encadré */
-        .team-block {
-            border: 2px solid #dee2e6;
-            border-radius: 15px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .team-block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Titre principal */
-        #executif h1, #fonctionnel h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #FEA116;
+        /* 🌟 Liste des missions */
+        .missions-list li {
             position: relative;
-            display: inline-block;
-            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        #executif h1::after, #fonctionnel h1::after {
-            content: '';
+        .missions-list li::before {
+            content: "🌟";
             position: absolute;
-            width: 50%;
-            height: 4px;
-            background-color: #FEA116;
             left: 0;
-            bottom: -10px;
-            border-radius: 2px;
+            top: 0;
+            font-size: 1rem;
         }
 
-        /* Titre poste */
-        .poste-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #FEA116;
-            display: inline-block;
-            padding-bottom: 5px;
+        .missions-list li:hover {
+            transform: translateX(5px);
+            color: #0d6efd;
         }
 
-        /* Missions et roles */
-        .missions ul {
-            padding-left: 1.2rem;
-            list-style-type: disc;
+        /* 🌟 Bloc des missions centré verticalement */
+        .missions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
         }
 
-        .missions li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Adjoints */
+        /* 🌟 Effet d’animation sur les adjoints */
         .adjoint-card img {
-            border-radius: 50%;
-            border: 3px solid #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
         }
 
-        .adjoint-card h6 {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            font-weight: 600;
+        .img-fluid:hover,
+        .adjoint-card img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 🌟 Style des adjoints */
+        .adjoint-card {
+            width: 45%;
+            text-align: center;
         }
 
         .adjoint-card small {
-            font-size: 0.8rem;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .adjoint-card .adjoint-name {
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: #212529;
+        }
+
+        .adjoint-card .adjoint-poste {
+            font-size: 0.65rem;
+            margin-top: 5px;
             color: #6c757d;
         }
+
+        /* 🌟 Conteneur des adjoints */
+        .adjoints-container {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
     </style>
+
 </head>
 
 <body>
@@ -129,32 +126,18 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
 
-            @include('site.layouts.navbar')
-
-            <div class="container-xxl py-5 bg-dark hero-header">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Dispositif Organisationnel</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
-                            {{-- <li class="breadcrumb-item"><a href="#">Pages</a></li> --}}
-                            <li class="breadcrumb-item text-white active" aria-current="page">Dispositif Organisationnel
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        <x-hero title="Dispositif Organisationnel" current="Equipe" parent="" parentUrl=""
+            titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
         @php
-            $sections = [
-                'Présidence' => [
+            $bureauOperationnelSections = [
+                'Comité Directeur' => [
                     [
                         'poste' => 'Président',
-                        'membre' => ['nom' => 'Mamadou Mounirou TALL', 'photo' => 'media/mounirou.jpeg'],
+                        'nomCellule' => 'Présidence',
+                        'membre' => ['nom' => 'Mamadou Mounirou Tall', 'photo' => 'media/mounirou.jpeg'],
                         'missions' => [
                             'Définir et piloter la vision stratégique de l’association.',
                             'Représenter CJSEN auprès des partenaires et institutions.',
@@ -163,11 +146,10 @@
                             'Assurer la fonction de porte-parole ou la déléguer à un membre compétent.'
                         ],
                         'adjoints' => []
-                    ]
-                ],
-                'Secrétariat Général' => [
+                    ],
                     [
-                        'poste' => 'Secrétaire général',
+                        'poste' => 'Secrétaire Général',
+                        'nomCellule' => 'Secrétairiat Général',
                         'membre' => ['nom' => 'Ababacar BA', 'photo' => 'media/ABABACAR.jpg'],
                         'missions' => [
                             'Assurer la gestion administrative et la correspondance officielle.',
@@ -175,117 +157,37 @@
                             'Recevoir les démissions et transmettre les informations au Président et au Bureau exécutif.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Moustapha NDIAYE', 'poste' => 'Adjoint', 'photo' => 'media/ABABACAR.jpg'],
-                            ['nom' => 'Arame THIANE', 'poste' => 'Seconde Adjointe', 'photo' => 'media/ABABACAR.jpg']
+                            ['nom' => 'Moustapha NDIAYE', 'poste' => 'SG Adjoint', 'photo' => 'media/moustapha.jpg'],
+                            ['nom' => 'Arame THIANE', 'poste' => 'SG Seconde Adjointe', 'photo' => 'media/ARAME o.jpg']
                         ]
-                    ]
-                ],
-                'Trésorerie' => [
+                    ],
                     [
-                        'poste' => 'Trésorière',
-                        'membre' => ['nom' => 'Cheikh Sow', 'photo' => 'media/marianne R.jpg'],
+                        'poste' => 'Trésorerie / Porte-Parole',
+                        'nomCellule' => 'Trésorière / Porte-Parole',
+                        'membre' => ['nom' => 'Mariane Dji Fall Fatim TALL', 'photo' => 'media/marianne.jpg'],
                         'missions' => [
                             'Gérer les ressources financières et les budgets.',
                             'Superviser les recettes, dépenses et rapports financiers.',
                             'Collaborer avec le Commissaire aux comptes pour le contrôle et la transparence financière.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Fatou Ndiaye', 'poste' => 'Adjointe', 'photo' => 'media/marianne R.jpg']
+                            ['nom' => 'Yaye Adama SY', 'poste' => 'Trésorière adjointe', 'photo' => 'media/marianne.jpg']
                         ]
-                    ]
-                ],
-                'Commissariat aux comptes' => [
+                    ],
                     [
-                        'poste' => 'Commissaire aux comptes',
-                        'membre' => ['nom' => 'Diam Pathé SALL', 'photo' => 'media/Diam_Pathe.jpg'],
+                        'poste' => 'Commissaire aux Comptes',
+                        'nomCellule' => 'Commissariat aux Comptes',
+                        'membre' => ['nom' => 'Diampathé Sall', 'photo' => 'media/DIAM.jpg'],
                         'missions' => [
                             'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
                             'Vérifier la conformité des transactions financières avec le règlement intérieur.'
                         ],
                         'adjoints' => []
-                    ]
-                ]
-            ];
-        @endphp
-
-        <section id="executif" class="section bg-gray-100 py-5">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h1>Bureau Exécutif</h1>
-                    <p class="lead">Présentation complète des membres avec leurs missions et rôles</p>
-                </div>
-
-                @foreach($sections as $sectionTitle => $membres)
-                    {{-- Bloc poste --}}
-
-                    @foreach($membres as $poste)
-                        <div class="team-block mb-5">
-                            <h4 class="poste-title">{{ $sectionTitle }}</h4>
-                            <div class="row align-items-start">
-                                {{-- Photo principale --}}
-                                <div class="col-lg-3 col-md-4 text-center mb-3 mb-md-0">
-                                    <img src="{{ $poste['membre']['photo'] }}" class="w-100 mb-2"
-                                        alt="{{ $poste['membre']['nom'] }}">
-                                    <h5>{{ $poste['membre']['nom'] }}</h5>
-                                    <small class="text-muted">{{ $poste['poste'] }}</small>
-                                    <div class="mt-2">
-                                        @if(isset($poste['membre']['facebook']))<a href="{{ $poste['membre']['facebook'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-facebook"></i></a>@endif
-                                        @if(isset($poste['membre']['twitter']))<a href="{{ $poste['membre']['twitter'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-twitter"></i></a>@endif
-                                        @if(isset($poste['membre']['linkedin']))<a href="{{ $poste['membre']['linkedin'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-linkedin"></i></a>@endif
-                                        @if(isset($poste['membre']['instagram']))<a href="{{ $poste['membre']['instagram'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-instagram"></i></a>@endif
-                                    </div>
-                                </div>
-
-                                {{-- Missions et rôles --}}
-                                <div class="col-lg-9 col-md-8 missions">
-                                    <ul>
-                                        @foreach($poste['missions'] as $mission)
-                                            <li>{{ $mission }}</li>
-                                        @endforeach
-                                    </ul>
-
-                                    {{-- Adjoints --}}
-                                    @if(isset($poste['adjoints']) && count($poste['adjoints']) > 0)
-                                        <h5 class="mt-4">Adjoints</h5>
-                                        <div class="d-flex flex-wrap">
-                                            @foreach($poste['adjoints'] as $adjoint)
-                                                <div class="adjoint-card text-center me-4 mb-3" style="width:150px;">
-                                                    <img src="{{ $adjoint['photo'] }}" class="w-100 mb-2" alt="{{ $adjoint['nom'] }}">
-                                                    <h6>{{ $adjoint['nom'] }}</h6>
-                                                    <small>{{ $adjoint['poste'] }}</small>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endforeach
-            </div>
-        </section>
-
-
-
-        {{-- Les cellules --}}
-
-        @php
-            $bureauOperationnelSections = [
-                'Bureau Opérationnel' => [
+                    ],
                     [
-                        'poste' => 'Cellule de l’Initiative, de la Planification et de la Stratégie (CIPS)',
-                        'membre' => [
-                            'nom' => 'Mamadou Diop',
-                            'photo' => 'img/team-1.jpg',
-                            'facebook' => '#',
-                            'twitter' => '#',
-                            'linkedin' => '#',
-                            'instagram' => '#'
-                        ],
+                        'poste' => 'Coordonnateur',
+                        'nomCellule' => 'Cellule de l’Initiative, de la Planification et de la Stratégie (CIPS)',
+                        'membre' => ['nom' => 'Mame Fatou Mbaye Tall', 'photo' => 'media/MAME_FATOU.png'],
                         'missions' => [
                             'Orienter la vision stratégique et coordonner les plans d’action.',
                             'Définir les objectifs à court, moyen et long terme.',
@@ -294,14 +196,14 @@
                             'Analyser le contexte national et international pour guider les actions.',
                             'Proposer des stratégies innovantes adaptées aux besoins des jeunes.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Ibrahima Dieng', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima.jpg']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule de la Formation, de l’Éducation Citoyenne et du Leadership (CFEL)',
-                        'membre' => [
-                            'nom' => 'Aissatou Fall',
-                            'photo' => 'img/team-2.jpg'
-                        ],
+                        'poste' => 'Coordonnateur',
+                        'nomCellule' => 'Cellule de la Formation, de l’Éducation Citoyenne et du Leadership (CFEL)',
+                        'membre' => ['nom' => 'Youssoupha Fall', 'photo' => 'media/Youssoupha_FALL.png'],
                         'missions' => [
                             'Renforcer les compétences, l’esprit citoyen et le leadership des jeunes.',
                             'Concevoir et organiser des sessions de formation et ateliers pratiques.',
@@ -310,48 +212,49 @@
                             'Sensibiliser les jeunes sur leurs droits et devoirs dans la société.',
                             'Évaluer l’impact des actions et ajuster les programmes.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Mouhamed Rassoul Gueye', 'poste' => 'Adjoint', 'photo' => 'media/Rassoul_1.png']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule du Numérique et de l\'Innovation Digitale (CNID)',
-                        'membre' => [
-                            'nom' => 'Cheikh Sow',
-                            'photo' => 'img/team-3.jpg'
-                        ],
+                        'poste' => 'Coordonnateur',
+                        'nomCellule' => 'Cellule du Numérique et de l\'Innovation Digitale (CNID)',
+                        'membre' => ['nom' => 'Samba Dramé', 'photo' => 'media/Samba.png'],
                         'missions' => [
-                            'Développer et gérer les outils numériques de l’association pour faciliter la communication et la diffusion de l’information.',
+                            'Développer et gérer les outils numériques de l’association pour faciliter la communication, la gestion interne et la
+                                                                         diffusion de l’information.',
                             'Développer et maintenir les plateformes numériques (site web, bases de données, applications internes).',
                             'Assurer la sécurité, la performance et la mise à jour des outils numériques.',
                             'Collecter, centraliser et structurer l’information pour la rendre accessible aux membres et aux autres cellules.',
                             'Fournir un support technique aux autres cellules pour l’utilisation des outils numériques.',
                             'Proposer des innovations digitales pour améliorer l’efficacité des projets et la visibilité globale.',
-                            'Collaborer avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
+                            'Collaboration : Travailler avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Khadidiatou Diassé', 'poste' => 'Adjointe', 'photo' => 'media/adjia.jpg']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule de la Communication et de la Visibilité (CCV)',
-                        'membre' => [
-                            'nom' => 'Fatou Ndiaye',
-                            'photo' => 'img/team-4.jpg'
-                        ],
+                        'poste' => 'Coordonnatrice',
+                        'nomCellule' => 'Cellule de la Communication et de la Visibilité (CCV)',
+                        'membre' => ['nom' => 'Ndeye Fatim Seck', 'photo' => 'media/FATIM.jpg'],
                         'missions' => [
-                            'Valoriser l’image de CJSEN, gérer la communication externe et interne, et promouvoir les projets.',
+                            'Valoriser l’image de CJSEN, gérer la communication externe et interne, etpromouvoir les projets.',
                             'Concevoir, produire et diffuser des contenus éditoriaux et promotionnels (articles, vidéos, newsletters, visuels).',
                             'Gérer la stratégie, le contenu et l’animation des réseaux sociaux pour garantir une visibilité cohérente et professionnelle.',
                             'Superviser la communication lors des événements, activités et projets.',
                             'Maintenir les relations avec les médias et partenaires pour accroître la notoriété.',
                             'Garantir que toutes les communications respectent la vision, la mission, les valeurs et le règlement intérieur.',
-                            'Collaborer avec la Cellule Numérique pour l’optimisation technique et la diffusion efficace des contenus.'
+                            'Collaboration : Travailler avec la Cellule Numérique pour l’optimisation technique et la diffusion efficace des contenus.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Mody Sakho', 'poste' => 'Adjoint', 'photo' => 'media/MODY_SAKho.png']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule de Gestion et du Pilotage des Projets (CGPP)',
-                        'membre' => [
-                            'nom' => 'Oumar Diallo',
-                            'photo' => 'img/team-5.jpg'
-                        ],
+                        'poste' => 'Coordonnateur',
+                        'nomCellule' => 'Cellule de Gestion et du Pilotage des Projets (CGPP)',
+                        'membre' => ['nom' => 'Mame Mbaye Niang', 'photo' => 'media/Mame_Mbaye.jpg'],
                         'missions' => [
                             'Mettre en œuvre les projets et veiller à leur bonne exécution.',
                             'Planifier et organiser les activités et projets selon la feuille de route.',
@@ -360,14 +263,14 @@
                             'Identifier les risques et proposer des solutions pour leur mitigation.',
                             'Garantir le respect des délais et des standards de qualité.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Marie Sarr', 'poste' => 'Adjointe', 'photo' => 'media/marie.jpg']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule de Suivi et de l’Évaluation (CSE)',
-                        'membre' => [
-                            'nom' => 'Awa Gueye',
-                            'photo' => 'img/team-6.jpg'
-                        ],
+                        'poste' => 'Coordonnateur',
+                        'nomCellule' => 'Cellule de Suivi et de l’Évaluation (CSE)',
+                        'membre' => ['nom' => 'Thierno Abou Tall', 'photo' => 'media/THIERNO-.png'],
                         'missions' => [
                             'Mesurer l’impact des actions et proposer des ajustements pour optimiser les résultats.',
                             'Définir des indicateurs de performance pour chaque projet et action.',
@@ -376,14 +279,14 @@
                             'Recommander des améliorations et ajustements aux actions en cours.',
                             'Capitaliser les bonnes pratiques et partager l’expérience.'
                         ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Yaye Adama Sy', 'poste' => 'Adjointe', 'photo' => 'media/YAYE ADAMA.jpg']
+                        ]
                     ],
                     [
-                        'poste' => 'Cellule Partenariats et Relations Extérieures (CPRE)',
-                        'membre' => [
-                            'nom' => 'Seynabou Ba',
-                            'photo' => 'img/team-7.jpg'
-                        ],
+                        'poste' => 'Coordonnatrice',
+                        'nomCellule' => 'Cellule Partenariats et Relations Extérieures (CPRE)',
+                        'membre' => ['nom' => 'Léontine Maïté', 'photo' => 'img/team-7.jpg'],
                         'missions' => [
                             'Développer et maintenir des partenariats stratégiques et institutionnels.',
                             'Identifier et engager des partenaires publics, privés et associatifs.',
@@ -392,82 +295,73 @@
                             'Participer à des forums, conférences et événements pour représenter CJSEN.',
                             'Valoriser l’image et le rayonnement de l’association à l’extérieur.'
                         ],
-                        'adjoints' => []
-                    ],
-                    [
-                        'poste' => 'Comité de Validation',
-                        'membre' => [
-                            'nom' => 'Mouhamed Cissé',
-                            'photo' => 'img/team-8.jpg'
-                        ],
-                        'missions' => [
-                            'Assurer la qualité, la cohérence et la conformité de tous les contenus avant diffusion ou publication.',
-                            'Examiner et valider tous les documents, communications et supports produits par les cellules.',
-                            'Vérifier la conformité avec la vision, la mission et les valeurs de CJSEN.',
-                            'S’assurer que les contenus respectent les règles éthiques et le règlement intérieur.',
-                            'Proposer des corrections ou améliorations pour garantir clarté, exactitude et impact.',
-                            'Fournir un retour constructif aux cellules avant toute publication officielle.'
-                        ],
-                        'adjoints' => []
+                        'adjoints' => [
+                            ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => 'img/team-7.jpg']
+                        ]
                     ]
                 ]
             ];
         @endphp
 
-        <section id="fonctionnel" class="section bg-gray-100 py-5">
+        <section id="executif" class="section bg-gray-100 py-5">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h1>Bureau Opérationnel</h1>
-                    <p class="lead">Présentation complète des cellules avec leurs missions et coordonnateurs</p>
+                    <h1>Comité Directeur</h1>
+                    <p class="lead">Présentation complète des membres du Comité Directeur avec leurs missions et rôles
+                    </p>
                 </div>
 
                 @foreach($bureauOperationnelSections as $sectionTitle => $membres)
                     @foreach($membres as $poste)
-                        <div class="team-block mb-5">
-                            <h4 class="poste-title">{{ $poste['poste'] }}</h4>
-                            <div class="row align-items-start">
-                                {{-- Photo principale --}}
-                                <div class="col-lg-3 col-md-4 text-center mb-3 mb-md-0">
-                                    <img src="{{ $poste['membre']['photo'] }}"
-                                        class="w-100 mb-2 rounded-circle border border-3 border-white shadow"
-                                        alt="{{ $poste['membre']['nom'] }}">
-                                    <h5>{{ $poste['membre']['nom'] }}</h5>
-                                    <small class="text-muted">Coordonnateur</small>
-                                    <div class="mt-2">
-                                        @if(isset($poste['membre']['facebook']))<a href="{{ $poste['membre']['facebook'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-facebook"></i></a>@endif
-                                        @if(isset($poste['membre']['twitter']))<a href="{{ $poste['membre']['twitter'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-twitter"></i></a>@endif
-                                        @if(isset($poste['membre']['linkedin']))<a href="{{ $poste['membre']['linkedin'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-linkedin"></i></a>@endif
-                                        @if(isset($poste['membre']['instagram']))<a href="{{ $poste['membre']['instagram'] }}"
-                                        class="me-2 text-primary"><i class="bi bi-instagram"></i></a>@endif
+                        <div class="team-block mb-5 p-4 rounded-3 shadow-sm bg-white">
+                            {{-- Nom de la cellule / poste --}}
+                            <h4 class="poste-title text-primary border-start border-4 border-primary ps-3 mb-4 fw-bold">
+                                {{ $poste['nomCellule'] ?? $poste['poste'] }}
+                            </h4>
+
+                            <div class="row align-items-CENTER">
+
+                                {{-- PHOTO + COORDONNATEUR + ADJOINTS --}}
+                                <div
+                                    class="col-lg-5 col-md-4 text-center mb-3 mb-md-0 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <img src="{{ $poste['membre']['photo'] }}"
+                                            class="img-fluid rounded-circle shadow-sm mb-3 border border-3 border-white"
+                                            style="width: 140px; height: 140px; object-fit: cover;"
+                                            alt="{{ $poste['membre']['nom'] }}">
+                                        <h5 class="fw-bold text-dark">{{ $poste['membre']['nom'] }}</h5>
+                                        <small class="text-muted d-block mb-2">{{ $poste['poste'] }}</small>
                                     </div>
-                                </div>
 
-                                {{-- Missions et rôles --}}
-                                <div class="col-lg-9 col-md-8 missions">
-                                    <ul>
-                                        @foreach($poste['missions'] as $mission)
-                                            <li>{{ $mission }}</li>
-                                        @endforeach
-                                    </ul>
-
-                                    {{-- Adjoints --}}
+                                    {{-- ADJOINTS mini et alignés en bas --}}
                                     @if(isset($poste['adjoints']) && count($poste['adjoints']) > 0)
-                                        <h5 class="mt-4">Adjoints</h5>
-                                        <div class="d-flex flex-wrap">
+                                        <div class="adjoints-container">
                                             @foreach($poste['adjoints'] as $adjoint)
-                                                <div class="adjoint-card text-center me-4 mb-3" style="width:150px;">
+                                                <div class="adjoint-card">
                                                     <img src="{{ $adjoint['photo'] }}"
-                                                        class="w-100 mb-2 rounded-circle border border-3 border-white shadow"
+                                                        class="rounded-circle shadow-sm border border-2 border-light mb-1"
+                                                        style="height: 70px; width: 70px; object-fit: cover;"
                                                         alt="{{ $adjoint['nom'] }}">
-                                                    <h6>{{ $adjoint['nom'] }}</h6>
-                                                    <small>{{ $adjoint['poste'] }}</small>
+                                                    <small class="adjoint-name">{{ $adjoint['nom'] }}</small>
+                                                    <small class="adjoint-poste">{{ $adjoint['poste'] }}</small>
                                                 </div>
                                             @endforeach
                                         </div>
                                     @endif
+
+                                </div>
+
+                                {{-- MISSIONS --}}
+                                <div class="col-lg-7 col-md-8 missions">
+                                    <h5 class="text-primary fw-bold mb-3">🎯 Missions & Rôles</h5>
+                                    <ul class="missions-list list-unstyled">
+                                        @foreach($poste['missions'] as $mission)
+                                            <li class="d-flex align-items-start mb-2">
+                                                {{-- <span class="me-2 text-success fs-5">•</span> --}}
+                                                <span>{{ $mission }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                             </div>
                         </div>

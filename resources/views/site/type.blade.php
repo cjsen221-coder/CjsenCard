@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Blog - Sen Carrefour Jeunesse</title>
+    <title>{{ ucfirst($type) }} - Sen Carrefour Jeunesse</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -27,7 +27,7 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('site/lib/animate/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('site/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('site/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('site/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -49,43 +49,45 @@
 
 
         <!-- Navbar & Hero Start -->
-        <x-hero title="Blog" current="Blog" parent=""
-            parentUrl="" titleSize="display-4" />
-        <!-- Navbar & Hero End -->
+        <x-hero title="{{ ucfirst($type) }}s" current="{{ $type }}s" parent="Domaines d'Action"
+            parentUrl="{{ route('site.domaines') }}" titleSize="display-4" />
 
-
+        <!-- Contenu principal -->
         <div class="container-xxl py-5">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="text-center mb-5">
-                    <h1 class="display-4">Blog</h1>
-                    <p class="text-muted">Derniers articles et actualités de Sen Carrefour Jeunesse</p>
+                    <h5 class="section-title ff-secondary text-primary fw-normal">Nos {{ ucfirst($type) }}</h5>
+                    <h1 class="mb-4">Découvrez nos {{ ucfirst($type) }}s</h1>
                 </div>
 
-                <div class="row g-4">
-                    @forelse($blogs as $blog)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card shadow-sm h-100">
-                                @if($blog->image)
-                                    <img src="{{ asset('storage/' . $blog->image) }}" class="card-img-top"
-                                        alt="{{ $blog->title }}">
-                                @endif
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-center">{{ $blog->title }}</h5>
-                                    <p class="card-text text-center">
-                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}
-                                    </p>
-                                    <a href="{{ route('blog.show', $blog) }}" class="mt-auto btn btn-primary">Lire la
-                                        suite</a>
+                <div class="row g-4 justify-content-center">
+                    @forelse($domaines as $domaine)
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="service-item rounded pt-3 h-100 shadow-sm position-relative">
+                                <a href="{{ route('domaine.details', ['type' => $domaine->type, 'id' => $domaine->id]) }}"
+                                    class="stretched-link"></a>
+
+                                <div class="p-4 text-center">
+                                    @if($domaine->image)
+                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                            class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
+                                    @endif
+
+                                    <h5>{{ $domaine->nom }}</h5>
+                                    <p>{{ Str::limit($domaine->description, 100) }}</p>
+                                    <small class="text-gray-500">Date : {{ $domaine->created_at->format('d M Y') }}</small>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        <p class="text-center text-muted">Aucun article pour le moment.</p>
+                        <div class="col-12 text-center">
+                            <p class="text-muted fst-italic">Aucun {{ $type }} disponible pour le moment.</p>
+                        </div>
                     @endforelse
                 </div>
 
-                <div class="mt-4">
-                    {{ $blogs->links() }}
+                <div class="mt-4 d-flex justify-content-center">
+                    {{ $domaines->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

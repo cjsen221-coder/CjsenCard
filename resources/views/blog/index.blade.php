@@ -15,24 +15,21 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             @forelse($blogs as $blog)
                 <div class="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-all duration-300">
-                    <a href="{{ route('blogs.show', $blog) }}" class="flex flex-col gap-4 mb-4">
-                        @if($blog->image)
-                            <img src="{{ asset('storage/'.$blog->image) }}" alt="{{ $blog->title }}"
-                                class="w-full h-48 object-cover rounded-md">
-                        @endif
-                        <h3 class="text-xl font-bold text-gray-900">{{ $blog->title }}</h3>
-                        <p class="text-gray-700">{{ Str::limit($blog->excerpt, 80) }}</p>
-                        <small class="text-gray-500">Publié le {{ $blog->created_at->format('d M Y') }}</small>
-                    </a>
+                    @if($blog->image)
+                        <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}"
+                            class="w-full object-cover rounded-md" style="height: 250px; width: 100%; object-fit: cover;">
+                    @endif
+                    <h3 class="text-xl font-bold text-gray-900">{{ $blog->title }}</h3>
+                    <p class="text-gray-700">{{ Str::limit($blog->excerpt, 80) }}</p>
+                    <small class="text-gray-500">Publié le {{ $blog->created_at->format('d M Y') }}</small>
                     <div class="flex justify-between items-center border-t pt-2">
-                        <a href="{{ route('blogs.edit', $blog) }}"
-                            class="text-yellow-600 font-semibold hover:underline">✏️ Modifier</a>
+                        <a href="{{ route('blogs.edit', $blog) }}" class="text-yellow-600 font-semibold hover:underline">✏️
+                            Modifier</a>
                         <form action="{{ route('blogs.destroy', $blog) }}" method="POST"
                             onsubmit="return confirm('Confirmer la suppression ?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit"
-                                class="text-red-600 font-semibold hover:underline">🗑️ Supprimer</button>
+                            <button type="submit" class="text-red-600 font-semibold hover:underline">🗑️ Supprimer</button>
                         </form>
                     </div>
                 </div>

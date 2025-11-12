@@ -1,0 +1,283 @@
+/* ==============================
+   ✅ PALETTE CJSEN
+============================== */
+:root {
+    --cjsen-blue-dark: #003366;
+    --cjsen-blue: #006B8F;
+    --cjsen-turquoise: #23C1B5;
+    --cjsen-yellow: #F6B623;
+    --cjsen-orange: #E67C35;
+    --cjsen-light: #f2f2f2;
+}
+
+/* ==============================
+   TEXTES CJSEN
+============================== */
+.text-cjsen-primary { color: var(--cjsen-turquoise); }
+.text-cjsen-blue-dark { color: var(--cjsen-blue-dark); }
+.cjsen-blue-dark { color: #22445e !important; }
+.cjsen-turquoise { color: #23C1B5 !important; }
+
+/* ==============================
+   CARTES SERVICES
+============================== */
+.service-link { text-decoration: none; }
+
+.service-card, .service-item-cjsen {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.06);
+    padding: 35px 25px;
+    transition: all 0.35s ease;
+    border: 1px solid #e7eef5;
+}
+
+.service-card:hover, .service-item-cjsen:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    background-color: var(--cjsen-turquoise);
+}
+
+.service-card:hover h5, .service-card:hover p, .service-card:hover i,
+.service-item-cjsen:hover h5, .service-item-cjsen:hover p { color: #fff !important; }
+
+.service-icon, .icon-cjsen { color: var(--cjsen-turquoise); transition: 0.35s ease; }
+.service-card:hover .service-icon, .service-item-cjsen:hover .icon-cjsen { color: var(--cjsen-blue-dark); transform: scale(1.1); }
+
+.service-text { color: #777; font-size: 0.95rem; line-height: 1.5; }
+
+/* ==============================
+   GALERIE ABOUT
+============================== */
+.about-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 18px;
+}
+
+.about-gallery .gallery-item img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+    object-fit: cover;
+    transition: transform 1.2s ease, filter 1.2s ease;
+}
+
+.about-gallery .gallery-item:hover img { transform: scale(1.05); filter: brightness(1.05); }
+.about-gallery .gallery-item.tall { grid-row: span 2; height: 100%; }
+.about-gallery .gallery-item.tall img { height: 100%; object-fit: cover; object-position: center; }
+
+/* ==============================
+   BOUTONS
+============================== */
+.btn-cjsen {
+    background-color: var(--cjsen-turquoise);
+    color: #fff;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    padding: 10px 28px;
+}
+
+.btn-cjsen:hover { background-color: var(--cjsen-blue); color: #fff; }
+
+.btn-temoignage {
+    background: linear-gradient(135deg, var(--cjsen-blue-dark), var(--cjsen-blue));
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 10px 28px;
+    box-shadow: 0 4px 12px rgba(0,51,102,0.35);
+    transition: all 0.25s ease;
+}
+
+.btn-temoignage:hover {
+    background: linear-gradient(135deg, var(--cjsen-blue), var(--cjsen-turquoise));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,107,143,0.35);
+    color: #fff;
+}
+
+.btn-hero-modern {
+    background: linear-gradient(135deg, var(--cjsen-turquoise), var(--cjsen-blue-dark));
+    color: #fff;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    border: none;
+}
+
+.btn-hero-modern:hover {
+    background: linear-gradient(135deg, var(--cjsen-blue-dark), var(--cjsen-turquoise));
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+/* ==============================
+   MODAL & FORMULAIRES
+============================== */
+.modal-backdrop.show { backdrop-filter: blur(7px); }
+
+.modal.fade .modal-dialog { transform: translateY(40px); transition: all 0.4s ease-out; opacity: 0; }
+.modal.fade.show .modal-dialog { transform: translateY(0); opacity: 1; }
+
+.modal-content {
+    border-radius: 22px;
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--cjsen-blue-dark), var(--cjsen-orange));
+    padding: 20px 24px;
+}
+.modal-header .modal-title { color: #fff; font-size: 20px; font-weight: 700; }
+.modal-header .btn-close { filter: brightness(2000); opacity: 1; }
+
+.modal-body .form-control {
+    border-radius: 12px;
+    border: 1px solid #d6d6d6;
+    padding: 10px 14px;
+    transition: 0.2s ease;
+}
+.modal-body .form-control:focus {
+    border-color: var(--cjsen-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0,107,143,0.2);
+}
+
+.btn-send {
+    background: linear-gradient(135deg, var(--cjsen-blue), var(--cjsen-turquoise));
+    border: none;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+.btn-send:hover {
+    background: linear-gradient(135deg, var(--cjsen-turquoise), var(--cjsen-yellow));
+    box-shadow: 0 6px 16px rgba(35,193,181,0.35);
+}
+
+/* ==============================
+   GALLERY CARD & IMAGE
+============================== */
+.gallery-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-card:hover { transform: scale(1.03); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.gallery-card:hover .overlay { opacity: 1; }
+.overlay h6 { color: #fff; }
+
+/* ==============================
+   TEMOIGNAGES
+============================== */
+.testimonial-item {
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    color: #333;
+}
+.testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    background-color: var(--cjsen-turquoise) !important;
+}
+.testimonial-item:hover p,
+.testimonial-item:hover h5,
+.testimonial-item:hover small,
+.testimonial-item:hover .fa-quote-left,
+.testimonial-item:hover .ps-3 * { color: #fff !important; }
+
+.testimonial-item p { font-style: italic; }
+.testimonial-item .fa-quote-left { color: var(--cjsen-turquoise); }
+.testimonial-item:hover .fa-quote-left { color: #fff; }
+
+/* ==============================
+   HERO MODERNE
+============================== */
+.hero-section-modern {
+    position: relative;
+    width: 100%;
+    height: 110vh;
+    background: url("../../media/8.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+}
+.hero-overlay-modern {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(34,68,94,0.85), rgba(34,68,94,0.15));
+    z-index: 1;
+}
+.hero-content-modern { z-index: 2; }
+.hero-title { margin-bottom: 0; font-size: clamp(2rem,4vw,3.2rem); font-weight:800; text-transform:uppercase; letter-spacing:2px; color: var(--cjsen-light); text-shadow:0 4px 14px rgba(0,0,0,0.45);}
+.hero-text { font-size: clamp(1rem,2vw,1.3rem); color: #f2f2f2; line-height:1.7; margin:5px 0; text-shadow:0 2px 6px rgba(0,0,0,0.38);}
+.btn-hero-modern { font-weight:600; }
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+/* Petits mobiles ≤576px */
+@media(max-width: 576px) {
+    .hero-section-modern { height: 60vh; padding-bottom:10px; }
+    .hero-title { font-size:1.6rem; }
+    .hero-text { font-size:0.95rem; line-height:1.4; }
+    .btn-hero-modern, .btn-cjsen, .btn-temoignage { font-size:0.85rem; padding:8px 20px; }
+    .service-card, .service-item-cjsen { padding:20px; text-align:center; }
+    .service-icon, .icon-cjsen { font-size:1.5rem; margin-bottom:10px; }
+    .gallery-img { height:180px; }
+    .testimonial-item { padding:1.2rem; font-size:0.85rem; }
+    .about-gallery { grid-template-columns: 1fr; gap:12px; }
+}
+
+/* Tablettes 577px → 992px */
+@media(min-width:577px) and (max-width:992px) {
+    .hero-title { font-size:2.5rem; }
+    .hero-text { font-size:1rem; }
+    .btn-hero-modern, .btn-cjsen, .btn-temoignage { font-size:0.95rem; padding:10px 24px; }
+    .service-card, .service-item-cjsen { padding:28px 20px; text-align:center; }
+    .service-icon, .icon-cjsen { font-size:1.8rem; margin-bottom:12px; }
+    .gallery-img { height:220px; }
+    .testimonial-item { padding:1.5rem; font-size:0.95rem; }
+    
+    .hero-section-modern {
+        height: 80vh;
+    }
+}
+
+/* Cacher le texte logo sur mobile menu */
+@media (max-width: 600px) {
+    .descript { display: none; }
+}
+@media (max-width: 400px) {
+
+    .hero-section-modern {
+        height: 50vh;
+    }
+}

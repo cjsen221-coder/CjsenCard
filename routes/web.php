@@ -43,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
     // Gérer les témoignages
     Route::resource('temoignage', TemoignageController::class);
+    Route::patch('temoignage/{temoignage}/approve', [TemoignageController::class, 'approve'])
+     ->name('temoignage.approve');
+
 });
 
 Route::middleware('auth')->group(function () {
@@ -61,6 +64,8 @@ Route::get('/', [SiteController::class, 'accueil'])->name('site.accueil');
 Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaines');
 // Page détails générique (pour causerie, projet, etc.)
 Route::get('/domaine/{type}/{id}', [SiteController::class, 'show_domaine'])->name('domaine.details');
+Route::get('/domaines/{type}', [SiteController::class, 'showByType'])->name('domaines.type');
+
 Route::get('/apropos', [SiteController::class, 'apropos'])->name('site.apropos');
 Route::get('/equipe', [SiteController::class, 'equipe'])->name('site.equipe');
 
@@ -75,7 +80,7 @@ Route::post('/contact', [SiteController::class, 'send'])->name('site.contact.sen
 // web.php
 Route::post('/newsletter', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-
-
+Route::post('/temoignages/store', [TemoignageController::class, 'storeUser'])
+    ->name('temoignages.store.user');   
 
 require __DIR__ . '/auth.php';

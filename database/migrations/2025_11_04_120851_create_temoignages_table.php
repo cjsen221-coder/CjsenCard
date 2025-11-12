@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('profession')->nullable();
             $table->text('message');
             $table->string('image')->nullable();
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }

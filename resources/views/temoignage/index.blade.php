@@ -18,13 +18,11 @@
                 <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-xl transition-all duration-300 flex flex-col">
                     <div class="flex flex-col items-center text-center gap-3 mb-4">
                         @if($temoignage->image)
-                            <img src="{{ asset('storage/'.$temoignage->image) }}" 
-                                 alt="{{ $temoignage->nom }}"
-                                 class="w-24 h-24 object-cover rounded-full border-2 border-primary shadow-md">
+                            <img src="{{ asset('storage/' . $temoignage->image) }}" alt="{{ $temoignage->nom }}"
+                                class="w-24 h-24 object-cover rounded-full border-2 border-primary shadow-md">
                         @else
-                            <img src="{{ asset('images/logo-cjsen.jpg') }}" 
-                                 alt="Image par défaut"
-                                 class="w-24 h-24 object-cover rounded-full border-2 border-gray-300 opacity-70">
+                            <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Image par défaut"
+                                class="w-24 h-24 object-cover rounded-full border-2 border-gray-300 opacity-70">
                         @endif
 
                         <h3 class="text-lg font-bold text-gray-900">{{ $temoignage->nom }}</h3>
@@ -41,15 +39,26 @@
 
                     <div class="flex justify-between items-center mt-auto pt-3 border-t">
                         <a href="{{ route('temoignage.edit', $temoignage) }}"
-                           class="text-yellow-600 font-semibold hover:text-yellow-800 hover:underline transition">
+                            class="text-yellow-600 font-semibold hover:text-yellow-800 hover:underline transition">
                             ✏️ Modifier
                         </a>
+
+                        <form action="{{ route('temoignage.approve', $temoignage) }}" method="POST"
+                            onsubmit="return confirm('Voulez-vous vraiment changer le statut de ce témoignage ?');">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit"
+                                class="{{ $temoignage->is_approved ? 'text-red-600 hover:text-red-800' : 'text-green-600 hover:text-green-800' }} font-semibold hover:underline transition">
+                                {{ $temoignage->is_approved ? '❌ Invalider' : '✅ Valider' }}
+                            </button>
+                        </form>
+
                         <form action="{{ route('temoignage.destroy', $temoignage) }}" method="POST"
-                              onsubmit="return confirm('Confirmer la suppression de ce témoignage ?');">
+                            onsubmit="return confirm('Confirmer la suppression de ce témoignage ?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" 
-                                    class="text-red-600 font-semibold hover:text-red-800 hover:underline transition">
+                            <button type="submit"
+                                class="text-red-600 font-semibold hover:text-red-800 hover:underline transition">
                                 🗑️ Supprimer
                             </button>
                         </form>

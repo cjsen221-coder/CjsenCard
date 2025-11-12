@@ -13,7 +13,7 @@ class TemoignageController extends Controller
      */
     public function index()
     {
-        $temoignages = Temoignage::latest()->paginate(3);
+        $temoignages = Temoignage::latest()->paginate(6);
         return view('temoignage.index', compact('temoignages'));
     }
 
@@ -82,5 +82,40 @@ class TemoignageController extends Controller
     {
         $temoignage->delete();
         return back()->with('success', 'Témoignage supprimé avec succès.');
+    }
+
+
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'profession' => 'nullable|string|max:255',
+            'message' => 'required|string|min:10',
+            'image' => 'required|image|max:2048',
+        ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('temoignages', 'public');
+        }
+
+        Temoignage::create([
+            'nom' => $request->nom,
+            'profession' => $request->profession,
+            'message' => $request->message,
+            'image' => $imagePath,
+            'is_approved' => false,
+        ]);
+
+        return back()->with('success', 'Votre témoignage a été envoyé et sera affiché après validation.');
+    }
+    public function approve(Temoignage $temoignage)
+    {
+        $temoignage->is_approved = !$temoignage->is_approved; // Bascule l’état
+        $temoignage->save();
+
+        $status = $temoignage->is_approved ? 'validé' : 'invalidé';
+
+        return back()->with('success', "Le témoignage a été $status.");
     }
 }
