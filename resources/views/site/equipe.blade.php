@@ -231,7 +231,7 @@
                             'Collaboration : Travailler avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Khadidiatou Diassé', 'poste' => 'Adjointe', 'photo' => 'media/adjia.jpg']
+                            ['nom' => 'Khadidiatou Diassé', 'poste' => 'Adjointe', 'photo' => 'media/moi.jpg']
                         ]
                     ],
                     [
