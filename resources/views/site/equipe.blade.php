@@ -127,8 +127,7 @@
 
         <!-- Navbar & Hero Start -->
 
-        <x-hero title="Dispositif Organisationnel" current="Equipe" parent="" parentUrl=""
-            titleSize="display-4" />
+        <x-hero title="Dispositif Organisationnel" current="Equipe" parent="" parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
         @php
@@ -137,7 +136,7 @@
                     [
                         'poste' => 'Président',
                         'nomCellule' => 'Présidence',
-                        'membre' => ['nom' => 'Mamadou Mounirou Tall', 'photo' => 'media/mounirou.jpeg'],
+                        'membre' => ['nom' => 'Mamadou Mounirou TALL', 'photo' => 'media/mounirou.jpeg'],
                         'missions' => [
                             'Définir et piloter la vision stratégique de l’association.',
                             'Représenter CJSEN auprès des partenaires et institutions.',
@@ -157,8 +156,8 @@
                             'Recevoir les démissions et transmettre les informations au Président et au Bureau exécutif.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Moustapha NDIAYE', 'poste' => 'SG Adjoint', 'photo' => 'media/moustapha.jpg'],
-                            ['nom' => 'Arame THIANE', 'poste' => 'SG Seconde Adjointe', 'photo' => 'media/ARAME o.jpg']
+                            ['nom' => 'Moustapha NDIAYE', 'poste' => 'SG Adjoint', 'photo' => 'media/moustapha-r.png'],
+                            ['nom' => 'Arame THIANE', 'poste' => 'SG Seconde Adjointe', 'photo' => 'media/ARAME_o-r.png']
                         ]
                     ],
                     [
@@ -171,13 +170,13 @@
                             'Collaborer avec le Commissaire aux comptes pour le contrôle et la transparence financière.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Yaye Adama SY', 'poste' => 'Trésorière adjointe', 'photo' => 'media/marianne.jpg']
+                            ['nom' => 'Adama SY', 'poste' => 'Trésorière adjointe', 'photo' => 'media/ADAMA-r.png']
                         ]
                     ],
                     [
                         'poste' => 'Commissaire aux Comptes',
                         'nomCellule' => 'Commissariat aux Comptes',
-                        'membre' => ['nom' => 'Diampathé Sall', 'photo' => 'media/DIAM.jpg'],
+                        'membre' => ['nom' => 'Diampathé SALL', 'photo' => 'media/diam1-.png'],
                         'missions' => [
                             'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
                             'Vérifier la conformité des transactions financières avec le règlement intérieur.'
@@ -187,7 +186,7 @@
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de l’Initiative, de la Planification et de la Stratégie (CIPS)',
-                        'membre' => ['nom' => 'Mame Fatou Mbaye Tall', 'photo' => 'media/MAME_FATOU.png'],
+                        'membre' => ['nom' => 'Mame Fatou Mbaye TALL', 'photo' => 'media/MAME_FATOU.png'],
                         'missions' => [
                             'Orienter la vision stratégique et coordonner les plans d’action.',
                             'Définir les objectifs à court, moyen et long terme.',
@@ -197,13 +196,13 @@
                             'Proposer des stratégies innovantes adaptées aux besoins des jeunes.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Ibrahima Dieng', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima.jpg']
+                            ['nom' => 'Ibrahima DIENG', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima-r.png']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de la Formation, de l’Éducation Citoyenne et du Leadership (CFEL)',
-                        'membre' => ['nom' => 'Youssoupha Fall', 'photo' => 'media/Youssoupha_FALL.png'],
+                        'membre' => ['nom' => 'Youssoupha FALL', 'photo' => 'media/Youssoupha_FALL.png'],
                         'missions' => [
                             'Renforcer les compétences, l’esprit citoyen et le leadership des jeunes.',
                             'Concevoir et organiser des sessions de formation et ateliers pratiques.',
@@ -213,16 +212,16 @@
                             'Évaluer l’impact des actions et ajuster les programmes.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Mouhamed Rassoul Gueye', 'poste' => 'Adjoint', 'photo' => 'media/Rassoul_1.png']
+                            ['nom' => 'Mouhamed Rassoul GUEYE', 'poste' => 'Adjoint', 'photo' => 'media/Rassoul_1.png']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule du Numérique et de l\'Innovation Digitale (CNID)',
-                        'membre' => ['nom' => 'Samba Dramé', 'photo' => 'media/Samba.png'],
+                        'membre' => ['nom' => 'Samba DRAME', 'photo' => 'media/Samba.png'],
                         'missions' => [
                             'Développer et gérer les outils numériques de l’association pour faciliter la communication, la gestion interne et la
-                                                                         diffusion de l’information.',
+                                                                                                                         diffusion de l’information.',
                             'Développer et maintenir les plateformes numériques (site web, bases de données, applications internes).',
                             'Assurer la sécurité, la performance et la mise à jour des outils numériques.',
                             'Collecter, centraliser et structurer l’information pour la rendre accessible aux membres et aux autres cellules.',
@@ -231,15 +230,16 @@
                             'Collaboration : Travailler avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Khadidiatou Diassé', 'poste' => 'Adjointe', 'photo' => 'media/adjia.jpg']
+                            ['nom' => 'Khadidiatou DIASSE', 'poste' => 'Adjointe', 'photo' => 'media/adjia-r.png'],
+                            ['nom' => 'Mayacine NDIAYE', 'poste' => 'Membre', 'photo' => '']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnatrice',
                         'nomCellule' => 'Cellule de la Communication et de la Visibilité (CCV)',
-                        'membre' => ['nom' => 'Ndeye Fatim Seck', 'photo' => 'media/FATIM.jpg'],
+                        'membre' => ['nom' => 'Ndeye Fatim SECK', 'photo' => 'media/FATIM-r.png'],
                         'missions' => [
-                            'Valoriser l’image de CJSEN, gérer la communication externe et interne, etpromouvoir les projets.',
+                            'Valoriser l’image de CJSEN, gérer la communication externe et interne et promouvoir les projets.',
                             'Concevoir, produire et diffuser des contenus éditoriaux et promotionnels (articles, vidéos, newsletters, visuels).',
                             'Gérer la stratégie, le contenu et l’animation des réseaux sociaux pour garantir une visibilité cohérente et professionnelle.',
                             'Superviser la communication lors des événements, activités et projets.',
@@ -248,13 +248,13 @@
                             'Collaboration : Travailler avec la Cellule Numérique pour l’optimisation technique et la diffusion efficace des contenus.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Mody Sakho', 'poste' => 'Adjoint', 'photo' => 'media/MODY_SAKho.png']
+                            ['nom' => 'Mody SAKHO', 'poste' => 'Adjoint', 'photo' => 'media/MODY_SAKho.png']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de Gestion et du Pilotage des Projets (CGPP)',
-                        'membre' => ['nom' => 'Mame Mbaye Niang', 'photo' => 'media/Mame_Mbaye.jpg'],
+                        'membre' => ['nom' => 'Mame Mbaye NIANG', 'photo' => 'media/Mame_Mbaye.jpg'],
                         'missions' => [
                             'Mettre en œuvre les projets et veiller à leur bonne exécution.',
                             'Planifier et organiser les activités et projets selon la feuille de route.',
@@ -264,13 +264,13 @@
                             'Garantir le respect des délais et des standards de qualité.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Marie Sarr', 'poste' => 'Adjointe', 'photo' => 'media/marie.jpg']
+                            ['nom' => 'Marie Sarr TINE', 'poste' => 'Adjointe', 'photo' => 'media/maries-r.png']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de Suivi et de l’Évaluation (CSE)',
-                        'membre' => ['nom' => 'Thierno Abou Tall', 'photo' => 'media/THIERNO-.png'],
+                        'membre' => ['nom' => 'Thierno Abou TALL', 'photo' => 'media/THIERNO-.png'],
                         'missions' => [
                             'Mesurer l’impact des actions et proposer des ajustements pour optimiser les résultats.',
                             'Définir des indicateurs de performance pour chaque projet et action.',
@@ -280,13 +280,13 @@
                             'Capitaliser les bonnes pratiques et partager l’expérience.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Yaye Adama Sy', 'poste' => 'Adjointe', 'photo' => 'media/YAYE ADAMA.jpg']
+                            ['nom' => 'Yaye Adama CISSE', 'poste' => 'Adjointe', 'photo' => 'media/YAYE ADAMA.jpg']
                         ]
                     ],
                     [
                         'poste' => 'Coordonnatrice',
                         'nomCellule' => 'Cellule Partenariats et Relations Extérieures (CPRE)',
-                        'membre' => ['nom' => 'Léontine Maïté', 'photo' => 'img/team-7.jpg'],
+                        'membre' => ['nom' => 'Léontine MAITE', 'photo' => ''],
                         'missions' => [
                             'Développer et maintenir des partenariats stratégiques et institutionnels.',
                             'Identifier et engager des partenaires publics, privés et associatifs.',
@@ -296,7 +296,7 @@
                             'Valoriser l’image et le rayonnement de l’association à l’extérieur.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => 'img/team-7.jpg']
+                            ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => '']
                         ]
                     ]
                 ]
@@ -325,10 +325,17 @@
                                 <div
                                     class="col-lg-5 col-md-4 text-center mb-3 mb-md-0 d-flex flex-column justify-content-between">
                                     <div>
-                                        <img src="{{ $poste['membre']['photo'] }}"
-                                            class="img-fluid rounded-circle shadow-sm mb-3 border border-3 border-white"
-                                            style="width: 140px; height: 140px; object-fit: cover;"
-                                            alt="{{ $poste['membre']['nom'] }}">
+                                        @if (!empty($poste['membre']['photo']))
+                                            <img src="{{ $poste['membre']['photo'] }}"
+                                                class="img-fluid shadow-sm mb-3 border border-3 border-white"
+                                                style="width: 200px; height: 200px; object-fit: fit;"
+                                                alt="{{ $poste['membre']['nom'] }}">
+                                        @else
+                                            <i class="bi bi-person text-secondary"
+                                                style="font-size: 4rem; width: 200px; height: 200px;"></i>
+
+                                        @endif
+
                                         <h5 class="fw-bold text-dark">{{ $poste['membre']['nom'] }}</h5>
                                         <small class="text-muted d-block mb-2">{{ $poste['poste'] }}</small>
                                     </div>
@@ -338,10 +345,14 @@
                                         <div class="adjoints-container">
                                             @foreach($poste['adjoints'] as $adjoint)
                                                 <div class="adjoint-card">
-                                                    <img src="{{ $adjoint['photo'] }}"
-                                                        class="rounded-circle shadow-sm border border-2 border-light mb-1"
-                                                        style="height: 70px; width: 70px; object-fit: cover;"
-                                                        alt="{{ $adjoint['nom'] }}">
+                                                    @if (!empty($adjoint['photo']))
+                                                        <img src="{{ $adjoint['photo'] }}"
+                                                            class="rounded-circle shadow-sm border border-2 border-light mb-1"
+                                                            style="height: 70px; width: 70px; object-fit: cover;"
+                                                            alt="{{ $adjoint['nom'] }}">
+                                                    @else
+                                                        <i class="bi bi-person-circle text-secondary" style="font-size: 4rem;"></i>
+                                                    @endif
                                                     <small class="adjoint-name">{{ $adjoint['nom'] }}</small>
                                                     <small class="adjoint-poste">{{ $adjoint['poste'] }}</small>
                                                 </div>
