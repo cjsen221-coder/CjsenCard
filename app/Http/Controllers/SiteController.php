@@ -16,6 +16,8 @@ class SiteController extends Controller
     {
 
         $temoignages = Temoignage::where('is_approved', true)->latest()->get();
+        // $temoignages = Temoignage::all();
+        // dd($temoignages);
 
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();

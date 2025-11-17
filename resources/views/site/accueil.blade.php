@@ -23,9 +23,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 
     <!-- Libraries Stylesheets -->
     <link href="{{ asset('site/lib/animate/animate.min.css') }}" rel="stylesheet">
@@ -461,6 +462,7 @@
 
         <!-- ======================= Témoignages ======================= -->
 
+
         <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container-fluid">
                 <div class="text-center">
@@ -468,6 +470,7 @@
                     </h5>
                     <h1 class="mb-5">Témoignages de nos membres</h1>
                 </div>
+
 
                 @if($temoignages->count() > 1)
                     <div class="owl-carousel testimonial-carousel owl-theme">
@@ -588,7 +591,6 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="{{ asset('site/lib/wow/wow.min.js') }}"></script>
@@ -605,6 +607,8 @@
 
     <!-- jQuery (nécessaire pour Counter-Up 1) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -660,14 +664,12 @@
                 autoplayHoverPause: true,
                 responsive: {
                     0: { items: 1 },
-                    576: { items: 1 },
                     768: { items: 2 },
                     992: { items: 3 }
                 }
             });
         });
     </script>
-
 
     <!-- Template Javascript -->
     <script src="{{ asset('site/js/main.js') }}"></script>

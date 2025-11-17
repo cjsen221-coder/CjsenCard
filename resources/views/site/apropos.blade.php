@@ -26,14 +26,20 @@
 
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('site/lib/animate/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('site/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('site/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('site/css/accueil.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -127,106 +133,123 @@
 
         <!-- Antennes -->
         <section class="antennes-section" id="relations" style="background:#f9f9f9; padding:80px 20px;">
-  <style>
-    .antennes-section {
-        text-align: center;
-    }
-    .antennes-section h2 {
-        color: #0b3d91;
-        font-size: 2.2rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    .antennes-section p {
-        color: #555;
-        max-width: 700px;
-        margin: 0 auto 40px auto;
-        line-height: 1.7;
-    }
-    .map-container {
-        position: relative;
-        text-align: center;
-    }
-    .map-container img {
-        max-width: 100%;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    .antenne-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 25px;
-        margin-top: 40px;
-    }
-    .antenne-card {
-        background: white;
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        transition: all 0.3s ease;
-    }
-    .antenne-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-    .antenne-card h4 {
-        color: #0b3d91;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-    .antenne-card p {
-        color: #555;
-        font-size: 0.95rem;
-    }
-  </style>
+            <style>
+                .antennes-section {
+                    text-align: center;
+                }
 
-  <div class="container">
-    <h2>Relations Extérieures (Nos Antennes)</h2>
-    <p>
-      Présents dans plusieurs régions, nos antennes locales assurent la proximité avec les bénéficiaires
-      et garantissent la mise en œuvre efficace de nos programmes.
-    </p>
+                .antennes-section h2 {
+                    color: #0b3d91;
+                    font-size: 2.2rem;
+                    font-weight: bold;
+                    margin-bottom: 15px;
+                }
 
-    <div class="map-container" style="position: relative;">
-    <img src="{{ asset('media/senegalregions.png') }}" alt="Carte de nos antennes">
-    <div class="pin" style="top: 43%; left: 25%;"></div> <!-- Dakar -->
-    <div class="pin" style="top: 38%; left: 30%;"></div> <!-- Thiès -->
-    <div class="pin" style="top: 61%; left: 46%;"></div> <!--Keur Moussa -->
+                .antennes-section p {
+                    color: #555;
+                    max-width: 700px;
+                    margin: 0 auto 40px auto;
+                    line-height: 1.7;
+                }
 
-</div>
+                .map-container {
+                    position: relative;
+                    text-align: center;
+                }
 
-<style>
-.pin {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #0b3d91;
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 1; }
-    100% { transform: scale(2); opacity: 0; }
-}
-</style>
+                .map-container img {
+                    max-width: 100%;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                }
+
+                .antenne-cards {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 25px;
+                    margin-top: 40px;
+                }
+
+                .antenne-card {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px;
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+                    transition: all 0.3s ease;
+                }
+
+                .antenne-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                }
+
+                .antenne-card h4 {
+                    color: #0b3d91;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+
+                .antenne-card p {
+                    color: #555;
+                    font-size: 0.95rem;
+                }
+            </style>
+
+            <div class="container">
+                <h2>Relations Extérieures (Nos Antennes)</h2>
+                <p>
+                    Présents dans plusieurs régions, nos antennes locales assurent la proximité avec les bénéficiaires
+                    et garantissent la mise en œuvre efficace de nos programmes.
+                </p>
+
+                <div class="map-container" style="position: relative;">
+                    <img src="{{ asset('media/senegalregions.png') }}" alt="Carte de nos antennes">
+                    <div class="pin" style="top: 43%; left: 25%;"></div> <!-- Dakar -->
+                    <div class="pin" style="top: 38%; left: 30%;"></div> <!-- Thiès -->
+                    <div class="pin" style="top: 61%; left: 46%;"></div> <!--Keur Moussa -->
+
+                </div>
+
+                <style>
+                    .pin {
+                        position: absolute;
+                        width: 15px;
+                        height: 15px;
+                        background: #0b3d91;
+                        border-radius: 50%;
+                        animation: pulse 1.5s infinite;
+                    }
+
+                    @keyframes pulse {
+                        0% {
+                            transform: scale(1);
+                            opacity: 1;
+                        }
+
+                        100% {
+                            transform: scale(2);
+                            opacity: 0;
+                        }
+                    }
+                </style>
 
 
-    <div class="antenne-cards">
-        <div class="antenne-card">
-            <h4>Antenne de Dakar</h4>
-            <p>Siège principal — coordination des projets et formations communautaires.</p>
-        </div>
-        <div class="antenne-card">
-            <h4>Antenne de Thiès</h4>
-            <p>Engagée dans le développement et l’autonomisation des jeunes.</p>
-        </div>
-        <div class="antenne-card">
-            <h4>Antenne de Keur Moussa</h4>
-            <p>Spécialisée dans les actions éducatives et la promotion des enfants.</p>
-        </div>
-    </div>
-  </div>
-</section>
+                <div class="antenne-cards">
+                    <div class="antenne-card">
+                        <h4>Antenne de Dakar</h4>
+                        <p>Siège principal — coordination des projets et formations communautaires.</p>
+                    </div>
+                    <div class="antenne-card">
+                        <h4>Antenne de Thiès</h4>
+                        <p>Engagée dans le développement et l’autonomisation des jeunes.</p>
+                    </div>
+                    <div class="antenne-card">
+                        <h4>Antenne de Keur Moussa</h4>
+                        <p>Spécialisée dans les actions éducatives et la promotion des enfants.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Partenariats -->
@@ -236,123 +259,125 @@
     padding: 80px 20px;
     text-align: center;
 ">
-    <style>
-        .partenariats-section .section-title {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #0b3d91;
-            margin-bottom: 15px;
-        }
+            <style>
+                .partenariats-section .section-title {
+                    font-size: 2.2rem;
+                    font-weight: bold;
+                    color: #0b3d91;
+                    margin-bottom: 15px;
+                }
 
-        .partenariats-section .section-intro {
-            color: #555;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 50px auto;
-            line-height: 1.7;
-        }
+                .partenariats-section .section-intro {
+                    color: #555;
+                    font-size: 1.1rem;
+                    max-width: 700px;
+                    margin: 0 auto 50px auto;
+                    line-height: 1.7;
+                }
 
-        .partenariats-section .logos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            align-items: center;
-            justify-items: center;
-        }
+                .partenariats-section .logos-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                    gap: 30px;
+                    align-items: center;
+                    justify-items: center;
+                }
 
-        .partenariats-section .logo-item {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
+                .partenariats-section .logo-item {
+                    background: white;
+                    border-radius: 12px;
+                    padding: 25px;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+                }
 
-        .partenariats-section .logo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
+                .partenariats-section .logo-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                }
 
-        .partenariats-section .logo-item img {
-            max-width: 120px;
-            height: auto;
-            filter: grayscale(100%);
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
+                .partenariats-section .logo-item img {
+                    max-width: 120px;
+                    height: auto;
+                    filter: grayscale(100%);
+                    opacity: 0.8;
+                    transition: all 0.3s ease;
+                }
 
-        .partenariats-section .logo-item:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
+                .partenariats-section .logo-item:hover img {
+                    filter: grayscale(0%);
+                    opacity: 1;
+                }
 
-        @media (max-width: 768px) {
-            .partenariats-section .section-title {
-                font-size: 1.8rem;
-            }
-            .partenariats-section .logo-item {
-                padding: 15px;
-            }
-            .partenariats-section .logo-item img {
-                max-width: 100px;
-            }
-        }
-    </style>
+                @media (max-width: 768px) {
+                    .partenariats-section .section-title {
+                        font-size: 1.8rem;
+                    }
 
-    <div class="container text-center">
-        <h2 class="section-title">Nos Partenariats</h2>
-        <p class="section-intro">
-            Nous travaillons main dans la main avec plusieurs institutions, entreprises et organisations
-            partageant nos valeurs et notre vision d’un développement inclusif et durable.
-        </p>
+                    .partenariats-section .logo-item {
+                        padding: 15px;
+                    }
 
-        <div class="logos-grid">
-            <div class="logo-item">
-                <img src="{{ asset('media/partner1.jpeg') }}" alt="Partenaire 1">
+                    .partenariats-section .logo-item img {
+                        max-width: 100px;
+                    }
+                }
+            </style>
+
+            <div class="container text-center">
+                <h2 class="section-title">Nos Partenariats</h2>
+                <p class="section-intro">
+                    Nous travaillons main dans la main avec plusieurs institutions, entreprises et organisations
+                    partageant nos valeurs et notre vision d’un développement inclusif et durable.
+                </p>
+
+                <div class="logos-grid">
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner1.jpeg') }}" alt="Partenaire 1">
+                    </div>
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner2.png') }}" alt="Partenaire 2">
+                    </div>
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner3.png') }}" alt="Partenaire 3">
+                    </div>
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner4.png') }}" alt="Partenaire 4">
+                    </div>
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner5.png') }}" alt="Partenaire 5">
+                    </div>
+                    <div class="logo-item">
+                        <img src="{{ asset('media/partner1.jpeg') }}" alt="Partenaire 6">
+                    </div>
+                </div>
             </div>
-            <div class="logo-item">
-                <img src="{{ asset('media/partner2.png') }}" alt="Partenaire 2">
-            </div>
-            <div class="logo-item">
-                <img src="{{ asset('media/partner3.png') }}" alt="Partenaire 3">
-            </div>
-            <div class="logo-item">
-                <img src="{{ asset('media/partner4.png') }}" alt="Partenaire 4">
-            </div>
-            <div class="logo-item">
-                <img src="{{ asset('media/partner5.png') }}" alt="Partenaire 5">
-            </div>
-            <div class="logo-item">
-                <img src="{{ asset('media/partner1.jpeg') }}" alt="Partenaire 6">
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
 
-        <!-- Témoignages -->
-        <section class="apropos-text bg-light" id="temoignages">
-            <div class="container">
-                {{-- <div class="text-center"> --}}
-                    {{-- <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">
-                        Témoignages
-                    </h5> --}}
-                    {{-- <h1 class="mb-5">Témoignages</h1> --}}
+        <!-- ======================= Témoignages ======================= -->
 
-                    <h2 class="text-center mb-4">Témoignages</h2>
-                    {{--
-                </div> --}}
+
+        <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container-fluid">
+                <div class="text-center">
+                    <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">Témoignages
+                    </h5>
+                    <h1 class="mb-5">Témoignages de nos membres</h1>
+                </div>
+
+
                 @if($temoignages->count() > 1)
-                    <div class="owl-carousel testimonial-carousel">
+                    <div class="owl-carousel testimonial-carousel owl-theme">
                         @foreach($temoignages as $temoignage)
-                            <div class="testimonial-item bg-transparent border rounded p-4">
+                            <div class="testimonial-item bg-transparent border rounded p-4 text-center">
                                 <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                                 <p>{{ $temoignage->message }}</p>
-                                <div class="d-flex align-items-center">
+                                <div class="d-flex align-items-center justify-content-center mt-3">
                                     <img class="img-fluid flex-shrink-0 rounded-circle"
                                         src="{{ $temoignage->image ? asset('storage/' . $temoignage->image) : asset('media/default-avatar.jpg') }}"
-                                        alt="{{ $temoignage->nom }}" style="width: 50px; height: 50px; object-fit: cover;">
-                                    <div class="ps-3">
+                                        alt="{{ $temoignage->nom }}" style="width:50px; height:50px; object-fit:cover;">
+                                    <div class="ps-3 text-left">
                                         <h5 class="mb-1">{{ $temoignage->nom }}</h5>
                                         <small>{{ $temoignage->profession }}</small>
                                     </div>
@@ -368,8 +393,7 @@
                         <div class="d-flex align-items-center justify-content-center mt-3">
                             <img class="img-fluid flex-shrink-0 rounded-circle"
                                 src="{{ $temoignages->first()->image ? asset('storage/' . $temoignages->first()->image) : asset('media/default-avatar.jpg') }}"
-                                alt="{{ $temoignages->first()->nom }}"
-                                style="width: 50px; height: 50px; object-fit: cover;">
+                                alt="{{ $temoignages->first()->nom }}" style="width:50px; height:50px; object-fit:cover;">
                             <div class="ps-3 text-left">
                                 <h5 class="mb-1">{{ $temoignages->first()->nom }}</h5>
                                 <small>{{ $temoignages->first()->profession }}</small>
@@ -379,108 +403,77 @@
                 @else
                     <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
                 @endif
-            </div>
-        </section>
-        {{-- <section class="apropos-section bg-light" id="temoignages">
-            <div class="container">
-                <h2 class="text-center mb-4">Témoignages</h2>
 
-                @if($temoignages->count() > 1)
-                <div class="temoignages">
-                    <div class="temoignage">
-                        <img src="{{ asset('images/temoin1.jpg') }}" alt="Témoin 1">
-                        <p>« Grâce à cette association, j’ai pu lancer mon activité agricole. Une vraie opportunité ! »
-                        </p>
-                        <h5>– Awa Diop</h5>
-                    </div>
-                    <div class="temoignage">
-                        <img src="{{ asset('images/temoin2.jpg') }}" alt="Témoin 2">
-                        <p>« Leur programme de formation m’a permis d’acquérir de nouvelles compétences. »</p>
-                        <h5>– Mamadou Ndiaye</h5>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-temoignage px-4 py-2" data-bs-toggle="modal" data-bs-target="#temoignageModal">
+                    ✍️ Laisser un témoignage
+                </button>
+            </div>
+
+            <div class="modal fade" id="temoignageModal" tabindex="-1" aria-labelledby="temoignageModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="temoignageModalLabel">
+                                ✍️ Ajouter un témoignage
+                            </h5>
+                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body p-4">
+
+                            @if(session('success'))
+                                <div class="alert alert-success mb-3">
+                                    ✅ Votre témoignage a été envoyé et sera publié après validation.
+                                </div>
+                            @endif
+
+                            <form action="{{ route('temoignages.store.user') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label class="form-label">Nom *</label>
+                                    <input type="text" name="nom" class="form-control" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Profession (optionnel)</label>
+                                    <input type="text" name="profession" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Message *</label>
+                                    <textarea name="message" rows="4" class="form-control" required></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Image *</label>
+                                    <input type="file" name="image" class="form-control" required>
+                                </div>
+
+                                <button class="btn btn-primary w-100 py-2 mt-3 rounded-3 btn-send">
+                                    ✅ Envoyer le témoignage
+                                </button>
+
+                            </form>
+
+                        </div>
+                        <div class="bottom-close-btn d-block d-sm-none">
+                            <button type="button" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+
                     </div>
                 </div>
-
-                @elseif($temoignages->count() == 1)
-
-                @else
-                <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
-                @endif
             </div>
-        </section> --}}
 
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <!-- ======================= Fin Témoignages ======================= -->
 
 
         <!-- Navbar & Hero End -->
@@ -649,6 +642,30 @@
     <script src="{{ asset('site/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+
+    <!-- jQuery (nécessaire pour Counter-Up 1) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.testimonial-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    992: { items: 3 }
+                }
+            });
+        });
+    </script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('site/js/main.js') }}"></script>
