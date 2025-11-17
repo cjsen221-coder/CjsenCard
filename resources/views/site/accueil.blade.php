@@ -397,282 +397,278 @@
         <!-- Team Start -->
         <div class="container-xxl pt-5 pb-3">
             <div class="container-fluid">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">NOTRE EQUIPE</h5>
-                    <h1 class="mb-5">Bureau Exécutif</h1>
-                </div>
                 <div class="row g-4 justify-content-center">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" loading="lazy" src="{{ asset('media/mounirou.jpeg') }}" alt="">
-                            </div>
-                            <h5 class="mb-0">Mamadou Mounirou TALL</h5>
-                            <small>Président</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                --}}
-                            </div>
-                        </div>
-
-
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">NOTRE EQUIPE</h5>
+                        <h1 class="">Bureau Exécutif</h1>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" loading="lazy" src="{{ asset('media/ABABACAR.jpg') }}" alt="">
-                            </div>
-                            <h5 class="mb-0">Ababacar BA</h5>
-                            <small>Secrétaire Général</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                --}}
+
+                    <!-- Membre 1 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="profile-card-2 text-center">
+                            <img src="{{ asset('media/mounirou.jpeg') }}" class="img img-responsive"
+                                alt="Mamadou Mounirou TALL">
+                            <div class="profile-name">Mamadou Mounirou TALL</div>
+                            <div class="profile-username">Président</div>
+                            <div class="profile-icons mt-2">
+                                {{-- <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" loading="lazy" src="{{ asset('media/marianne.jpg') }}" alt="">
-                            </div>
-                            <h5 class="mb-0">Mariane Dji Fall Fatim TALL</h5>
-                            <small>Trésorière</small>
-                            <div class="d-flex justify-content-center mt-3">
-                                {{-- <a class="btn btn-square btn-primary mx-1" href=""><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                --}}
+
+                    <!-- Membre 2 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="profile-card-2 text-center">
+                            <img src="{{ asset('media/ABABACAR.jpg') }}" class="img img-responsive" alt="Ababacar BA">
+                            <div class="profile-name">Ababacar BA</div>
+                            <div class="profile-username">Secrétaire Général</div>
+                            <div class="profile-icons mt-2">
+                                {{-- <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a> --}}
                             </div>
                         </div>
-
                     </div>
+
+                    <!-- Membre 3 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="profile-card-2 text-center">
+                            <img src="{{ asset('media/marianne.jpg') }}" class="img img-responsive"
+                                alt="Mariane Dji Fall Fatim TALL">
+                            <div class="profile-name">Mariane Dji Fall Fatim TALL</div>
+                            <div class="profile-username">Trésorerie / Porte-Parole</div>
+                            <div class="profile-icons mt-2">
+                                {{-- <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a> --}}
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
-        </div>
-        <!-- Team End -->
+            <!-- Team End -->
 
 
-        <!-- ======================= Témoignages ======================= -->
+            <!-- ======================= Témoignages ======================= -->
 
 
-        <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container-fluid">
-                <div class="text-center">
-                    <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">Témoignages
-                    </h5>
-                    <h1 class="mb-5">Témoignages de nos membres</h1>
-                </div>
+            <div class="container-xxl py-4 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="container-fluid">
+                    <div class="text-center">
+                        <h5 class="section-title ff-secondary text-uppercase text-center text-primary fw-normal">
+                            Témoignages
+                        </h5>
+                        <h1 class="mb-5">Témoignages de nos membres</h1>
+                    </div>
 
 
-                @if($temoignages->count() > 1)
-                    <div class="owl-carousel testimonial-carousel owl-theme">
-                        @foreach($temoignages as $temoignage)
-                            <div class="testimonial-item bg-transparent border rounded p-4 text-center">
-                                <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                                <p>{{ $temoignage->message }}</p>
-                                <div class="d-flex align-items-center justify-content-center mt-3">
-                                    <img class="img-fluid flex-shrink-0 rounded-circle"
-                                        src="{{ $temoignage->image ? asset('storage/' . $temoignage->image) : asset('media/default-avatar.jpg') }}"
-                                        alt="{{ $temoignage->nom }}" style="width:50px; height:50px; object-fit:cover;">
-                                    <div class="ps-3 text-left">
-                                        <h5 class="mb-1">{{ $temoignage->nom }}</h5>
-                                        <small>{{ $temoignage->profession }}</small>
+                    @if($temoignages->count() > 1)
+                        <div class="owl-carousel testimonial-carousel owl-theme">
+                            @foreach($temoignages as $temoignage)
+                                <div class="testimonial-item bg-transparent border rounded p-4 text-center">
+                                    <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                                    <p>{{ $temoignage->message }}</p>
+                                    <div class="d-flex align-items-center justify-content-center mt-3">
+                                        <img class="img-fluid flex-shrink-0 rounded-circle"
+                                            src="{{ $temoignage->image ? asset('storage/' . $temoignage->image) : asset('media/default-avatar.jpg') }}"
+                                            alt="{{ $temoignage->nom }}" style="width:50px; height:50px; object-fit:cover;">
+                                        <div class="ps-3 text-left">
+                                            <h5 class="mb-1">{{ $temoignage->nom }}</h5>
+                                            <small>{{ $temoignage->profession }}</small>
+                                        </div>
                                     </div>
                                 </div>
+                            @endforeach
+                        </div>
+                    @elseif($temoignages->count() == 1)
+                        <div class="testimonial-item bg-transparent border rounded p-4 text-center mx-auto"
+                            style="max-width: 400px;">
+                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                            <p>{{ $temoignages->first()->message }}</p>
+                            <div class="d-flex align-items-center justify-content-center mt-3">
+                                <img class="img-fluid flex-shrink-0 rounded-circle"
+                                    src="{{ $temoignages->first()->image ? asset('storage/' . $temoignages->first()->image) : asset('media/default-avatar.jpg') }}"
+                                    alt="{{ $temoignages->first()->nom }}"
+                                    style="width:50px; height:50px; object-fit:cover;">
+                                <div class="ps-3 text-left">
+                                    <h5 class="mb-1">{{ $temoignages->first()->nom }}</h5>
+                                    <small>{{ $temoignages->first()->profession }}</small>
+                                </div>
                             </div>
-                        @endforeach
-                    </div>
-                @elseif($temoignages->count() == 1)
-                    <div class="testimonial-item bg-transparent border rounded p-4 text-center mx-auto"
-                        style="max-width: 400px;">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>{{ $temoignages->first()->message }}</p>
-                        <div class="d-flex align-items-center justify-content-center mt-3">
-                            <img class="img-fluid flex-shrink-0 rounded-circle"
-                                src="{{ $temoignages->first()->image ? asset('storage/' . $temoignages->first()->image) : asset('media/default-avatar.jpg') }}"
-                                alt="{{ $temoignages->first()->nom }}" style="width:50px; height:50px; object-fit:cover;">
-                            <div class="ps-3 text-left">
-                                <h5 class="mb-1">{{ $temoignages->first()->nom }}</h5>
-                                <small>{{ $temoignages->first()->profession }}</small>
+                        </div>
+                    @else
+                        <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
+                    @endif
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-temoignage px-4 py-2" data-bs-toggle="modal"
+                        data-bs-target="#temoignageModal">
+                        ✍️ Laisser un témoignage
+                    </button>
+                </div>
+
+                <div class="modal fade" id="temoignageModal" tabindex="-1" aria-labelledby="temoignageModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="temoignageModalLabel">
+                                    ✍️ Ajouter un témoignage
+                                </h5>
+                                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
                             </div>
-                        </div>
-                    </div>
-                @else
-                    <p class="text-center text-muted">Aucun témoignage pour le moment.</p>
-                @endif
 
-            </div>
+                            <div class="modal-body p-4">
 
-            <div class="text-center mt-4">
-                <button class="btn btn-temoignage px-4 py-2" data-bs-toggle="modal" data-bs-target="#temoignageModal">
-                    ✍️ Laisser un témoignage
-                </button>
-            </div>
+                                @if(session('success'))
+                                    <div class="alert alert-success mb-3">
+                                        ✅ Votre témoignage a été envoyé et sera publié après validation.
+                                    </div>
+                                @endif
 
-            <div class="modal fade" id="temoignageModal" tabindex="-1" aria-labelledby="temoignageModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content">
+                                <form action="{{ route('temoignages.store.user') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
 
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="temoignageModalLabel">
-                                ✍️ Ajouter un témoignage
-                            </h5>
-                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"></button>
-                        </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Nom *</label>
+                                        <input type="text" name="nom" class="form-control" required>
+                                    </div>
 
-                        <div class="modal-body p-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Profession (optionnel)</label>
+                                        <input type="text" name="profession" class="form-control">
+                                    </div>
 
-                            @if(session('success'))
-                                <div class="alert alert-success mb-3">
-                                    ✅ Votre témoignage a été envoyé et sera publié après validation.
-                                </div>
-                            @endif
+                                    <div class="mb-3">
+                                        <label class="form-label">Message *</label>
+                                        <textarea name="message" rows="4" class="form-control" required></textarea>
+                                    </div>
 
-                            <form action="{{ route('temoignages.store.user') }}" method="POST"
-                                enctype="multipart/form-data">
-                                @csrf
+                                    <div class="mb-3">
+                                        <label class="form-label">Image *</label>
+                                        <input type="file" name="image" class="form-control" required>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Nom *</label>
-                                    <input type="text" name="nom" class="form-control" required>
-                                </div>
+                                    <button class="btn btn-primary w-100 py-2 mt-3 rounded-3 btn-send">
+                                        ✅ Envoyer le témoignage
+                                    </button>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Profession (optionnel)</label>
-                                    <input type="text" name="profession" class="form-control">
-                                </div>
+                                </form>
 
-                                <div class="mb-3">
-                                    <label class="form-label">Message *</label>
-                                    <textarea name="message" rows="4" class="form-control" required></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Image *</label>
-                                    <input type="file" name="image" class="form-control" required>
-                                </div>
-
-                                <button class="btn btn-primary w-100 py-2 mt-3 rounded-3 btn-send">
-                                    ✅ Envoyer le témoignage
-                                </button>
-
-                            </form>
+                            </div>
+                            <div class="bottom-close-btn d-block d-sm-none">
+                                <button type="button" data-bs-dismiss="modal">Fermer</button>
+                            </div>
 
                         </div>
-                        <div class="bottom-close-btn d-block d-sm-none">
-                            <button type="button" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-
                     </div>
                 </div>
+
             </div>
 
+            <!-- ======================= Fin Témoignages ======================= -->
+
+
+            <!-- Footer Start -->
+            @include('site.layouts.footer')
+            <!-- Footer End -->
+
+
+            <!-- Back to Top -->
+            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
 
-        <!-- ======================= Fin Témoignages ======================= -->
+        <!-- JavaScript Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="{{ asset('site/lib/wow/wow.min.js') }}"></script>
+        <script src="{{ asset('site/lib/easing/easing.min.js') }}"></script>
+        <script src="{{ asset('site/lib/waypoints/waypoints.min.js') }}"></script>
+        <script src="{{ asset('site/lib/counterup/counterup.min.js') }}"></script>
+        <script src="{{ asset('site/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('site/lib/tempusdominus/js/moment.min.js') }}"></script>
+        <script src="{{ asset('site/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+        <script src="{{ asset('site/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+        <!-- Swiper -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <!-- jQuery (nécessaire pour Counter-Up 1) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
-        <!-- Footer Start -->
-        @include('site.layouts.footer')
-        <!-- Footer End -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const swiperContainer = document.querySelector('.gallery-swiper');
+                const slides = swiperContainer.querySelectorAll('.swiper-slide');
 
+                const slidesPerView = 3;
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    </div>
+                // Cloner les slides si moins que slidesPerView
+                if (slides.length < slidesPerView) {
+                    const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+                    slides.forEach(slide => {
+                        const clone = slide.cloneNode(true);
+                        swiperWrapper.appendChild(clone);
+                    });
+                }
 
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="{{ asset('site/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('site/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('site/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('site/lib/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('site/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('site/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('site/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('site/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-    <!-- Swiper -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-    <!-- jQuery (nécessaire pour Counter-Up 1) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const swiperContainer = document.querySelector('.gallery-swiper');
-            const slides = swiperContainer.querySelectorAll('.swiper-slide');
-
-            const slidesPerView = 3;
-
-            // Cloner les slides si moins que slidesPerView
-            if (slides.length < slidesPerView) {
-                const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
-                slides.forEach(slide => {
-                    const clone = slide.cloneNode(true);
-                    swiperWrapper.appendChild(clone);
+                // Initialiser Swiper
+                const swiper = new Swiper('.gallery-swiper', {
+                    slidesPerView: slidesPerView,
+                    spaceBetween: 20,
+                    loop: true,
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        320: { slidesPerView: 1 },
+                        576: { slidesPerView: 2 },
+                        992: { slidesPerView: 3 },
+                    }
                 });
-            }
-
-            // Initialiser Swiper
-            const swiper = new Swiper('.gallery-swiper', {
-                slidesPerView: slidesPerView,
-                spaceBetween: 20,
-                loop: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    320: { slidesPerView: 1 },
-                    576: { slidesPerView: 2 },
-                    992: { slidesPerView: 3 },
-                }
             });
-        });
-    </script>
+        </script>
 
-    <script>
-        $(document).ready(function () {
-            $('.testimonial-carousel').owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: false,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: { items: 1 },
-                    768: { items: 2 },
-                    992: { items: 3 }
-                }
+        <script>
+            $(document).ready(function () {
+                $('.testimonial-carousel').owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: { items: 1 },
+                        768: { items: 2 },
+                        992: { items: 3 }
+                    }
+                });
             });
-        });
-    </script>
+        </script>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('site/js/main.js') }}"></script>
+        <!-- Template Javascript -->
+        <script src="{{ asset('site/js/main.js') }}"></script>
 </body>
 
 </html>

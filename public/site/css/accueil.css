@@ -281,3 +281,102 @@
         height: 50vh;
     }
 }
+
+.profile-card-2 {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* max-width: 300px;
+    margin: 20px auto; */
+    text-align: center;
+}
+
+.profile-card-2 img {
+    /* width: 120px; */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.profile-card-2:hover img {
+    transform: scale(1.05);
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #021830;
+}
+
+.profile-username {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-icons a {
+    color: #0d6efd;
+    margin: 0 5px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.profile-icons a:hover {
+    color: #0056b3;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablette (≤ 991px) */
+@media (max-width: 991px) {
+    /* .profile-card-2 {
+        max-width: 250px;
+        padding: 25px 15px;
+    } */
+
+    .profile-card-2 img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 16px;
+    }
+
+    .profile-username {
+        font-size: 13px;
+    }
+}
+
+/* Mobile (≤ 575px) */
+@media (max-width: 575px) {
+    .profile-card-2 {
+        max-width: 100%;
+        padding: 20px 10px;
+        margin: 15px auto;
+    }
+
+    .profile-card-2 img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-name {
+        font-size: 15px;
+    }
+
+    .profile-username {
+        font-size: 12px;
+    }
+
+    .profile-icons a {
+        font-size: 14px;
+        margin: 0 4px;
+    }
+}

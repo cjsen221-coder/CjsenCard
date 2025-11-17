@@ -43,7 +43,9 @@
         .missions-list li {
             position: relative;
             padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
             transition: all 0.3s ease;
+            list-style: none;
         }
 
         .missions-list li::before {
@@ -59,44 +61,65 @@
             color: #0d6efd;
         }
 
-        /* 🌟 Bloc des missions centré verticalement */
-        .missions {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
+        /* 🌟 Cartes des cellules */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 1rem;
         }
 
-        /* 🌟 Effet d’animation sur les adjoints */
-        .adjoint-card img {
-            transition: transform 0.3s;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .img-fluid:hover,
-        .adjoint-card img:hover {
-            transform: scale(1.05);
+        /* 🌟 Images des membres principaux */
+        .member-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            /* pas complètement rond */
+            background-color: #f0f0f0;
+            display: inline-block;
         }
 
         /* 🌟 Style des adjoints */
         .adjoint-card {
             width: 45%;
             text-align: center;
+            margin-bottom: 5px;
         }
 
-        .adjoint-card small {
+        .adjoint-card img {
+            border-radius: 50%;
+            /* rond */
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            transition: transform 0.3s;
+            background-color: #f0f0f0;
+            display: inline-block;
+        }
+
+        .adjoint-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .adjoint-name {
             display: block;
-            line-height: 1.2;
-        }
-
-        .adjoint-card .adjoint-name {
-            font-weight: bold;
-            font-size: 0.75rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-top: 5px;
             color: #212529;
         }
 
-        .adjoint-card .adjoint-poste {
-            font-size: 0.65rem;
-            margin-top: 5px;
+        .adjoint-poste {
+            display: block;
+            font-size: 0.7rem;
             color: #6c757d;
         }
 
@@ -104,12 +127,31 @@
         .adjoints-container {
             display: flex;
             justify-content: center;
-            align-items: end;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* 🌟 Titres */
+        h3.text-primary {
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 5px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1.text-center {
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* 🌟 Responsive */
+        @media (max-width: 768px) {
+            .adjoint-card {
+                width: 90%;
+            }
         }
     </style>
+
 
 </head>
 
@@ -174,16 +216,6 @@
                         ]
                     ],
                     [
-                        'poste' => 'Commissaire aux Comptes',
-                        'nomCellule' => 'Commissariat aux Comptes',
-                        'membre' => ['nom' => 'Diampathé SALL', 'photo' => 'media/diam1-.png'],
-                        'missions' => [
-                            'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
-                            'Vérifier la conformité des transactions financières avec le règlement intérieur.'
-                        ],
-                        'adjoints' => []
-                    ],
-                    [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de l’Initiative, de la Planification et de la Stratégie (CIPS)',
                         'membre' => ['nom' => 'Mame Fatou Mbaye TALL', 'photo' => 'media/MAME_FATOU.png'],
@@ -196,7 +228,7 @@
                             'Proposer des stratégies innovantes adaptées aux besoins des jeunes.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Ibrahima DIENG', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima-r.png']
+                            ['nom' => 'Ibrahima DIA', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima-r.png']
                         ]
                     ],
                     [
@@ -220,18 +252,17 @@
                         'nomCellule' => 'Cellule du Numérique et de l\'Innovation Digitale (CNID)',
                         'membre' => ['nom' => 'Samba DRAME', 'photo' => 'media/Samba.png'],
                         'missions' => [
-                            'Développer et gérer les outils numériques de l’association pour faciliter la communication, la gestion interne et la
-                                                                                                                         diffusion de l’information.',
+                            'Développer et gérer les outils numériques de l’association pour faciliter la communication, la gestion interne et la diffusion de l’information.',
                             'Développer et maintenir les plateformes numériques (site web, bases de données, applications internes).',
                             'Assurer la sécurité, la performance et la mise à jour des outils numériques.',
                             'Collecter, centraliser et structurer l’information pour la rendre accessible aux membres et aux autres cellules.',
-                            'Fournir un support technique aux autres cellules pour l’utilisation des outils numériques.',
-                            'Proposer des innovations digitales pour améliorer l’efficacité des projets et la visibilité globale.',
-                            'Collaboration : Travailler avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
+                            // 'Fournir un support technique aux autres cellules pour l’utilisation des outils numériques.',
+                            // 'Proposer des innovations digitales pour améliorer l’efficacité des projets et la visibilité globale.',
+                            // 'Collaboration : Travailler avec la Cellule Communication et Visibilité pour optimiser la diffusion des contenus.'
                         ],
                         'adjoints' => [
                             ['nom' => 'Khadidiatou DIASSE', 'poste' => 'Adjointe', 'photo' => 'media/adjia-r.png'],
-                            ['nom' => 'Mayacine NDIAYE', 'poste' => 'Membre', 'photo' => '']
+                            // ['nom' => 'Mayacine NDIAYE', 'poste' => 'Membre', 'photo' => '']
                         ]
                     ],
                     [
@@ -243,9 +274,9 @@
                             'Concevoir, produire et diffuser des contenus éditoriaux et promotionnels (articles, vidéos, newsletters, visuels).',
                             'Gérer la stratégie, le contenu et l’animation des réseaux sociaux pour garantir une visibilité cohérente et professionnelle.',
                             'Superviser la communication lors des événements, activités et projets.',
-                            'Maintenir les relations avec les médias et partenaires pour accroître la notoriété.',
-                            'Garantir que toutes les communications respectent la vision, la mission, les valeurs et le règlement intérieur.',
-                            'Collaboration : Travailler avec la Cellule Numérique pour l’optimisation technique et la diffusion efficace des contenus.'
+                            // 'Maintenir les relations avec les médias et partenaires pour accroître la notoriété.',
+                            // 'Garantir que toutes les communications respectent la vision, la mission, les valeurs et le règlement intérieur.',
+                            // 'Collaboration : Travailler avec la Cellule Numérique pour l’optimisation technique et la diffusion efficace des contenus.'
                         ],
                         'adjoints' => [
                             ['nom' => 'Mody SAKHO', 'poste' => 'Adjoint', 'photo' => 'media/MODY_SAKho.png']
@@ -277,7 +308,7 @@
                             'Collecter et analyser les données pour évaluer les résultats.',
                             'Produire des rapports réguliers pour le Comité directeur et le Bureau exécutif.',
                             'Recommander des améliorations et ajustements aux actions en cours.',
-                            'Capitaliser les bonnes pratiques et partager l’expérience.'
+                            // 'Capitaliser les bonnes pratiques et partager l’expérience.'
                         ],
                         'adjoints' => [
                             ['nom' => 'Yaye Adama CISSE', 'poste' => 'Adjointe', 'photo' => 'media/YAYE ADAMA.jpg']
@@ -298,89 +329,129 @@
                         'adjoints' => [
                             ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => '']
                         ]
+                    ],
+                    [
+                        'poste' => 'Commissaire aux Comptes',
+                        'nomCellule' => 'Commissariat aux Comptes',
+                        'membre' => ['nom' => 'Diampathé SALL', 'photo' => 'media/diam1-.png'],
+                        'missions' => [
+                            'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
+                            'Vérifier la conformité des transactions financières avec le règlement intérieur.'
+                        ],
+                        'adjoints' => []
                     ]
                 ]
             ];
         @endphp
 
-        <section id="executif" class="section bg-gray-100 py-5">
+        <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center mb-5">
-                    <h1>Comité Directeur</h1>
-                    <p class="lead">Présentation complète des membres du Comité Directeur avec leurs missions et rôles
-                    </p>
+
+                <h1 class="text-center fw-bold mb-5">Comité Directeur</h1>
+
+                @php
+                    $bureauExecutif = array_slice($bureauOperationnelSections['Comité Directeur'], 0, 3);
+                    $bureauFonctionnel = array_slice($bureauOperationnelSections['Comité Directeur'], 3);
+                @endphp
+
+                <!-- Bureau Exécutif -->
+                <h3 class="text-primary mb-4" id="executif">Bureau Exécutif</h3>
+                <div class="row g-4 mb-5">
+                    @foreach($bureauExecutif as $membre)
+                        <div class="col-md-4 text-center">
+
+                            <!-- Image du membre principal -->
+                            @if(!empty($membre['membre']['photo']))
+                                <img src="{{ asset($membre['membre']['photo']) }}" alt="{{ $membre['membre']['nom'] }}"
+                                    class="member-img">
+                            @else
+                                <i class="bi bi-person-circle" style="font-size:120px; color:#ccc;"></i>
+                            @endif
+
+                            <h5>{{ $membre['membre']['nom'] }}</h5>
+                            <small>{{ $membre['poste'] }}</small>
+
+                            <!-- Adjoints avant missions -->
+                            @if(!empty($membre['adjoints']))
+                                <div class="adjoints-container mt-3">
+                                    @foreach($membre['adjoints'] as $adjoint)
+                                        <div class="adjoint-card">
+                                            @if(!empty($adjoint['photo']))
+                                                <img src="{{ asset($adjoint['photo']) }}" alt="{{ $adjoint['nom'] }}">
+                                            @else
+                                                <i class="bi bi-person-circle" style="font-size:60px; color:#ccc;"></i>
+                                            @endif
+                                            <span class="adjoint-name">{{ $adjoint['nom'] }}</span>
+                                            <span class="adjoint-poste">{{ $adjoint['poste'] }}</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            <!-- Missions -->
+                            <ul class="missions-list mt-2 text-start">
+                                @foreach($membre['missions'] as $mission)
+                                    <li>{{ $mission }}</li>
+                                @endforeach
+                            </ul>
+
+                        </div>
+                    @endforeach
                 </div>
 
-                @foreach($bureauOperationnelSections as $sectionTitle => $membres)
-                    @foreach($membres as $poste)
-                        <div class="team-block mb-5 p-4 rounded-3 shadow-sm bg-white">
-                            {{-- Nom de la cellule / poste --}}
-                            <h4 class="poste-title text-primary border-start border-4 border-primary ps-3 mb-4 fw-bold">
-                                {{ $poste['nomCellule'] ?? $poste['poste'] }}
-                            </h4>
+                <!-- Bureau Fonctionnel -->
+                <h3 class="text-primary mb-4" id="fonctionnel">Bureau Fonctionnel</h3>
+                <div class="row g-4">
+                    @foreach($bureauFonctionnel as $cellule)
+                        <div class="col-md-4 d-flex justify-content-center">
+                            <div class="card p-3 text-center h-100" style="width: 100%; max-width: 350px;">
 
-                            <div class="row align-items-CENTER">
+                                <h5>{{ $cellule['nomCellule'] }}</h5>
 
-                                {{-- PHOTO + COORDONNATEUR + ADJOINTS --}}
-                                <div
-                                    class="col-lg-5 col-md-4 text-center mb-3 mb-md-0 d-flex flex-column justify-content-between">
-                                    <div>
-                                        @if (!empty($poste['membre']['photo']))
-                                            <img src="{{ $poste['membre']['photo'] }}"
-                                                class="img-fluid shadow-sm mb-3 border border-3 border-white"
-                                                style="width: 200px; height: 200px; object-fit: fit;"
-                                                alt="{{ $poste['membre']['nom'] }}">
-                                        @else
-                                            <i class="bi bi-person text-secondary"
-                                                style="font-size: 4rem; width: 200px; height: 200px;"></i>
+                                <!-- Image du membre principal -->
+                                @if(!empty($cellule['membre']['photo']))
+                                    <img src="{{ asset($cellule['membre']['photo']) }}" alt="{{ $cellule['membre']['nom'] }}"
+                                        class="member-img mx-auto d-block mb-2">
+                                @else
+                                    <i class="bi bi-person-circle"
+                                        style="font-size:100px; color:#ccc; display:block; margin:auto;"></i>
+                                @endif
 
-                                        @endif
+                                <h6 class="mt-2">{{ $cellule['membre']['nom'] }}</h6>
+                                <small>{{ $cellule['poste'] }}</small>
 
-                                        <h5 class="fw-bold text-dark">{{ $poste['membre']['nom'] }}</h5>
-                                        <small class="text-muted d-block mb-2">{{ $poste['poste'] }}</small>
-                                    </div>
-
-                                    {{-- ADJOINTS mini et alignés en bas --}}
-                                    @if(isset($poste['adjoints']) && count($poste['adjoints']) > 0)
-                                        <div class="adjoints-container">
-                                            @foreach($poste['adjoints'] as $adjoint)
-                                                <div class="adjoint-card">
-                                                    @if (!empty($adjoint['photo']))
-                                                        <img src="{{ $adjoint['photo'] }}"
-                                                            class="rounded-circle shadow-sm border border-2 border-light mb-1"
-                                                            style="height: 70px; width: 70px; object-fit: cover;"
-                                                            alt="{{ $adjoint['nom'] }}">
-                                                    @else
-                                                        <i class="bi bi-person-circle text-secondary" style="font-size: 4rem;"></i>
-                                                    @endif
-                                                    <small class="adjoint-name">{{ $adjoint['nom'] }}</small>
-                                                    <small class="adjoint-poste">{{ $adjoint['poste'] }}</small>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
-
-                                </div>
-
-                                {{-- MISSIONS --}}
-                                <div class="col-lg-7 col-md-8 missions">
-                                    <h5 class="text-primary fw-bold mb-3">🎯 Missions & Rôles</h5>
-                                    <ul class="missions-list list-unstyled">
-                                        @foreach($poste['missions'] as $mission)
-                                            <li class="d-flex align-items-start mb-2">
-                                                {{-- <span class="me-2 text-success fs-5">•</span> --}}
-                                                <span>{{ $mission }}</span>
-                                            </li>
+                                <!-- Adjoints avant missions -->
+                                @if(!empty($cellule['adjoints']))
+                                    <div class="adjoints-container mt-3">
+                                        @foreach($cellule['adjoints'] as $adjoint)
+                                            <div class="adjoint-card">
+                                                @if(!empty($adjoint['photo']))
+                                                    <img src="{{ asset($adjoint['photo']) }}" alt="{{ $adjoint['nom'] }}">
+                                                @else
+                                                    <i class="bi bi-person-circle" style="font-size:60px; color:#ccc;"></i>
+                                                @endif
+                                                <span class="adjoint-name">{{ $adjoint['nom'] }}</span>
+                                                <span class="adjoint-poste">{{ $adjoint['poste'] }}</span>
+                                            </div>
                                         @endforeach
-                                    </ul>
-                                </div>
+                                    </div>
+                                @endif
+
+                                <!-- Missions -->
+                                <ul class="missions-list text-start mt-2">
+                                    @foreach($cellule['missions'] as $mission)
+                                        <li>{{ $mission }}</li>
+                                    @endforeach
+                                </ul>
+
                             </div>
                         </div>
                     @endforeach
-                @endforeach
-            </div>
-        </section>
+                </div>
 
+
+            </div>
+        </div>
 
         <!-- Footer Start -->
         @include('site.layouts.footer')
