@@ -230,7 +230,7 @@
             ];
         @endphp
         <div class="container-xxl py-5">
-            <div class="container">
+            <div class="container-fluid">
                 <h1 class="section-main-title mb-5">Comité Directeur</h1>
 
                 @php
@@ -243,7 +243,7 @@
                 <!-- ========================================================= -->
                 <h3 class="section-subtitle" id="executif">Bureau Exécutif</h3>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @foreach($bureauExecutif as $membre)
                         <div class="col-md-4 d-flex">
                             <div class="card-member w-100">
@@ -296,12 +296,12 @@
                 <!-- ========================================================= -->
                 <h3 class="section-subtitle mt-5" id="fonctionnel">Bureau Fonctionnel</h3>
 
-                <div class="row g-4">
+                <div class="row g-4 justify-content-center">
                     @foreach($bureauFonctionnel as $cellule)
                         <div class="col-md-4 d-flex">
                             <div class="card-member w-100">
 
-                                <h5 class="fw-bold">{{ $cellule['nomCellule'] }}</h5>
+                                <h5 class="fw-bold align-text-left">{{ $cellule['nomCellule'] }}</h5>
 
                                 {{-- 📸 PHOTO PRINCIPALE --}}
                                 @if(!empty($cellule['membre']['photo']))
