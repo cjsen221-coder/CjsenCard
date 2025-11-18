@@ -1,0 +1,212 @@
+/* 🌟 TITRE PRINCIPAL : Comité Directeur */
+.section-main-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #22445e;
+    text-align: center;
+
+    /* Effet soulignement premium */
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-main-title::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #0d6efd;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* 🌟 Sous-titres : Bureau Exécutif / Bureau Fonctionnel */
+.section-subtitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0d6efd;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 10px;
+}
+
+/* Petite barre verticale élégante */
+.section-subtitle::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    background: #22445e;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+}
+
+/* 🌟 Carte uniforme */
+.card-member {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: 0.3s;
+    position: relative;
+    /* z-index: 1; */
+}
+
+.card-member:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌟 Image principale */
+.member-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+/* Noms en gras */
+.member-name,
+.adjoint-name {
+    font-weight: 700 !important;
+}
+
+/* 🌟 Adjoints */
+.adjoints-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.adjoint-card {
+    text-align: center;
+    width: 45%;
+}
+
+.adjoint-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.adjoint-name,
+.adjoint-poste {
+    display: block;
+    line-height: 1.2;
+}
+
+.adjoint-name {
+    font-weight: 600;
+}
+
+.adjoint-poste {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+
+/* 🌟 Dropdown Missions */
+.dropdown-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    cursor: pointer;
+    color: #0d6efd;
+    transition: color 0.3s;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown-title:hover {
+    color: #0056b3;
+}
+
+/* flèche animée */
+.dropdown-title .arrow {
+    transition: transform 0.3s;
+    font-size: 14px;
+}
+
+.dropdown-title.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Bloc missions en mode superposition */
+.missions-list {
+    position: absolute;
+    top: 100%;
+    /* apparaît juste sous le bouton */
+    left: 0;
+    width: 100%;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    padding: 15px;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+
+    transition: max-height .35s ease, opacity .25s ease;
+    z-index: 9999;
+    text-align: left;
+    /* passe au-dessus de TOUT */
+}
+
+/* Quand ouvert */
+.missions-list.show {
+    max-height: 500px;
+    /* juste pour l’anim, bloc ne bouge pas */
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Style des puces */
+.missions-list li {
+    position: relative;
+    list-style: none;
+    padding-left: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.missions-list li::before {
+    content: "🌟";
+    position: absolute;
+    left: 0;
+}
+
+
+/* 🌟 Responsive */
+@media (max-width: 768px) {
+    /* .adjoint-card {
+                width: 100%;
+            } */
+
+    .member-img {
+        width: 100px;
+        height: 100px;
+    }
+}

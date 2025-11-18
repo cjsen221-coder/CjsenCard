@@ -37,121 +37,7 @@
     <!-- Template Stylesheet -->
 
     <link href="{{ asset('site/css/style.css') }}" rel="stylesheet">
-
-    <style>
-        /* 🌟 Liste des missions */
-        .missions-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s ease;
-            list-style: none;
-        }
-
-        .missions-list li::before {
-            content: "🌟";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-size: 1rem;
-        }
-
-        .missions-list li:hover {
-            transform: translateX(5px);
-            color: #0d6efd;
-        }
-
-        /* 🌟 Cartes des cellules */
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-            padding: 1rem;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* 🌟 Images des membres principaux */
-        .member-img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            /* pas complètement rond */
-            background-color: #f0f0f0;
-            display: inline-block;
-        }
-
-        /* 🌟 Style des adjoints */
-        .adjoint-card {
-            width: 45%;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-
-        .adjoint-card img {
-            border-radius: 50%;
-            /* rond */
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            transition: transform 0.3s;
-            background-color: #f0f0f0;
-            display: inline-block;
-        }
-
-        .adjoint-card img:hover {
-            transform: scale(1.1);
-        }
-
-        .adjoint-name {
-            display: block;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            color: #212529;
-        }
-
-        .adjoint-poste {
-            display: block;
-            font-size: 0.7rem;
-            color: #6c757d;
-        }
-
-        /* 🌟 Conteneur des adjoints */
-        .adjoints-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        /* 🌟 Titres */
-        h3.text-primary {
-            border-bottom: 2px solid #0d6efd;
-            padding-bottom: 5px;
-            margin-bottom: 1.5rem;
-        }
-
-        h1.text-center {
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        /* 🌟 Responsive */
-        @media (max-width: 768px) {
-            .adjoint-card {
-                width: 90%;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="{{ asset('site/css/equipe.css') }}">
 
 </head>
 
@@ -343,84 +229,93 @@
                 ]
             ];
         @endphp
-
         <div class="container-xxl py-5">
             <div class="container">
-
-                <h1 class="text-center fw-bold mb-5">Comité Directeur</h1>
+                <h1 class="section-main-title mb-5">Comité Directeur</h1>
 
                 @php
                     $bureauExecutif = array_slice($bureauOperationnelSections['Comité Directeur'], 0, 3);
                     $bureauFonctionnel = array_slice($bureauOperationnelSections['Comité Directeur'], 3);
                 @endphp
 
-                <!-- Bureau Exécutif -->
-                <h3 class="text-primary mb-4" id="executif">Bureau Exécutif</h3>
-                <div class="row g-4 mb-5">
+                <!-- ========================================================= -->
+                <!-- 🟦 BUREAU EXÉCUTIF -->
+                <!-- ========================================================= -->
+                <h3 class="section-subtitle" id="executif">Bureau Exécutif</h3>
+
+                <div class="row g-4">
                     @foreach($bureauExecutif as $membre)
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-4 d-flex">
+                            <div class="card-member w-100">
 
-                            <!-- Image du membre principal -->
-                            @if(!empty($membre['membre']['photo']))
-                                <img src="{{ asset($membre['membre']['photo']) }}" alt="{{ $membre['membre']['nom'] }}"
-                                    class="member-img">
-                            @else
-                                <i class="bi bi-person-circle" style="font-size:120px; color:#ccc;"></i>
-                            @endif
+                                {{-- 📸 PHOTO PRINCIPALE --}}
+                                @if(!empty($membre['membre']['photo']))
+                                    <img src="{{ asset($membre['membre']['photo']) }}" alt="{{ $membre['membre']['nom'] }}"
+                                        class="member-img mx-auto d-block">
+                                @else
+                                    <i class="bi bi-person-circle"
+                                        style="font-size:120px; color:#ccc; display:block; margin:auto;"></i>
+                                @endif
 
-                            <h5>{{ $membre['membre']['nom'] }}</h5>
-                            <small>{{ $membre['poste'] }}</small>
+                                <h5 class="mt-2">{{ $membre['membre']['nom'] }}</h5>
+                                <small>{{ $membre['poste'] }}</small>
 
-                            <!-- Adjoints avant missions -->
-                            @if(!empty($membre['adjoints']))
-                                <div class="adjoints-container mt-3">
-                                    @foreach($membre['adjoints'] as $adjoint)
-                                        <div class="adjoint-card">
-                                            @if(!empty($adjoint['photo']))
-                                                <img src="{{ asset($adjoint['photo']) }}" alt="{{ $adjoint['nom'] }}">
-                                            @else
-                                                <i class="bi bi-person-circle" style="font-size:60px; color:#ccc;"></i>
-                                            @endif
-                                            <span class="adjoint-name">{{ $adjoint['nom'] }}</span>
-                                            <span class="adjoint-poste">{{ $adjoint['poste'] }}</span>
-                                        </div>
+                                {{-- 👥 ADJOINTS --}}
+                                @if(!empty($membre['adjoints']))
+                                    <div class="adjoints-container mt-3">
+                                        @foreach($membre['adjoints'] as $adjoint)
+                                            <div class="adjoint-card">
+                                                @if(!empty($adjoint['photo']))
+                                                    <img src="{{ asset($adjoint['photo']) }}" alt="{{ $adjoint['nom'] }}">
+                                                @else
+                                                    <i class="bi bi-person-circle" style="font-size:60px; color:#ccc;"></i>
+                                                @endif
+                                                <span class="adjoint-name">{{ $adjoint['nom'] }}</span>
+                                                <span class="adjoint-poste">{{ $adjoint['poste'] }}</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                {{-- ▼ MISSIONS --}}
+                                <div class="dropdown-title">Missions ▼</div>
+
+                                <ul class="missions-list">
+                                    @foreach($membre['missions'] as $mission)
+                                        <li>{{ $mission }}</li>
                                     @endforeach
-                                </div>
-                            @endif
+                                </ul>
 
-                            <!-- Missions -->
-                            <ul class="missions-list mt-2 text-start">
-                                @foreach($membre['missions'] as $mission)
-                                    <li>{{ $mission }}</li>
-                                @endforeach
-                            </ul>
-
+                            </div>
                         </div>
                     @endforeach
                 </div>
 
-                <!-- Bureau Fonctionnel -->
-                <h3 class="text-primary mb-4" id="fonctionnel">Bureau Fonctionnel</h3>
+                <!-- ========================================================= -->
+                <!-- 🟩 BUREAU FONCTIONNEL -->
+                <!-- ========================================================= -->
+                <h3 class="section-subtitle mt-5" id="fonctionnel">Bureau Fonctionnel</h3>
+
                 <div class="row g-4">
                     @foreach($bureauFonctionnel as $cellule)
-                        <div class="col-md-4 d-flex justify-content-center">
-                            <div class="card p-3 text-center h-100" style="width: 100%; max-width: 350px;">
+                        <div class="col-md-4 d-flex">
+                            <div class="card-member w-100">
 
-                                <h5>{{ $cellule['nomCellule'] }}</h5>
+                                <h5 class="fw-bold">{{ $cellule['nomCellule'] }}</h5>
 
-                                <!-- Image du membre principal -->
+                                {{-- 📸 PHOTO PRINCIPALE --}}
                                 @if(!empty($cellule['membre']['photo']))
                                     <img src="{{ asset($cellule['membre']['photo']) }}" alt="{{ $cellule['membre']['nom'] }}"
                                         class="member-img mx-auto d-block mb-2">
                                 @else
                                     <i class="bi bi-person-circle"
-                                        style="font-size:100px; color:#ccc; display:block; margin:auto;"></i>
+                                        style="font-size:120px; color:#ccc; display:block; margin:auto;"></i>
                                 @endif
 
                                 <h6 class="mt-2">{{ $cellule['membre']['nom'] }}</h6>
                                 <small>{{ $cellule['poste'] }}</small>
 
-                                <!-- Adjoints avant missions -->
+                                {{-- 👥 ADJOINTS --}}
                                 @if(!empty($cellule['adjoints']))
                                     <div class="adjoints-container mt-3">
                                         @foreach($cellule['adjoints'] as $adjoint)
@@ -437,8 +332,10 @@
                                     </div>
                                 @endif
 
-                                <!-- Missions -->
-                                <ul class="missions-list text-start mt-2">
+                                {{-- ▼ MISSIONS --}}
+                                <div class="dropdown-title">Missions ▼</div>
+
+                                <ul class="missions-list">
                                     @foreach($cellule['missions'] as $mission)
                                         <li>{{ $mission }}</li>
                                     @endforeach
@@ -449,9 +346,9 @@
                     @endforeach
                 </div>
 
-
             </div>
         </div>
+
 
         <!-- Footer Start -->
         @include('site.layouts.footer')
@@ -473,6 +370,35 @@
     <script src="{{ asset('site/lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('site/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+
+    <!-- JS pour déplier / replier les missions -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll(".dropdown-title").forEach(title => {
+                title.addEventListener("click", function () {
+                    let list = this.nextElementSibling;
+                    list.classList.toggle("show");
+
+                    this.innerHTML = list.classList.contains("show")
+                        ? "Missions ▲"
+                        : "Missions ▼";
+                });
+            });
+        });
+        document.addEventListener("click", function (e) {
+            document.querySelectorAll(".dropdown-title").forEach(title => {
+                const list = title.nextElementSibling;
+
+                // Si le clic n'est ni sur le titre ni dans le bloc missions → on ferme
+                if (!title.contains(e.target) && !list.contains(e.target)) {
+                    list.classList.remove("show");
+                    title.innerHTML = "Missions ▼";
+                }
+            });
+        });
+
+    </script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('site/js/main.js') }}"></script>
