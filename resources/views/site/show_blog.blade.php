@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
                 <div class="row justify-content-center g-4 align-items-stretch">
                     @if($blog->image)
                         <div class="col-md-4 d-flex">
-                            <img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid rounded"
+                            <img src="{{ asset('public/' . $blog->image) }}" class="img-fluid rounded"
                                 alt="{{ $blog->title }}" style="object-fit: cover; width: 100%; height: 100%;">
                         </div>
                     @endif

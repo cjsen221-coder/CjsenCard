@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\Media;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-
 
 class MediaController extends Controller
 {
     public function index()
     {
-        $media = Media::latest()->paginate(12);
-        return view('media.index', compact('media'));
+        $events = Event::with('media')->orderBy('id', 'desc')->paginate(12);
+        return view('media.index', compact('events'));
     }
 
     public function create()
@@ -26,46 +25,101 @@ class MediaController extends Controller
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'images' => 'nullable|array|max:10',
+            'images.*' => 'image|max:20480',
         ]);
 
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('media', 'public');
+        // Créer l'événement (titre + description)
+        $event = Event::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+        ]);
+
+        // Enregistrer chaque image en tant que ligne dans la table media
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $img) {
+                $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $img->getClientOriginalName());
+                $img->move(public_path('medias'), $filename);
+
+                Media::create([
+                    'event_id' => $event->id,
+                    'image' => 'medias/' . $filename,
+                ]);
+            }
         }
 
-        Media::create($data);
-
-        return redirect()->route('medias.index')->with('success', 'Média créé avec succès !');
+        return redirect()->route('medias.index')->with('success', 'Événement publié avec succès !');
     }
 
-    public function edit(Media $media)
+    public function show(Media $media)
     {
+        return view('medias.show', compact('media'));
+    }
+
+    public function edit(Event $media)
+    {
+        // page d'édition de l'événement + gestion des images
+        $media->load('media');
         return view('media.edit', compact('media'));
     }
 
-    public function update(Request $request, Media $media)
+    public function update(Request $request, Event $event)
     {
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|max:2048',
+            'event_id' => 'nullable|string',
+            'images' => 'nullable|array|max:10',
+            'images.*' => 'image|max:20480',
         ]);
 
-        if ($request->hasFile('image')) {
-            if ($media->image) Storage::disk('public')->delete($media->image);
-            $data['image'] = $request->file('image')->store('media', 'public');
+        $event->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+        ]);
+
+        // Ajouter de nouvelles images
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $img) {
+
+                $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $img->getClientOriginalName());
+                $img->move(public_path('medias'), $filename);
+
+                // 👍 FIX : forcer event_id
+                Media::create([
+                    'event_id' => $request->event_id,
+                    'image'    => 'medias/' . $filename,
+                ]);
+            }
         }
 
-        $media->update($data);
-
-        return redirect()->route('medias.index')->with('success', 'Média mis à jour avec succès !');
+        return redirect()->route('medias.index')->with('success', 'Événement mis à jour !');
     }
 
-    public function destroy(Media $media)
+
+    public function destroy(Event $event)
     {
-        if ($media->image) Storage::disk('public')->delete($media->image);
+        // Supprime les fichiers images liés
+        foreach ($event->media as $m) {
+            if ($m->image && file_exists(public_path($m->image))) {
+                unlink(public_path($m->image));
+            }
+        }
+
+        // Supprime l'événement (les media seront supprimés via contrainte onDelete cascade)
+        $event->delete();
+
+        return redirect()->route('medias.index')->with('success', 'Événement supprimé !');
+    }
+
+    // Supprimer une image individuelle
+    public function destroyImage(Media $media)
+    {
+        if ($media->image && file_exists(public_path($media->image))) {
+            unlink(public_path($media->image));
+        }
         $media->delete();
 
-        return redirect()->route('media.index')->with('success', 'Média supprimé avec succès !');
+        return back()->with('success', 'Image supprimée !');
     }
 }

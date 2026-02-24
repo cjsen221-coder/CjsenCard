@@ -3,10 +3,20 @@
         <div class="flex justify-between h-16 items-center">
             <!-- Logo -->
             <div class="flex items-center gap-3">
-                <a href="{{ route('dashboard') }}">
-                    <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
-                        class="h-9 w-auto rounded-full shadow-md">
-                </a>
+
+                @auth
+                    <a href="{{ route('dashboard') }}">
+                        <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
+                            class="h-9 w-auto rounded-full shadow-md">
+                    </a>
+                @endauth
+                
+                @guest
+                    <a href="#">
+                        <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
+                            class="h-9 w-auto rounded-full shadow-md">
+                    </a>
+                @endguest
                 <span class="font-bold text-xl text-yellow-400 inline">CJSENCARD</span>
             </div>
 
@@ -91,16 +101,19 @@
             </div>
 
             <!-- Hamburger (Mobile) -->
-            <div class="sm:hidden">
-                <button @click="open = ! open" class="text-yellow-400 focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': !open, 'inline-flex': open}" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
+
+            @auth
+                <div class="sm:hidden">
+                    <button @click="open = ! open" class="text-yellow-400 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path :class="{'hidden': open, 'inline-flex': !open}" class="inline-flex" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path :class="{'hidden': !open, 'inline-flex': open}" class="hidden" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            @endauth
         </div>
     </div>
 

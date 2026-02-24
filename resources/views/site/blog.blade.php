@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,24 +49,43 @@
 
 
         <!-- Navbar & Hero Start -->
-        <x-hero title="Blog" current="Blog" parent=""
-            parentUrl="" titleSize="display-4" />
+        <x-hero title="Blog" current="Blog" parent="" parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
+
+        <div class="container-xxl py-2">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Blog</h5>
+                    <h1 class="mb-5">Derniers articles et actualités</h1>
+                </div>
+            </div>
+        </div>
+
+        <form action="{{ route('site.blog') }}" method="GET" class="d-flex justify-content-center mb-4">
+            <div class="input-group" style="max-width: 500px; width: 100%;">
+                <input type="text" name="search" class="form-control" placeholder="Rechercher un article..."
+                    value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+
 
 
         <div class="container-xxl py-5">
             <div class="container">
-                <div class="text-center mb-5">
-                    <h1 class="display-4">Blog</h1>
-                    <p class="text-muted">Derniers articles et actualités de Sen Carrefour Jeunesse</p>
-                </div>
+                {{-- <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Blog</h5>
+                    <h1 class="mb-5">Derniers articles et actualités</h1>
+                </div> --}}
 
                 <div class="row g-4">
                     @forelse($blogs as $blog)
                         <div class="col-md-6 col-lg-4">
                             <div class="card shadow-sm h-100">
                                 @if($blog->image)
-                                    <img src="{{ asset('storage/' . $blog->image) }}" class="card-img-top"
+                                    <img src="{{ asset('public/' . $blog->image) }}" class="card-img-top"
                                         alt="{{ $blog->title }}">
                                 @endif
                                 <div class="card-body d-flex flex-column">
@@ -89,7 +108,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Footer Start -->
         @include('site.layouts.footer')

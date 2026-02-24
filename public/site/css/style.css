@@ -141,7 +141,7 @@
         display: inline-block;      /* permet l'animation */
         white-space: nowrap;        /* texte sur une seule ligne */
         overflow: hidden;           /* cache ce qui dépasse */
-        width: 120px;               /* largeur du container du texte, ajustable */
+        width: 200px;               /* largeur du container du texte, ajustable */
         vertical-align: middle;
         position: relative;
     }
@@ -157,7 +157,11 @@
         100% { transform: translateX(-100%); }
     }
 }
-
+@media (max-width: 380px) {
+    .navbar .logo-text {        /* cache ce qui dépasse */
+        width: 130px;        
+    }
+}
 
 
 
@@ -229,7 +233,7 @@ h5,
 h6,
 .h6,
 p {
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .display-5 {
@@ -399,7 +403,7 @@ p {
 /* Contenu centré */
 .hero-header .container {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     margin-bottom: 0rem !important;
 }
 

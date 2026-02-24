@@ -20,7 +20,7 @@
     {{-- IMAGE --}}
     <label class="block mb-2 font-semibold">Image de l'article</label>
     @if($blog->image ?? false)
-        <img id="image-preview" src="{{ asset('storage/'.$blog->image) }}" 
+        <img id="image-preview" src="{{ asset('public/'.$blog->image) }}" 
              alt="image" class="w-32 h-32 object-cover mb-2 rounded">
     @else
         <img id="image-preview" src="" alt="image" class="w-32 h-32 object-cover mb-2 hidden rounded">

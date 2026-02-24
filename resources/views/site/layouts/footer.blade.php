@@ -36,15 +36,15 @@
 
         <p class="mb-2">
           <i class="fa fa-globe me-3"></i>
-          <a href="https://www.cjsen.sn" target="_blank" class="text-white text-decoration-none">
-            www.cjsen.sn
+          <a href="https://www.cjsen.com" target="_blank" class="text-white text-decoration-none">
+            www.cjsen.com
           </a>
         </p>
 
         <div class="d-flex pt-2">
           <a class="btn btn-outline-light btn-social" href="https://x.com/cjsen221" target="_blank"
             rel="noopener noreferrer">
-            <i class="fab fa-twitter"></i>
+            <i class="fa-brands fa-x-twitter"></i>
           </a>
           <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/profile.php?id=61575020594135"
             target="_blank" rel="noopener noreferrer">
@@ -89,7 +89,7 @@
           </div>
         @endif
 
-        <form action="{{ route('newsletter.subscribe') }}" method="POST" class="position-relative mx-auto"
+        {{-- <form action="{{ route('newsletter.subscribe') }}" method="POST" class="position-relative mx-auto"
           style="max-width: 400px;">
           @csrf
           <input class="form-control border-primary w-100 py-3 ps-4 pe-5 @error('email') is-invalid @enderror"
@@ -97,7 +97,7 @@
           <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
             S'inscrire
           </button>
-        </form>
+        </form> --}}
 
         @error('email')
           <p class="text-danger small mt-2">{{ $message }}</p>

@@ -21,18 +21,24 @@ class DomaineController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $data =  $request->validate([
             'nom' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('domaines', 'public');
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $originalName);
+
+            $request->file('image')->move(public_path('domaines'), $filename);
+
+            $data['image'] = 'domaines/' . $filename;
         }
 
-        Domaine::create($validated);
+
+        Domaine::create($data);
         return redirect()->route('domaine.index')->with('success', 'Domaine ajouté avec succès.');
     }
 
@@ -47,11 +53,20 @@ class DomaineController extends Controller
             'nom' => 'required|string|max:255',
             'type' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('domaines', 'public');
+            // Supprimer l'ancienne image si elle existe
+            if ($domaine->image && file_exists(public_path($domaine->image))) {
+                unlink(public_path($domaine->image));
+            }
+
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->move(public_path('domaines'), $filename);
+
+            $validated['image'] = 'domaines/' . $filename;
         }
 
         $domaine->update($validated);
@@ -63,6 +78,4 @@ class DomaineController extends Controller
         $domaine->delete();
         return back()->with('success', 'Domaine supprimé avec succès.');
     }
-
-   
 }

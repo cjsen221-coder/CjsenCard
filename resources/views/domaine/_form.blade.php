@@ -29,7 +29,7 @@
     {{-- IMAGE --}}
     <label class="block mb-2 font-semibold">Image du domaine</label>
     @if($domaine->image ?? false)
-        <img id="image-preview" src="{{ asset('storage/'.$domaine->image) }}"
+        <img id="image-preview" src="{{ asset('public/'.$domaine->image) }}"
              alt="image" class="w-32 h-32 object-cover mb-2 rounded">
     @else
         <img id="image-preview" src="" alt="image" class="w-32 h-32 object-cover mb-2 hidden rounded">

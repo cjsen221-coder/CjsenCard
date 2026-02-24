@@ -52,7 +52,7 @@
                     <a href="{{ route('site.domaines') }}#cohesions" class="dropdown-item">Cohésion</a>
                     <a href="{{ route('site.domaines') }}#sensibilisations" class="dropdown-item">Sensibilisations</a>
                     <a href="{{ route('site.domaines') }}#actions" class="dropdown-item">Actions Communautaires</a>
-                    <a href="{{ route('site.domaines') }}#projets" class="dropdown-item">Projets Spéciaux</a>
+                    {{-- <a href="{{ route('site.domaines') }}#projets" class="dropdown-item">Projets Spéciaux</a> --}}
                 </div>
             </div>
 
@@ -83,6 +83,22 @@
 
             <a href="{{ route('site.contact') }}"
                 class="nav-item nav-link {{ Route::is('site.contact') ? 'active' : '' }}">Contact</a>
+            <!-- Language switcher -->
+            {{-- <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    {{ strtoupper(app()->getLocale()) }}
+                </a>
+                <div class="dropdown-menu m-0">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        @if(app()->getLocale() !== $localeCode)
+                            <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                                class="dropdown-item">
+                                {{ strtoupper($localeCode) }}
+                            </a>
+                        @endif
+                    @endforeach
+                </div>
+            </div> --}}
 
         </div>
     </div>

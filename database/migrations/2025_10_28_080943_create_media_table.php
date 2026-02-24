@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('image'); // chemin de l'image
+            $table->unsignedBigInteger('event_id'); // L'événement parent
+            $table->string('image');                // Le chemin de l'image (ex: medias/xxx.jpg)
             $table->timestamps();
+
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.

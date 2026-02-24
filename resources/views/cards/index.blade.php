@@ -1,7 +1,6 @@
 <x-app-layout>
     <div class="max-w-6xl mx-auto mt-10">
 
-
         <x-slot name="header">
             <div class="flex items-center justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -41,6 +40,10 @@
                     class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
                     ➕ Nouvelle carte
                 </a>
+                <a href="{{ route('cards.export.excel') }}"
+                    class="bg-[#002244] text-white text-sm px-4 py-2 rounded-md hover:bg-[#003366] transition">
+                    Liste Excel
+                </a>
             </div>
         </x-slot>
 
@@ -52,8 +55,7 @@
 
                     {{-- Lien vers la page détail --}}
                     <a href="{{ route('cards.show', $card) }}" class="flex items-center gap-4 mb-4">
-                        <img src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
-                            alt="Avatar de {{ $card->name }}"
+                        <img src="{{ asset('public/storage/' . $card->avatar) }}" alt="Avatar de {{ $card->name }}"
                             class="w-16 h-16 rounded-full object-cover border-2 border-blue-600">
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">{{ $card->name }}</h3>

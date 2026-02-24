@@ -34,11 +34,16 @@ class TemoignageController extends Controller
             'nom' => 'required|string|max:255',
             'profession' => 'nullable|string|max:255',
             'message' => 'required|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('temoignages', 'public');
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $originalName);
+
+            $request->file('image')->move(public_path('temoignages'), $filename);
+
+            $validated['image'] = 'temoignages/' . $filename;
         }
 
         Temoignage::create($validated);
@@ -63,11 +68,20 @@ class TemoignageController extends Controller
             'nom' => 'required|string|max:255',
             'profession' => 'nullable|string|max:255',
             'message' => 'required|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('temoignages', 'public');
+            // Supprimer l'ancienne image si elle existe
+            if ($temoignage->image && file_exists(public_path($temoignage->image))) {
+                unlink(public_path($temoignage->image));
+            }
+
+            $filename = time() . '_' . $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->move(public_path('temoignages'), $filename);
+
+            $validated['image'] = 'temoignages/' . $filename;
         }
 
         $temoignage->update($validated);
@@ -91,12 +105,21 @@ class TemoignageController extends Controller
             'nom' => 'required|string|max:255',
             'profession' => 'nullable|string|max:255',
             'message' => 'required|string|min:10',
-            'image' => 'required|image|max:2048',
+            'image' => 'required|image|max:5120',
         ]);
 
         $imagePath = null;
+        // if ($request->hasFile('image')) {
+        //     $imagePath = $request->file('image')->store('temoignages', 'public');
+        // }
+
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('temoignages', 'public');
+            $originalName = $request->file('image')->getClientOriginalName();
+            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $originalName);
+
+            $request->file('image')->move(public_path('temoignages'), $filename);
+
+            $validated['image'] = 'temoignages/' . $filename;
         }
 
         Temoignage::create([

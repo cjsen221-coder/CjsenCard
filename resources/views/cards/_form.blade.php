@@ -65,7 +65,7 @@
     {{-- AVATAR --}}
     <label class="block mb-2 font-semibold">Photo / Avatar</label>
     @if($card->avatar ?? false)
-        <img id="avatar-preview" src="{{ asset($card->avatar) }}" alt="avatar"
+        <img id="avatar-preview" src="{{ asset('public/storage/'. $card->avatar) }}" alt="avatar"
             class="w-20 h-20 rounded-full object-cover mb-2">
     @else
         <img id="avatar-preview" src="" alt="avatar" class="w-20 h-20 rounded-full object-cover mb-2 hidden">

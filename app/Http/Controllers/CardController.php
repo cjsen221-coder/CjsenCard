@@ -81,7 +81,7 @@ class CardController extends Controller
             'phone' => 'nullable|string|max:50',
             'whatsapp' => 'nullable|string|max:50',
 
-            'avatar' => 'nullable|image|max:2048',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
             'honorMember' => 'required|string|max:255',
         ]);
 
@@ -99,7 +99,7 @@ class CardController extends Controller
 
         if ($request->hasFile('avatar')) {
             $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
-            $request->file('avatar')->move(public_path('avatars'), $filename);
+            $request->file('avatar')->move(public_path('storage/avatars'), $filename);
             $data['avatar'] = 'avatars/' . $filename;
         }
 
@@ -124,7 +124,7 @@ class CardController extends Controller
             'phone' => 'nullable|string|max:50',
             'whatsapp' => 'nullable|string|max:50',
 
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'honorMember' => 'required|string|max:255',
         ]);
 
@@ -143,7 +143,7 @@ class CardController extends Controller
                 unlink(public_path($card->avatar));
             }
             $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
-            $request->file('avatar')->move(public_path('avatars'), $filename);
+            $request->file('avatar')->move(public_path('storage/avatars'), $filename);
             $validated['avatar'] = 'avatars/' . $filename;
         }
 

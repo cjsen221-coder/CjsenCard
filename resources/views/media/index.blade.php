@@ -1,41 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Liste des médias
-            </h2>
-            <a href="{{ route('medias.create') }}"
-                class="bg-[#003366] text-white px-4 py-2 rounded hover:bg-[#002244] transition">
-                ➕ Nouveau média
-            </a>
+        <div class="flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Événements publiés</h2>
+            <a href="{{ route('medias.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">➕ Nouveau</a>
         </div>
     </x-slot>
 
-    <div class="max-w-6xl mx-auto mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        @forelse($media as $item)
-            <div class="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-all duration-300">
-
-                <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->title }}" class="w-full h-40 object-cover rounded mb-2">
-
-                <h3 class="text-lg font-bold">{{ $item->title }}</h3>
-                <p class="text-sm text-gray-500">{{ \Illuminate\Support\Str::limit($item->description, 60) }}</p>
-
-                <div class="flex justify-between mt-3">
-                    <a href="{{ route('medias.edit', $item) }}" class="text-yellow-600 hover:underline">✏️ Modifier</a>
-                    <form action="{{ route('medias.destroy', $item) }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:underline">🗑️ Supprimer</button>
+   <div class="max-w-6xl mx-auto mt-6 space-y-8">
+    @foreach($events as $event)
+        <div class="bg-white p-4 shadow rounded">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="font-bold text-lg">{{ $event->title }}</h3>
+                    <p class="text-gray-600 text-sm mb-3">{{ $event->description }}</p>
+                </div>
+                <div class="space-x-2">
+                    <a href="{{ route('medias.edit', $event) }}" class="text-yellow-600">✏</a>
+                    <form action="{{ route('medias.destroy', $event) }}" method="POST"
+                        onsubmit="return confirm('Supprimer cet événement ?');" class="inline">
+                        @csrf @method('DELETE')
+                        <button class="text-red-600">🗑</button>
                     </form>
                 </div>
             </div>
-        @empty
-            <div class="col-span-full text-center text-gray-500">Aucun média trouvé.</div>
-        @endforelse
-    </div>
 
-    <div class="mt-6">
-        {{ $media->links() }}
+            <!-- Flex pour 3 colonnes fixes -->
+            <div class="flex flex-wrap -mx-2 mt-4">
+                @foreach($event->media as $media)
+                    <div class="w-full sm:w-1/2 md:w-1/3 px-2 mb-4">
+                        <div class="overflow-hidden rounded">
+                            <img src="{{ asset('public/' . $media->image) }}" class="w-full h-auto object-cover rounded">
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+
+    <div class="mt-4">
+        {{ $events->links() }}
     </div>
+</div>
+
 </x-app-layout>

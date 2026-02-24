@@ -1,0 +1,243 @@
+/* ===========================================
+   🌟 SECTIONS A PROPOS (GLOBAL)
+    =========================================== */
+.apropos-section {
+    padding: 80px 20px;
+}
+
+.apropos-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.apropos-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.apropos-image img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.apropos-text {
+    flex: 1.2;
+    padding: 20px 40px;
+}
+
+.apropos-text h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #0b3d91;
+    margin-bottom: 15px;
+}
+
+.apropos-text p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+
+
+/* ===========================================
+   🖥 RESPONSIVE < 992px (TABLETTES)
+    =========================================== */
+@media (max-width: 992px) {
+    .apropos-section .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .apropos-text {
+        padding: 20px 10px;
+    }
+
+    .apropos-text h2 {
+        font-size: 1.9rem;
+    }
+}
+
+/* ===========================================
+   📱 RESPONSIVE < 768px (MOBILE)
+   TITRES AVANT IMAGES
+    =========================================== */
+@media (max-width: 768px) {
+
+    .apropos-section {
+        padding: 50px 15px;
+    }
+
+    /* TITRE + TEXTE EN PREMIER */
+    .apropos-text {
+        order: 1;
+    }
+
+    /* IMAGE APRES */
+    .apropos-image {
+        order: 2;
+        margin-top: 20px;
+    }
+
+    .apropos-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .apropos-text h2 {
+        font-size: 1.7rem;
+    }
+
+    .apropos-text p {
+        font-size: 1rem;
+        text-align: justify;
+    }
+}
+
+
+
+/* ===========================================
+   🌍 ANTENNES
+    =========================================== */
+
+.map-container img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.antenne-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+
+
+/* ===========================================
+   🤝 PARTENAIRES
+    =========================================== */
+
+.logos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .logos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+
+
+/* ===========================================
+   💬 TEMOIGNAGES
+    =========================================== */
+
+.testimonial-item {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-item {
+        padding: 20px !important;
+    }
+
+    .testimonial-item p {
+        font-size: 1rem;
+    }
+
+    .testimonial-item img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+}
+
+
+.antennes-section {
+    text-align: center;
+}
+
+.antennes-section h2 {
+    color: #0b3d91;
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.antennes-section p {
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    line-height: 1.7;
+}
+
+.map-container {
+    position: relative;
+    text-align: center;
+}
+
+.map-container img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.antenne-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.antenne-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.antenne-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.antenne-card h4 {
+    color: #0b3d91;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.antenne-card p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.pin {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #0b3d91;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}

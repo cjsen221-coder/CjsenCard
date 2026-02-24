@@ -1,17 +1,26 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Détails d'une carte
-            </h2>
+        @auth
+            <div class="flex items-center justify-between">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ $card->name }} est un membre de Sen Carrefour Jeunesse.
+                </h2>
 
-            @auth
                 <a href="{{ route('cards.create') }}"
                     class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
                     ➕ Nouvelle carte
                 </a>
-            @endauth
-        </div>
+            </div>
+        @endauth
+
+        @guest
+            <div class="flex items-center justify-center">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+                    {{ $card->name }} est un membre de Sen Carrefour Jeunesse.
+                </h2>
+            </div>
+        @endguest
+
     </x-slot>
 
     @if(session('success'))
@@ -23,8 +32,7 @@
     <div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded shadow">
         <!-- En-tête avec avatar -->
         <div class="flex items-center gap-4 mb-6">
-            <img src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
-                alt="Avatar de {{ $card->name }}"
+            <img src="{{ asset('public/storage/' . $card->avatar) }}" alt="Avatar de {{ $card->name }}"
                 class="w-24 h-24 rounded-full border-4 border-yellow-400 object-cover" />
             <div>
                 <h2 class="text-2xl font-bold">{{ $card->name }}</h2>
@@ -70,14 +78,18 @@
             <!-- Colonne 2 : Coordonnées -->
             <div class="space-y-2">
                 <h3 class="font-semibold text-lg text-blue-900 mb-2">Coordonnées</h3>
-                @if($card->address)
-                    <p><strong>Adresse :</strong> {{ $card->address }}</p>
+
+                @if($card->serial_number)
+                    <p><strong>Matricule :</strong> {{ $card->serial_number }}</p>
+                @endif
+                @if($card->phone)
+                    <p><strong>Téléphone :</strong> {{ $card->phone }}</p>
                 @endif
                 @if($card->email)
                     <p><strong>Email :</strong> {{ $card->email }}</p>
                 @endif
-                @if($card->phone)
-                    <p><strong>Téléphone :</strong> {{ $card->phone }}</p>
+                @if($card->address)
+                    <p><strong>Adresse :</strong> {{ $card->address }}</p>
                 @endif
                 @auth
 
@@ -89,9 +101,6 @@
                     @endif
 
                 @endauth
-                @if($card->serial_number)
-                    <p><strong>NUMERO :</strong> {{ $card->serial_number }}</p>
-                @endif
 
             </div>
         </div>

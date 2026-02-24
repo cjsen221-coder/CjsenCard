@@ -9,7 +9,7 @@
     <title>ADMIN - Sen Carrefour Jeunesse</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon_io/favicon.ico') }}">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,13 +63,13 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h1 class="display-4">{{ $photo->title }}</h1>
-                    <p class="text-muted">{{ $photo->description }}</p>
+                    <h1 class="display-4">{{ $photo->event->title }}</h1>
+                    <p class="text-muted">{{ $photo->event->description }}</p>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
-                        <img src="{{ asset('storage/' . $photo->image) }}" class="img-fluid rounded mb-4"
+                        <img src="{{ asset('public/' . $photo->image) }}" class="img-fluid rounded mb-4"
                             alt="{{ $photo->title }}">
 
                         <div class="text-center">

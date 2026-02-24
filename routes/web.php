@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SiteController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Exports\CardsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 // Route::get('/', function () {
 //     return view('site.accueil');
@@ -35,7 +39,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Gérer les medias 
     Route::resource('blogs', BlogController::class);
+    // Route::resource('medias', MediaController::class);
     Route::resource('medias', MediaController::class);
+    Route::delete('media-image/{media}', [MediaController::class, 'destroyImage'])->name('destroyImage');
+    
     Route::resource('videos', VideoController::class);
 
     // Gérer les domaines d'action
@@ -44,8 +51,7 @@ Route::middleware(['auth'])->group(function () {
     // Gérer les témoignages
     Route::resource('temoignage', TemoignageController::class);
     Route::patch('temoignage/{temoignage}/approve', [TemoignageController::class, 'approve'])
-     ->name('temoignage.approve');
-
+        ->name('temoignage.approve');
 });
 
 Route::middleware('auth')->group(function () {
@@ -60,6 +66,12 @@ Route::middleware('auth')->group(function () {
 
 
 // Les routes du site
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => ['web']
+//     ],
+//     function () {
 Route::get('/', [SiteController::class, 'accueil'])->name('site.accueil');
 Route::get('/domaines', [SiteController::class, 'domaines'])->name('site.domaines');
 // Page détails générique (pour causerie, projet, etc.)
@@ -81,6 +93,30 @@ Route::post('/contact', [SiteController::class, 'send'])->name('site.contact.sen
 Route::post('/newsletter', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 Route::post('/temoignages/store', [TemoignageController::class, 'storeUser'])
-    ->name('temoignages.store.user');   
+    ->name('temoignages.store.user');
+//     }
+// );
+
+Route::get('/cards/export/excel', function () {
+    return Excel::download(new CardsExport, 'liste-cartes.xlsx');
+})->name('cards.export.excel');
+
+
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => ['web']
+//     ],
+//     function () {
+//         Route::get('/', function () {
+//             return view('home'); // une seule vue !
+//         })->name('home');
+
+//         Route::get('/contact', function () {
+//             return view('contact');
+//         })->name('contact');
+//     }
+// );
+
 
 require __DIR__ . '/auth.php';

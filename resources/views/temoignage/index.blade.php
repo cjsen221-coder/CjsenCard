@@ -18,7 +18,7 @@
                 <div class="bg-white shadow-md rounded-xl p-6 hover:shadow-xl transition-all duration-300 flex flex-col">
                     <div class="flex flex-col items-center text-center gap-3 mb-4">
                         @if($temoignage->image)
-                            <img src="{{ asset('storage/' . $temoignage->image) }}" alt="{{ $temoignage->nom }}"
+                            <img src="{{ asset('public/' . $temoignage->image) }}" alt="{{ $temoignage->nom }}"
                                 class="w-24 h-24 object-cover rounded-full border-2 border-primary shadow-md">
                         @else
                             <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Image par défaut"

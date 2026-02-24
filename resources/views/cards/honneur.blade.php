@@ -60,27 +60,8 @@
         .front .vip {
             display: flex;
             align-items: center;
-<<<<<<< HEAD
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-            padding: 6px 10px;
-        }
-
-        .header-logo {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #FFEB3B;
-            /* jaune vif */
-        }
-
-        .header-title {
-=======
             justify-content: space-between;
             font-size: 18pt;
->>>>>>> f87d6dd528b9a65baba5b1178bdc5c931b0f21e5
             font-weight: bold;
             position: relative;
             z-index: 2;
@@ -131,57 +112,6 @@
             z-index: 2;
         }
 
-<<<<<<< HEAD
-        .divider {
-            width: 3px;
-            background-color: #FF9800;
-            margin: 20px 15px 0;
-            border-radius: 1px;
-            height: 110px;
-        }
-
-        .right {
-            width: 40%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #FFEB3B;
-            object-fit: cover;
-        }
-
-        .honor-badge {
-            display: inline-block;
-            padding: 5px;
-            font-size: 8pt;
-            font-weight: bold;
-            color: #009688;
-            /* texte turquoise */
-            background-color: #FFEB3B;
-            /* fond jaune vif */
-            border-radius: 12px;
-            /* capsule élégante */
-            text-align: center;
-            align-self: flex-start;
-            /* évite que ça colle à droite */
-            margin-bottom: 6px;
-            white-space: nowrap;
-        }
-
-
-        /* --- Verso --- */
-        .back-card {
-            width: 85.6mm;
-            height: 54mm;
-            border-radius: 12px;
-=======
         .front .contact-info div {
             margin-bottom: 2px;
         }
@@ -191,7 +121,6 @@
             background: linear-gradient(135deg, #0b0f2e, #1a1f4b);
             padding: 15px;
             position: relative;
->>>>>>> f87d6dd528b9a65baba5b1178bdc5c931b0f21e5
             overflow: hidden;
             border: 2px solid #FFD700;
         }
@@ -266,15 +195,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <div class="card-wrapper" id="card-wrapper">
-
-        <!-- RECTO Membre d'Honneur -->
-        <div class="card honor">
-            <div class="header">
-                {{-- <img class="header-logo" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo"> --}}
-                <div class="header-title">SEN CARREFOUR JEUNESSE (CJSEN)</div>
-=======
     <div id="card-wrapper">
         <!-- RECTO -->
         <div class="card front">
@@ -284,7 +204,6 @@
                     <span style="color:#3EB489;"> D'Honneur</span>
                 </span>
                 <img class="header-logo" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo">
->>>>>>> f87d6dd528b9a65baba5b1178bdc5c931b0f21e5
             </div>
 
             <!-- Trait horizontal -->
@@ -299,22 +218,8 @@
                 <div class="address" style="color:#ffffff;">🏠 {{ $card->address }}</div>
             </div>
 
-<<<<<<< HEAD
-                    @if($card->whatsapp)
-                        <div class="info"><i class="fas fa-map-marker-alt"></i>{{ $card->address }}</div>
-                    @endif
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="right">
-                    <img class="avatar" src="{{ asset('images/logo-cjsen.jpg') }}" alt="Avatar de {{ $card->name }}">
-
-                </div>
-=======
             <div class="class" style="color:#40E0D0;">
                 SEN CARREFOUR JEUNESSE - CJSEN
->>>>>>> f87d6dd528b9a65baba5b1178bdc5c931b0f21e5
             </div>
         </div>
 
@@ -332,23 +237,15 @@
                     @endif
                 </div>
 
-<<<<<<< HEAD
-            <div class="divider-horizontal"></div>
-            <div class="url">
-                www.cjsen.sn
-                <span class="separator">|</span>
-                {{ $card->serial_number }}
-=======
                 <!-- Trait vertical -->
                 <div class="vertical-divider"></div>
 
                 <div class="info">
                     SEN CARREFOUR JEUNESSE <br>
-                    cjsen221@gmail.com <br>
+                    contact@cjsen.com <br>
                     +221 78 849 57 30 <br>
-                    www.cjsen.sn
+                    www.cjsen.com
                 </div>
->>>>>>> f87d6dd528b9a65baba5b1178bdc5c931b0f21e5
             </div>
         </div>
     </div>

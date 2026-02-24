@@ -17,7 +17,7 @@
                 <div class="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-all duration-300">
                     <a href="{{ route('domaine.show', $domaine) }}" class="flex flex-col gap-4 mb-4">
                         @if($domaine->image)
-                            <img src="{{ asset('storage/'.$domaine->image) }}" alt="{{ $domaine->nom }}"
+                            <img src="{{ asset('public/'.$domaine->image) }}" alt="{{ $domaine->nom }}"
                                 class="w-full h-48 object-cover rounded-md">
                         @else
                             <img src="{{ asset('images/default.jpg') }}" alt="Image par défaut"

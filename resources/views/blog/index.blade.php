@@ -16,7 +16,7 @@
             @forelse($blogs as $blog)
                 <div class="bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition-all duration-300">
                     @if($blog->image)
-                        <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}"
+                        <img src="{{ asset('public/'. $blog->image) }}" alt="{{ $blog->title }}"
                             class="w-full object-cover rounded-md" style="height: 250px; width: 100%; object-fit: cover;">
                     @endif
                     <h3 class="text-xl font-bold text-gray-900">{{ $blog->title }}</h3>

@@ -208,7 +208,7 @@
 
                 <div class="right">
                     <img class="avatar"
-                        src="{{ $card->avatar ? asset($card->avatar) : asset('images/default-avatar.jpg') }}"
+                        src="{{ asset('public/storage/' . $card->avatar) }}"
                         alt="Avatar de {{ $card->name }}" alt="Avatar">
                 </div>
             </div>
@@ -226,7 +226,7 @@
             @endif
             <div class="divider-horizontal"></div>
             <div class="url">
-                www.cjsen.sn
+                www.cjsen.com
                 <span class="separator">|</span>
                 {{ $card->serial_number }}
             </div>

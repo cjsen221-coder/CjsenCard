@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Domaine;
+use App\Models\Event;
 use App\Models\Media;
 use App\Models\Temoignage;
 use App\Models\Video;
@@ -21,7 +22,9 @@ class SiteController extends Controller
 
         // Derniers articles, galerie et vidéos
         $blogs = Blog::latest()->take(4)->get();
-        $gallery = Media::latest()->take(10)->get();
+        // $gallery = Media::latest()->take(10)->get();
+        // Récupérer tous les événements avec leurs images
+        $gallery = Event::with('media')->latest()->take(10)->get();
         $videos = Video::latest()->take(3)->get();
 
         // Convertir les URLs YouTube en URLs embed
@@ -91,7 +94,7 @@ class SiteController extends Controller
 
     public function mediatheque()
     {
-        $gallery = Media::latest()->paginate(20);
+        $gallery = Event::with('media')->latest()->paginate(20);
         $videos = Video::latest()->paginate(20);
 
         // Convertir les URLs YouTube en URLs embed
@@ -110,12 +113,23 @@ class SiteController extends Controller
     }
     public function showPhoto(Media $photo)
     {
+        $photo->load('event');
         return view('site.photo_show', compact('photo'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
-        $blogs = Blog::latest()->paginate(12);
+        $query = Blog::query();
+
+        // Recherche par titre ou contenu
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $query->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('content', 'LIKE', "%{$search}%");
+        }
+
+        $blogs = $query->latest()->paginate(9)->withQueryString();
         return view('site.blog', compact('blogs'));
     }
     public function show_blog(Blog $blog)

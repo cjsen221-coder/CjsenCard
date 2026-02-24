@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,7 +144,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>
@@ -190,7 +190,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>
@@ -236,7 +236,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px; object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>
@@ -282,7 +282,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>
@@ -328,7 +328,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>
@@ -374,7 +374,7 @@
 
                                 <div class="p-4 text-center">
                                     @if($domaine->image)
-                                        <img src="{{ asset('storage/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
+                                        <img src="{{ asset('public/' . $domaine->image) }}" alt="{{ $domaine->nom }}"
                                             class="rounded mb-3 w-100" style="height:180px;object-fit:cover;">
                                     @endif
                                     <h5>{{ $domaine->nom }}</h5>

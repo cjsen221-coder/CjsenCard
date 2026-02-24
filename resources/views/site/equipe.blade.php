@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,9 +102,19 @@
                         ]
                     ],
                     [
+                        'poste' => 'Commissaire aux Comptes',
+                        'nomCellule' => 'Commissariat aux Comptes',
+                        'membre' => ['nom' => 'Diampathé SALL', 'photo' => 'media/diam.png'],
+                        'missions' => [
+                            'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
+                            'Vérifier la conformité des transactions financières avec le règlement intérieur.'
+                        ],
+                        'adjoints' => []
+                    ],
+                    [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de l’Initiative, de la Planification et de la Stratégie (CIPS)',
-                        'membre' => ['nom' => 'Mame Fatou Mbaye TALL', 'photo' => 'media/MAME_FATOU.png'],
+                        'membre' => ['nom' => 'Mame Mbaye NIANG', 'photo' => 'media/Mame_Mbaye.jpg'],
                         'missions' => [
                             'Orienter la vision stratégique et coordonner les plans d’action.',
                             'Définir les objectifs à court, moyen et long terme.',
@@ -114,7 +124,7 @@
                             'Proposer des stratégies innovantes adaptées aux besoins des jeunes.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Ibrahima DIA', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima-r.png']
+                            ['nom' => 'Marie Sarr TINE', 'poste' => 'Adjointe', 'photo' => 'media/maries-r.png']
                         ]
                     ],
                     [
@@ -171,7 +181,7 @@
                     [
                         'poste' => 'Coordonnateur',
                         'nomCellule' => 'Cellule de Gestion et du Pilotage des Projets (CGPP)',
-                        'membre' => ['nom' => 'Mame Mbaye NIANG', 'photo' => 'media/Mame_Mbaye.jpg'],
+                        'membre' => ['nom' => 'Mame Fatou Mbaye TALL', 'photo' => 'media/MAME_FATOU.png'],
                         'missions' => [
                             'Mettre en œuvre les projets et veiller à leur bonne exécution.',
                             'Planifier et organiser les activités et projets selon la feuille de route.',
@@ -181,7 +191,8 @@
                             'Garantir le respect des délais et des standards de qualité.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Marie Sarr TINE', 'poste' => 'Adjointe', 'photo' => 'media/maries-r.png']
+                            ['nom' => 'Ibrahima DIA', 'poste' => 'Adjoint', 'photo' => 'media/ibrahima-r.png']
+
                         ]
                     ],
                     [
@@ -215,16 +226,6 @@
                         'adjoints' => [
                             ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => '']
                         ]
-                    ],
-                    [
-                        'poste' => 'Commissaire aux Comptes',
-                        'nomCellule' => 'Commissariat aux Comptes',
-                        'membre' => ['nom' => 'Diampathé SALL', 'photo' => 'media/diam1-.png'],
-                        'missions' => [
-                            'Contrôler annuellement les comptes et présenter un rapport à l’Assemblée Générale.',
-                            'Vérifier la conformité des transactions financières avec le règlement intérieur.'
-                        ],
-                        'adjoints' => []
                     ]
                 ]
             ];
@@ -234,8 +235,8 @@
                 <h1 class="section-main-title mb-5">Comité Directeur</h1>
 
                 @php
-                    $bureauExecutif = array_slice($bureauOperationnelSections['Comité Directeur'], 0, 3);
-                    $bureauFonctionnel = array_slice($bureauOperationnelSections['Comité Directeur'], 3);
+                    $bureauExecutif = array_slice($bureauOperationnelSections['Comité Directeur'], 0, 4);
+                    $bureauFonctionnel = array_slice($bureauOperationnelSections['Comité Directeur'], 4);
                 @endphp
 
                 <!-- ========================================================= -->

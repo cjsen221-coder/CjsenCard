@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,8 +121,7 @@
 
 
         <!-- Navbar & Hero Start -->
-        <x-hero title="Média" current="Média" parent="" parentUrl=""
-            titleSize="display-4" />
+        <x-hero title="Média" current="Média" parent="" parentUrl="" titleSize="display-4" />
         <!-- Navbar & Hero End -->
 
 
@@ -162,24 +161,27 @@
                         <!-- Photos -->
                         <div id="tab-photos" class="tab-pane fade show active p-0">
                             <div class="row g-4">
-                                @forelse($gallery as $photo)
-                                    <div class="col-lg-4 col-md-4 col-sm-6">
-                                        <a href="{{ route('photo.show', $photo) }}">
-                                            <div class="card shadow-sm overflow-hidden">
-                                                <img src="{{ asset('storage/' . $photo->image) }}" class="card-img-top"
-                                                    alt="{{ $photo->title }}" style="height: auto; object-fit: cover;">
-                                                {{-- <div class="overlay d-flex align-items-center justify-content-center">
-                                                    --}}
-                                                    <h6 class="text-center" style="padding-top: 10px;">{{ $photo->title }}
-                                                    </h6>
-                                                    {{--
-                                                </div> --}}
+                                @forelse($gallery as $event)
+                                    <h3 class="event-title">{{ $event->title }}</h3>
+                                    <div class="row g-4 justify-content-center">
+                                        @forelse($event->media as $item)
+                                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                                <a href="{{ route('photo.show', $item) }}">
+                                                    <div class="card shadow-sm overflow-hidden">
+                                                        <img src="{{ asset('public/' . $item->image) }}" class="card-img-top"
+                                                            alt="{{ $item->title }}" style="height: auto; object-fit: cover;">
+                                                        <h6 class="text-center mt-2 mb-2">{{ $item->title }}</h6>
+                                                    </div>
+                                                </a>
                                             </div>
-                                        </a>
+                                        @empty
+                                            <p class="text-center text-muted">Aucune image disponible pour cet événement.</p>
+                                        @endforelse
                                     </div>
                                 @empty
-                                    <p class="text-center text-muted">Aucune photo disponible pour le moment.</p>
+                                    <p class="text-center text-muted">Aucun événement disponible pour le moment.</p>
                                 @endforelse
+
                             </div>
                             <div class="mt-4 d-flex justify-content-center">
                                 {{ $gallery->links('pagination::bootstrap-5') }}

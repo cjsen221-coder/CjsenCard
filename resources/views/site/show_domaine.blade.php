@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('images/logo-cjsen.jpg') }}" rel="icon">
+    <link href="{{ asset('images/logo.ico') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +59,7 @@
                     <!-- Image -->
                     <div class="col-lg-5 col-md-6">
                         @if($domaine->image)
-                            <img src="{{ $domaine->image ? asset('storage/' . $domaine->image) : asset('images/default.jpg') }}"
+                            <img src="{{ $domaine->image ? asset('public/' . $domaine->image) : asset('images/default.jpg') }}"
                                 alt="{{ $domaine->nom }}" class="img-fluid rounded shadow-lg w-auto"
                                 style="object-fit: contain; max-height: 350px; border: 2px solid #eee;">
                         @else

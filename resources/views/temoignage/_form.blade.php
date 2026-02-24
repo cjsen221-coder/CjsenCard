@@ -22,7 +22,7 @@
     {{-- PHOTO --}}
     <label class="block mb-2 font-semibold">Photo du membre</label>
     @if($temoignage->image ?? false)
-        <img id="image-preview" src="{{ asset('storage/' . $temoignage->image) }}" alt="image"
+        <img id="image-preview" src="{{ asset('public/' . $temoignage->image) }}" alt="image"
             class="w-32 h-32 object-cover mb-2 rounded-full border">
     @else
         <img id="image-preview" src="" alt="image" class="w-32 h-32 object-cover mb-2 hidden rounded-full border">
