@@ -36,8 +36,8 @@
 
         <p class="mb-2">
           <i class="fa fa-globe me-3"></i>
-          <a href="https://www.cjsen.com" target="_blank" class="text-white text-decoration-none">
-            www.cjsen.com
+          <a href="https://www.cjsen.sn" target="_blank" class="text-white text-decoration-none">
+            www.cjsen.sn
           </a>
         </p>
 
@@ -55,7 +55,7 @@
             <i class="fab fa-youtube"></i>
           </a>
           <a class="btn btn-outline-light btn-social"
-            href="https://www.linkedin.com/company/sen-carrefour-jeunesse/?viewAsMember=true" target="_blank"
+            href="https://www.linkedin.com/company/sen-carrefour-jeunesse/" target="_blank"
             rel="noopener noreferrer">
             <i class="fab fa-linkedin-in"></i>
           </a>
@@ -78,7 +78,7 @@
         <h5 class="text-light fw-normal">Sunday</h5>
         <p>10AM - 08PM</p>
       </div> --}}
-      
+
       <div class="col-lg-4 col-md-6">
         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
         <p>Recevez nos actualités et annonces directement dans votre boîte mail.</p>

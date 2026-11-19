@@ -42,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
     // Route::resource('medias', MediaController::class);
     Route::resource('medias', MediaController::class);
     Route::delete('media-image/{media}', [MediaController::class, 'destroyImage'])->name('destroyImage');
-    
     Route::resource('videos', VideoController::class);
 
     // Gérer les domaines d'action

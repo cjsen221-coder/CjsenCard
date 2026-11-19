@@ -70,10 +70,10 @@
                 <div class="apropos-text">
                     <h2>Notre Historique</h2>
                     <p>
-                        Le XXI siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a compté autant de
+                        Le XXIe siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a compté autant de
                         jeunes.
                         En Afrique en particulier, elle représente plus de 60% de la population. Cette force est une
-                        chance,mais
+                        chance, mais
                         elle porte aussi en elle des défis immenses : chômage endémique, dérèglements climatiques,
                         désorientation
                         scolaire et professionnelle, perte de repères citoyens, inégalités grandissantes.
@@ -270,7 +270,7 @@
                     <div class="logo-item">
                         <img src="{{ asset('media/partner1.jpeg') }}" alt="Partenaire 6">
                     </div> --}}
-                    
+
                 </div>
             </div>
         </section>

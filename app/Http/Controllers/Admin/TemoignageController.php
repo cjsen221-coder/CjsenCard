@@ -99,39 +99,70 @@ class TemoignageController extends Controller
     }
 
 
+
     public function storeUser(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'profession' => 'nullable|string|max:255',
             'message' => 'required|string|min:10',
-            'image' => 'required|image|max:5120',
+            'image' => 'required|file|max:5120',
         ]);
 
         $imagePath = null;
-        // if ($request->hasFile('image')) {
-        //     $imagePath = $request->file('image')->store('temoignages', 'public');
-        // }
 
         if ($request->hasFile('image')) {
-            $originalName = $request->file('image')->getClientOriginalName();
-            $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $originalName);
 
-            $request->file('image')->move(public_path('temoignages'), $filename);
+            $file = $request->file('image');
 
-            $validated['image'] = 'temoignages/' . $filename;
+            // Vérifier que le fichier a bien été téléchargé
+            if (!$file->isValid()) {
+                return back()->withErrors([
+                    'image' => 'Le téléchargement de votre image a échoué.'
+                ])->withInput();
+            }
+
+            // Vérifier manuellement les extensions autorisées
+            $extension = strtolower($file->getClientOriginalExtension());
+
+            $extensionsAutorisees = ['jpg', 'jpeg', 'png'];
+
+            if (!in_array($extension, $extensionsAutorisees, true)) {
+                return back()->withErrors([
+                    'image' => 'Veuillez choisir une image JPG ou PNG.'
+                ])->withInput();
+            }
+
+            // Générer un nom de fichier sécurisé
+            $filename = uniqid('temoignage_', true) . '.' . $extension;
+
+            // Créer le dossier si nécessaire
+            $destination = public_path('temoignages');
+
+            if (!is_dir($destination)) {
+                mkdir($destination, 0755, true);
+            }
+
+            // Déplacer le fichier
+            $file->move($destination, $filename);
+
+            $imagePath = 'temoignages/' . $filename;
         }
 
         Temoignage::create([
-            'nom' => $request->nom,
-            'profession' => $request->profession,
-            'message' => $request->message,
+            'nom' => $validated['nom'],
+            'profession' => $validated['profession'] ?? null,
+            'message' => $validated['message'],
             'image' => $imagePath,
             'is_approved' => false,
         ]);
 
-        return back()->with('success', 'Votre témoignage a été envoyé et sera affiché après validation.');
+        return back()->with(
+            'success',
+            'Votre témoignage a été envoyé et sera affiché après validation.'
+        );
     }
+
     public function approve(Temoignage $temoignage)
     {
         $temoignage->is_approved = !$temoignage->is_approved; // Bascule l’état

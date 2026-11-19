@@ -91,7 +91,8 @@
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title text-center">{{ $blog->title }}</h5>
                                     <p class="card-text text-center">
-                                        {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }}
+                                        {{-- {{ \Illuminate\Support\Str::limit($blog->content, 100, '...') }} --}}
+                                        {{ preg_replace('/^(.{0,100}).*$/us', '$1...', $blog->content) }}
                                     </p>
                                     <a href="{{ route('blog.show', $blog) }}" class="mt-auto btn btn-primary">Lire la
                                         suite</a>

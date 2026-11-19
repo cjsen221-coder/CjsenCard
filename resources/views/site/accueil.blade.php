@@ -87,7 +87,7 @@
 
                             <p class="hero-text descript animate__animated animate__fadeInUp">
                                 Une association à but non lucratif née au Sénégal et porteuse d'une vision universelle :
-                                donner à chaque jeune les moyens de s'informer, de s'orienter...
+                                donner à chaque jeune les moyens de se former, s'informer et s'orienter.
                                 {{-- de s’éduquer, --}}
                                 {{-- de s’engager et d’innover. --}}
                             </p>
@@ -147,13 +147,13 @@
                     <div class="col-lg-6">
 
 
-                        <p class="mb-4"> Le XXI siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a
+                        <p class="mb-4"> Le XXIe siècle est celui de la jeunesse. Jamais dans l’histoire, l’humanité n’a
                             compté autant de jeunes. En Afrique en particulier, elle représente plus de 60 % de la
                             population. Cette force est une chance, mais elle porte aussi en elle des défis immenses :
                             chômage endémique, dérèglements climatiques, désorientation scolaire et professionnelle,
                             perte de repères citoyens, inégalités grandissantes. </p>
                         <p class="mb-4"> Face à ces réalités, un constat s’impose : les jeunes ont soif de repères,
-                            d’opportunés et de cadres solides pour tracer leur chemin. C’est de ce constat qu’est né Sen
+                            d’opportunités et de cadres solides pour tracer leur chemin. C’est de ce constat qu’est né Sen
                             Carrefour Jeunesse (CJSEN), comme une réponse, mais aussi comme un appel : si nous voulons
                             transformer nos sociétés, nous devons d’abord donner à la jeunesse les moyens de se
                             transformer elle-même. </p>
@@ -176,11 +176,11 @@
                                 <div class="d-flex align-items-center border-start border-5 border-cjsen px-3">
                                     <h1 class="flex-shrink-0 display-5 text-cjsen-primary mb-0"
                                         data-toggle="counter-up">
-                                        01
+                                        2
                                     </h1>
                                     <div class="ps-4">
-                                        <p class="mb-0">Année</p>
-                                        <h6 class="text-uppercase mb-0">d'Expérience</h6>
+                                        <p class="mb-0">ans</p>
+                                        <h6 class="text-uppercase mb-0">d'expérience</h6>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +303,8 @@
                                     <h5 class="border-bottom pb-1">{{ $blog->title }}</h5>
                                     <small class="fst-italic text-muted">Publié le
                                         {{ $blog->created_at->format('d M Y') }}</small>
-                                    <p class="mb-1">{{ Str::limit($blog->content, 100) }}</p>
+                                    {{-- <p class="mb-1">{{ Str::limit($blog->content, 100) }}</p> --}}
+                                    {{ preg_replace('/^(.{0,100}).*$/us', '$1...', $blog->content) }}
                                     <a href="{{ route('blog.show', $blog->id) }}"
                                         class="text-cjsen-primary fw-semibold mt-1">
                                         Lire plus <i class="fa fa-arrow-right"></i>

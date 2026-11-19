@@ -23,7 +23,7 @@
                         <li><a @class(['active' => Route::currentRouteName() === 'site.accueil']) href="{{ route('site.accueil') }}" class="nav-link">Accueil</a></li>
                         <li><a @class(['active' => Route::currentRouteName() === 'site.services']) href="{{ route('site.services') }}" class="nav-link">Services</a></li>
                         {{-- <li><a href="barber-shop.html" class="nav-link">Barber Shop</a></li> --}}
-                        <li><a @class(['active' => Route::currentRouteName() === 'site.apropos']) href="{{ route('site.apropos') }}" class="nav-link">A Propos</a></li>
+                        <li><a @class(['active' => Route::currentRouteName() === 'site.apropos']) href="{{ route('site.apropos') }}" class="nav-link">À propos</a></li>
                         {{-- <li><a href="blog.html" class="nav-link">Blog</a></li> --}}
                         <li><a @class(['active' => Route::currentRouteName() === 'site.contact']) href="{{ route('site.contact') }}" class="nav-link">Contact</a></li>
                     </ul>

@@ -30,7 +30,9 @@
                     </div>
 
                     <p class="text-gray-700 text-sm leading-relaxed mb-4 border-l-4 border-primary pl-3">
-                        “{{ Str::limit($temoignage->message, 150) }}”
+                        {{-- “{{ Str::limit($temoignage->message, 150) }}” --}}
+
+                        “{{ preg_replace('/^(.{0,100}).*$/us', '$1...', $temoignage->message) }}”
                     </p>
 
                     <small class="text-gray-400 block mb-3 text-xs">

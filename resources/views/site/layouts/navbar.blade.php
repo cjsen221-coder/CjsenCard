@@ -5,8 +5,8 @@
     <a href="{{ route('site.accueil') }}" class="navbar-brand p-0">
         <p class="d-flex align-items-center m-0" style="color: #22445e;">
             <img src="{{ asset('images/logo-og.png') }}" alt="Logo" style="
-                    height: 80px; 
-                    width: auto; 
+                    height: 80px;
+                    width: auto;
                     margin-right: 0px;
                     transition: transform 0.3s ease, filter 0.3s ease;
                     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
@@ -29,9 +29,9 @@
             <!-- A Propos -->
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.apropos*') ? 'active' : '' }}"
-                    data-bs-toggle="dropdown">A Propos</a>
+                    data-bs-toggle="dropdown">À propos</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{ route('site.apropos') }}" class="dropdown-item">A Propos</a>
+                    <a href="{{ route('site.apropos') }}" class="dropdown-item">À propos</a>
                     <a href="{{ route('site.apropos') }}#historique" class="dropdown-item">Historique</a>
                     <a href="{{ route('site.apropos') }}#missions" class="dropdown-item">Missions</a>
                     <a href="{{ route('site.apropos') }}#valeurs" class="dropdown-item">Valeurs</a>
@@ -59,20 +59,20 @@
             <!-- Equipe -->
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.equipe*') ? 'active' : '' }}"
-                    data-bs-toggle="dropdown">Equipe</a>
+                    data-bs-toggle="dropdown">Équipe</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{ route('site.equipe') }}" class="dropdown-item">Equipe</a>
+                    <a href="{{ route('site.equipe') }}" class="dropdown-item">Équipe</a>
                     <a href="{{ route('site.equipe') }}#executif" class="dropdown-item">Bureau Exécutif</a>
                     <a href="{{ route('site.equipe') }}#fonctionnel" class="dropdown-item">Bureau Fonctionnel</a>
                 </div>
             </div>
 
-            <!-- Media -->
+            <!-- Médias -->
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle {{ Route::is('site.mediatheque*') ? 'active' : '' }}"
-                    data-bs-toggle="dropdown">Media</a>
+                    data-bs-toggle="dropdown">Médias</a>
                 <div class="dropdown-menu m-0">
-                    <a href="{{ route('site.mediatheque') }}" class="dropdown-item">Media</a>
+                    <a href="{{ route('site.mediatheque') }}" class="dropdown-item">Médias</a>
                     <a href="{{ route('site.mediatheque') }}#tab-photos" class="dropdown-item">Photos</a>
                     <a href="{{ route('site.mediatheque') }}#tab-videos" class="dropdown-item">Vidéos</a>
                 </div>
