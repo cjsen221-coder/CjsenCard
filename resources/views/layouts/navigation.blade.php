@@ -10,14 +10,14 @@
                             class="h-9 w-auto rounded-full shadow-md">
                     </a>
                 @endauth
-                
+
                 @guest
                     <a href="#">
                         <img src="{{ asset('images/logo-cjsen.jpg') }}" alt="Logo CJSEN"
                             class="h-9 w-auto rounded-full shadow-md">
                     </a>
                 @endguest
-                <span class="font-bold text-xl text-yellow-400 inline">CJSENCARD</span>
+                <span class="font-bold text-xl text-yellow-400 inline">CJSEN</span>
             </div>
 
             <!-- Navigation Links (Desktop) -->
@@ -27,10 +27,14 @@
                         class="text-white hover:text-yellow-300">
                         Dashboard
                     </x-nav-link>
-                    <x-nav-link :href="route('cards.index')" :active="request()->routeIs('cards.*')"
+                    <x-nav-link :href="route('qr.index')" :active="request()->routeIs('qr.*')"
                         class="text-white hover:text-yellow-300">
                         Cartes
                     </x-nav-link>
+                    {{-- <x-nav-link :href="route('qr.scan')" :active="request()->routeIs('qr.*')"
+                        class="text-white hover:text-yellow-300">
+                        Scanner
+                    </x-nav-link> --}}
                     <x-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.*')"
                         class="text-white hover:text-yellow-300">
                         Blog
@@ -123,7 +127,7 @@
         <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             Dashboard
         </x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('cards.index')" :active="request()->routeIs('cards.*')">
+        <x-responsive-nav-link :href="route('qr.index')" :active="request()->routeIs('qr.*')">
             Cartes
         </x-responsive-nav-link>
         <x-responsive-nav-link :href="route('blogs.index')" :active="request()->routeIs('blogs.*')">

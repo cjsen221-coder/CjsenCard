@@ -36,14 +36,14 @@
                     </div>
                 @endif
 
-                <a href="{{ route('cards.create') }}"
+                <a href="{{ route('qr.index') }}"
                     class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
-                    ➕ Nouvelle carte
+                    ➕ Nouveau Qr Code
                 </a>
-                <a href="{{ route('cards.export.excel') }}"
+                {{-- <a href="{{ route('cards.export.excel') }}"
                     class="bg-[#002244] text-white text-sm px-4 py-2 rounded-md hover:bg-[#003366] transition">
                     Liste Excel
-                </a>
+                </a> --}}
             </div>
         </x-slot>
 
@@ -83,9 +83,9 @@
                     {{-- Actions --}}
                     <div class="flex justify-between items-center border-t pt-2">
                         <div>
-                            <a href="{{ route('cards.qr', $card) }}" class="text-blue-600 font-semibold hover:underline">
+                            {{-- <a href="{{ route('cards.qr', $card) }}" class="text-blue-600 font-semibold hover:underline">
                                 📄 PDF
-                            </a>
+                            </a> --}}
                         </div>
                         <div class="flex gap-3">
                             <a href="{{ route('cards.edit', $card) }}"

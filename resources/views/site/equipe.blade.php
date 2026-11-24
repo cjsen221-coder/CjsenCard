@@ -179,7 +179,7 @@
                         ]
                     ],
                     [
-                        'poste' => 'Coordonnateur',
+                        'poste' => 'Coordonnatrice',
                         'nomCellule' => 'Cellule de Gestion et du Pilotage des Projets (CGPP)',
                         'membre' => ['nom' => 'Mame Fatou Mbaye TALL', 'photo' => 'media/MAME_FATOU.png'],
                         'missions' => [
@@ -214,7 +214,7 @@
                     [
                         'poste' => 'Coordonnatrice',
                         'nomCellule' => 'Cellule Partenariats et Relations Extérieures (CPRE)',
-                        'membre' => ['nom' => 'Léontine MAITE', 'photo' => ''],
+                        'membre' => ['nom' => 'Mariama SOW', 'photo' => 'media/mari.png'],
                         'missions' => [
                             'Développer et maintenir des partenariats stratégiques et institutionnels.',
                             'Identifier et engager des partenaires publics, privés et associatifs.',
@@ -224,7 +224,7 @@
                             'Valoriser l’image et le rayonnement de l’association à l’extérieur.'
                         ],
                         'adjoints' => [
-                            ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => '']
+                            ['nom' => 'Alimatou Yague BA', 'poste' => 'Adjointe', 'photo' => 'media/Alimatou.png']
                         ]
                     ]
                 ]

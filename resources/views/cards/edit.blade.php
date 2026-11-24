@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Modifier la carte membre
             </h2>
-            <a href="{{ route('cards.index') }}"
+            <a href="{{ route('qr.index') }}"
                 class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
                 ← Retour à la liste
             </a>

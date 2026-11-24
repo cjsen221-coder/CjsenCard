@@ -6,9 +6,9 @@
                     {{ $card->name }} est un membre de Sen Carrefour Jeunesse.
                 </h2>
 
-                <a href="{{ route('cards.create') }}"
+                <a href="{{ route('qr.index') }}"
                     class="bg-[#003366] text-white text-sm px-4 py-2 rounded-md hover:bg-[#002244] transition">
-                    ➕ Nouvelle carte
+                    ➕ Nouveau Qr Code
                 </a>
             </div>
         @endauth
@@ -108,10 +108,10 @@
         <!-- Boutons -->
         <div class="mt-6 flex gap-4 justify-center">
             @auth
-                <a href="{{ route('cards.index') }}" class="text-blue-600 hover:underline">⬅️ Retour à la liste</a>
+                <a href="{{ route('qr.index') }}" class="text-blue-600 hover:underline">⬅️ Retour à la liste</a>
 
                 <div>
-                    <a href="{{ route('cards.qr', $card) }}" class="text-green-600 font-semibold">🔗 PDF</a>
+                    {{-- <a href="{{ route('cards.qr', $card) }}" class="text-green-600 font-semibold">🔗 PDF</a> --}}
                 </div>
                 <a href="{{ route('cards.edit', $card) }}" class="text-yellow-600 hover:underline">✏️ Modifier</a>
 

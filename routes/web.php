@@ -14,11 +14,17 @@ use App\Http\Controllers\SiteController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Exports\CardsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\CardQrController;
 
 
 // Route::get('/', function () {
 //     return view('site.accueil');
 // });
+
+Route::get('/q/{code}', [CardQrController::class, 'resolve'])
+    ->where('code', '[A-Za-z]+-\d+')
+    ->middleware('throttle:60,1')
+    ->name('qr.resolve');
 
 // Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
 Route::get('/cards/{card:slug}', [CardController::class, 'show'])->name('cards.show');
@@ -26,9 +32,22 @@ Route::get('/cards/{card:slug}', [CardController::class, 'show'])->name('cards.s
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [CardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/cards', [CardController::class, 'index'])->name('cards.index');
-    Route::get('/create', [CardController::class, 'create'])->name('cards.create');
+    // Route::get('/cards', [CardController::class, 'index'])->name('cards.index');
+    // Route::get('/create', [CardController::class, 'create'])->name('cards.create');
     Route::post('/cards', [CardController::class, 'store'])->name('cards.store');
+
+    // Qr code
+    Route::get('/qr-codes', [CardQrController::class, 'index'])->name('qr.index');
+    Route::post('/qr-codes/generate', [CardQrController::class, 'generate'])->name('qr.generate');
+    Route::get('/qr-codes/zip', [CardQrController::class, 'zip'])->name('qr.zip');
+    Route::get('/qr-codes/{code}/svg', [CardQrController::class, 'svg'])
+        ->where('code', '[A-Za-z]+-\d+')->name('qr.svg');
+
+    Route::get('/qr-scan', [CardQrController::class, 'scan'])->name('qr.scan');
+    Route::get('/qr/{code}/assign', [CardQrController::class, 'assignForm'])
+        ->where('code', '[A-Za-z]+-\d+')->name('qr.assign');
+    Route::post('/qr/{code}/assign', [CardQrController::class, 'assign'])
+        ->where('code', '[A-Za-z]+-\d+')->name('qr.assign.store');
 
     Route::get('/cards/{card}/edit', [CardController::class, 'edit'])->name('cards.edit');
     Route::put('/cards/{card}', [CardController::class, 'update'])->name('cards.update');
@@ -37,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cards/{card}/qr', [CardController::class, 'showQr'])->name('cards.qr');
     // Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
 
-    //Gérer les medias 
+    //Gérer les medias
     Route::resource('blogs', BlogController::class);
     // Route::resource('medias', MediaController::class);
     Route::resource('medias', MediaController::class);

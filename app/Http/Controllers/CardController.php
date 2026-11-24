@@ -48,10 +48,10 @@ class CardController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('cards.create');
-    }
+    // public function create()
+    // {
+    //     return view('cards.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -65,48 +65,48 @@ class CardController extends Controller
         return view('cards.edit', compact('card'));
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'gender' => 'nullable|string|in:Homme,Femme,Autre|max:10',
-            'birthdate' => 'nullable|date',
-            'nationality' => 'nullable|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'region' => 'nullable|string|max:255',
-            'city' => 'nullable|string|max:255',
+    // public function store(Request $request)
+    // {
+    //     $data = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'gender' => 'nullable|string|in:Homme,Femme,Autre|max:10',
+    //         'birthdate' => 'nullable|date',
+    //         'nationality' => 'nullable|string|max:255',
+    //         'address' => 'nullable|string|max:255',
+    //         'region' => 'nullable|string|max:255',
+    //         'city' => 'nullable|string|max:255',
 
-            'role' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:50',
-            'whatsapp' => 'nullable|string|max:50',
+    //         'role' => 'required|string|max:255',
+    //         'email' => 'nullable|email|max:255',
+    //         'phone' => 'nullable|string|max:50',
+    //         'whatsapp' => 'nullable|string|max:50',
 
-            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
-            'honorMember' => 'required|string|max:255',
-        ]);
+    //         'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+    //         'honorMember' => 'required|string|max:255',
+    //     ]);
 
-        // dd($data);   
+    //     // dd($data);
 
-        $data['serial_number'] = 'CJSEN-' . strtoupper(Str::random(8));
-        // $data['honorMember'] = $request->has('honorMember') ? 1 : 0;
+    //     $data['serial_number'] = 'CJSEN-' . strtoupper(Str::random(8));
+    //     // $data['honorMember'] = $request->has('honorMember') ? 1 : 0;
 
-        $data['slug'] = Str::slug($data['name']);
-        $originalSlug = $data['slug'];
-        $count = 1;
-        while (Card::where('slug', $data['slug'])->exists()) {
-            $data['slug'] = $originalSlug . '-' . $count++;
-        }
+    //     $data['slug'] = Str::slug($data['name']);
+    //     $originalSlug = $data['slug'];
+    //     $count = 1;
+    //     while (Card::where('slug', $data['slug'])->exists()) {
+    //         $data['slug'] = $originalSlug . '-' . $count++;
+    //     }
 
-        if ($request->hasFile('avatar')) {
-            $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
-            $request->file('avatar')->move(public_path('storage/avatars'), $filename);
-            $data['avatar'] = 'avatars/' . $filename;
-        }
+    //     if ($request->hasFile('avatar')) {
+    //         $filename = time() . '_' . $request->file('avatar')->getClientOriginalName();
+    //         $request->file('avatar')->move(public_path('storage/avatars'), $filename);
+    //         $data['avatar'] = 'avatars/' . $filename;
+    //     }
 
-        Card::create($data);
+    //     Card::create($data);
 
-        return redirect()->route('cards.index')->with('success', 'Carte membre créée avec succès.');
-    }
+    //     return redirect()->route('cards.index')->with('success', 'Carte membre créée avec succès.');
+    // }
 
     public function update(Request $request, Card $card)
     {
@@ -149,7 +149,7 @@ class CardController extends Controller
 
         $card->update($validated);
 
-        return redirect()->route('cards.index')->with('success', 'Carte mise à jour avec succès !');
+        return redirect()->route('cards.show', $card)->with('success', 'Carte mise à jour avec succès !');
     }
 
 
@@ -160,21 +160,12 @@ class CardController extends Controller
         }
         $card->delete();
 
-        return redirect()->route('cards.index')->with('success', 'Carte supprimée avec succès !');
+        return redirect()->route('qr.index')->with('success', 'Carte supprimée avec succès !');
     }
-
 
     public function show(Card $card)
     {
-        $qr = base64_encode(
-            QrCode::format('svg')
-                ->size(300)
-                ->generate(route('cards.show', $card))
-        );
-
-        // $qr = base64_encode(QrCode::format('png')->size(150)->generate(route('cards.show', $card)));
-
-        return view('cards.show', compact('card', 'qr'));
+        return view('cards.show', compact('card'));
     }
     public function showQr(Card $card)
     {
